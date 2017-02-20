@@ -2,6 +2,13 @@ body {
     display: block;
     background-color: #FCFCFC;
 }
+#logodiv {
+    height: 100px;
+    width: 500px;
+    left: 50%;
+    margin-left: -250px;
+}
+
 #logo {
     position: fixed;
     color: #CB2B68;
@@ -34,8 +41,7 @@ div p {
 #loginTitle {
     font-size: 60px;
     margin-top: 25px;
-    left: 50%;
-    margin-left: -76px;
+    text-align: center;
 }
 
 input {
