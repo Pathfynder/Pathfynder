@@ -1,0 +1,96 @@
+body {
+    display: block;
+    background-color: #FCFCFC;
+}
+#logo {
+    position: fixed;
+    color: #CB2B68;
+    font-family: 'Lobster', cursive;
+    font-size: 70px;
+    left: 50%;
+    margin-left: -160px;
+}
+.login {
+    position: fixed;
+    height: 400px;
+    width: 400px;
+
+    top: 50%;
+    left: 50%;
+    margin-top: -150px;
+    margin-left: -200px;
+
+    background-color: #23CBF2;
+    border-radius: 7%;
+
+    font-family: 'Raleway', sans-serif;
+}
+
+div p {
+    position: relative;
+    color: #CB2B68;
+}
+
+#loginTitle {
+    font-size: 60px;
+    margin-top: 25px;
+    left: 50%;
+    margin-left: -76px;
+}
+
+input {
+    border: none;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+}
+
+#username {
+    position: absolute;
+    font-size: 18px;
+    margin-top: -25px;
+    left: 50%;
+    margin-left: -150px;
+}
+
+#password {
+    position: absolute;
+    font-size: 18px;
+    margin-top: 50px;
+    left: 50%;
+    margin-left: -149px;
+    margin-top: 65px;
+}
+
+#userField {
+    position: absolute;
+    height: 40px;
+    width: 300px;
+    left: 50%;
+    margin-left: -150px;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+#passField {
+    position: absolute;
+    height: 40px;
+    width: 300px;
+    left: 50%;
+    margin-left: -150px;
+    margin-top: 90px;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+#submit {
+    position: absolute;
+    background-color: white;
+    color: #CB2B68;
+    font-size: 18px;
+    height: 25px;
+    width: 100px;
+    left: 50%;
+    margin-left: -50px;
+    margin-top: 175px;
+}
