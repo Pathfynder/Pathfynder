@@ -1,0 +1,90 @@
+body {
+    display: block;
+    background-color: #F2F2F2;
+}
+
+.welcomeLogo {
+    color: #CB2B68;
+    font-family: 'Lobster', cursive;
+    font-size: 60px;
+    position: relative;
+    width: 350px;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+
+    left: 50%;
+    margin-left: -175px;
+}
+
+.header {
+    height: 12px;
+    width: 40%;
+    font-family: 'Raleway', sans-serif;
+    color: #CB2B68;
+    font-size: 12px;
+
+    float: right;
+    margin-top: -1.5%;
+}
+
+.header li {
+    position: relative;
+    display: inline-block;
+    margin-left: 2.5%;
+    float: right;
+    text-decoration: none;
+}
+
+.header li a {
+    text-decoration: none;
+    color: #CB2B68;
+}
+
+
+.navBar{
+    margin-top: 1%;
+    position: relative;
+    height: 40px;
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+
+table {
+    width: 100%;
+    height: 100%;
+    color: #CB2B68;
+    table-layout: fixed;
+}
+
+table td {
+    background-color: #23CBF2;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    width: 20%;
+    font-weight: bold;
+    font-size: 18px;
+    font-size: 1.15vw;
+}
+
+.pageTitle {
+    position: relative;
+    height: 50px;
+    width: 330px;
+
+    text-align: center;
+    line-height: 50px;
+    font-family: 'Raleway', sans-serif;
+    color: #CB2B68;
+    font-size: 45px;
+    font-weight: bold;
+
+    left: 50%;
+    margin-left: -165px;
+    margin-top: 1%;
+}

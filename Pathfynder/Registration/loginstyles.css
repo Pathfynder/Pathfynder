@@ -1,0 +1,166 @@
+body {
+    display: block;
+    background-color: #FCFCFC;
+}
+#logodiv {
+    position: relative;
+    height: 100px;
+    width: 430px;
+    left: 50%;
+    margin-left: -215px;
+    color: #CB2B68;
+    font-family: 'Lobster', cursive;
+    font-size: 90px;
+    text-align: center;
+}
+
+.page {
+    position: relative;
+    height: 600px;
+    width: 600px;
+
+    top: 50%;
+    left: 50%;
+    margin-left: -300px;
+    margin-top: 50px;
+
+    background-color: #23CBF2;
+    border-radius: 7%;
+
+    font-family: 'Raleway', sans-serif;
+}
+
+div p {
+    position: relative;
+    color: #CB2B68;
+}
+template name {
+position:absolute;
+   width:950px;
+   height:215px;
+color: #CB2B68;
+}
+
+
+#loginTitle {
+    position: relative;
+    font-size: 60px;
+    margin-top: 25px;
+    text-align: center;
+}
+
+input {
+    border: none;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+}
+
+#edu {
+    position: absolute;
+    font-size: 18px;
+    left: 50%;
+    margin-left: -225px;
+    margin-top: -50px;
+}
+
+#password {
+    position: absolute;
+    font-size: 18px;
+    left: 50%;
+    margin-left: -225px;
+    margin-top: 35px;
+}
+
+#userField {
+    position: absolute;
+    height: 40px;
+    width: 450px;
+    left: 50%;
+    margin-left: -225px;
+    text-decoration: none;
+    font-size: 16px;
+    margin-top: -30px;
+}
+
+#passField {
+    position: absolute;
+    height: 40px;
+    width: 450px;
+    left: 50%;
+    margin-left: -225px;
+    text-decoration: none;
+    font-size: 18px;
+    margin-top: 55px;
+}
+
+#submit {
+    position: absolute;
+    background-color: white;
+    color: #CB2B68;
+    font-size: 18px;
+    height: 25px;
+    width: 100px;
+    margin-top: 125px;
+    left: 50%;
+    margin-left: -50px;
+}
+
+#registerTitle {
+    position: relative;
+    font-size: 60px;
+    text-align: center;
+    margin-top: 225px;
+}
+
+#email {
+    position: absolute;
+    font-size: 18px;
+    left: 50%;
+    margin-left: -225px;
+    margin-top: -50px;
+}
+
+#newPassword {
+    position: absolute;
+    font-size: 18px;
+    left: 50%;
+    margin-left: -225px;
+    margin-top: 35px;
+
+}
+
+#regEmail {
+    position: absolute;
+    height: 40px;
+    width: 450px;
+    left: 50%;
+    text-decoration: none;
+    font-size: 16px;
+    margin-top: -30px;
+    margin-left: -225px;
+}
+
+#regPass {
+    position: absolute;
+    height: 40px;
+    width: 450px;
+    left: 50%;
+    text-decoration: none;
+    font-size: 16px;
+    margin-top: 55px;
+    margin-left: -225px;
+}
+
+#regSubmit {
+    position: absolute;
+    background-color: white;
+    color: #CB2B68;
+    font-size: 18px;
+    height: 25px;
+    width: 100px;
+    left: 50%;
+    margin-left: -50px;
+    margin-top: 125px;
+}
+
