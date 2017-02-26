@@ -1,6 +1,5 @@
 <head>
     <title>PathFynder</title>
-    <link rel="icon" type="image/png" href="/pathfynderlogo.png" sizes="32x32">
     <meta charset="UTF-8">
     <link type="text/css" rel="stylesheet" href="loginstyles.css">
     <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
@@ -9,8 +8,6 @@
 
 </head>
 <body>
-
-
         {{#if currentUser}}
             {{> dashboard}}
         {{else}}
@@ -29,7 +26,7 @@
     <div class="welcomeLogo">PathFynder</div>
     <div class="header">
         <li><a href="#" class="logout">Logout</a></li>
-        <li>FAQ</li>
+        <li><a href="../faq/faq.html">FAQ</a></li>
         <li>Profile</li>
         <li>Account Settings</li>
     </div>
