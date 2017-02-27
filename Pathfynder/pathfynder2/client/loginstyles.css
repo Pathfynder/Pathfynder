@@ -15,14 +15,14 @@ body {
 }
 
 .page {
-    position: relative;
-    height: 600px;
-    width: 600px;
+    position: fixed;
+    height: 400px;
+    width: 400px;
 
     top: 50%;
     left: 50%;
-    margin-left: -300px;
-    margin-top: 50px;
+    margin-top: -150px;
+    margin-left: -200px;
 
     background-color: #23CBF2;
     border-radius: 7%;
@@ -34,16 +34,8 @@ div p {
     position: relative;
     color: #CB2B68;
 }
-template name {
-position:absolute;
-   width:950px;
-   height:215px;
-color: #CB2B68;
-}
-
 
 #loginTitle {
-    position: relative;
     font-size: 60px;
     margin-top: 25px;
     text-align: center;
@@ -59,39 +51,38 @@ input {
 #edu {
     position: absolute;
     font-size: 18px;
+    margin-top: -25px;
     left: 50%;
-    margin-left: -225px;
-    margin-top: -50px;
+    margin-left: -150px;
 }
 
 #password {
     position: absolute;
     font-size: 18px;
     left: 50%;
-    margin-left: -225px;
-    margin-top: 35px;
+    margin-left: -149px;
+    margin-top: 65px;
 }
 
 #userField {
     position: absolute;
     height: 40px;
-    width: 450px;
+    width: 300px;
     left: 50%;
-    margin-left: -225px;
+    margin-left: -150px;
     text-decoration: none;
     font-size: 16px;
-    margin-top: -30px;
 }
 
-#passField {
+#passwordField {
     position: absolute;
     height: 40px;
-    width: 450px;
+    width: 300px;
     left: 50%;
-    margin-left: -225px;
+    margin-left: -150px;
+    margin-top: 90px;
     text-decoration: none;
-    font-size: 18px;
-    margin-top: 55px;
+    font-size: 16px;
 }
 
 #submit {
@@ -101,66 +92,21 @@ input {
     font-size: 18px;
     height: 25px;
     width: 100px;
-    margin-top: 125px;
     left: 50%;
     margin-left: -50px;
+    margin-top: 160px;
 }
 
-#registerTitle {
+#changeForm {
     position: relative;
-    font-size: 60px;
+    bottom: 0;
     text-align: center;
-    margin-top: 225px;
-}
-
-#email {
-    position: absolute;
-    font-size: 18px;
-    left: 50%;
-    margin-left: -225px;
-    margin-top: -50px;
-}
-
-#newPassword {
-    position: absolute;
-    font-size: 18px;
-    left: 50%;
-    margin-left: -225px;
-    margin-top: 35px;
-
-}
-
-#regEmail {
-    position: absolute;
-    height: 40px;
-    width: 450px;
-    left: 50%;
+    font-size: 14px;
+    margin-top: 66%;
     text-decoration: none;
-    font-size: 16px;
-    margin-top: -30px;
-    margin-left: -225px;
 }
 
-#regPass {
-    position: absolute;
-    height: 40px;
-    width: 450px;
-    left: 50%;
+p a {
     text-decoration: none;
-    font-size: 16px;
-    margin-top: 55px;
-    margin-left: -225px;
-}
-
-#regSubmit {
-    position: absolute;
-    background-color: white;
     color: #CB2B68;
-    font-size: 18px;
-    height: 25px;
-    width: 100px;
-    left: 50%;
-    margin-left: -50px;
-    margin-top: 125px;
 }
-

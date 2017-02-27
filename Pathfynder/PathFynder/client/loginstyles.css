@@ -3,21 +3,18 @@ body {
     background-color: #FCFCFC;
 }
 #logodiv {
+    position: relative;
     height: 100px;
-    width: 500px;
+    width: 430px;
     left: 50%;
-    margin-left: -250px;
-}
-
-#logo {
-    position: fixed;
+    margin-left: -215px;
     color: #CB2B68;
     font-family: 'Lobster', cursive;
-    font-size: 70px;
-    left: 50%;
-    margin-left: -160px;
+    font-size: 90px;
+    text-align: center;
 }
-.login {
+
+.page {
     position: fixed;
     height: 400px;
     width: 400px;
@@ -51,7 +48,7 @@ input {
     border-radius: 7px;
 }
 
-#username {
+#edu {
     position: absolute;
     font-size: 18px;
     margin-top: -25px;
@@ -62,7 +59,6 @@ input {
 #password {
     position: absolute;
     font-size: 18px;
-    margin-top: 50px;
     left: 50%;
     margin-left: -149px;
     margin-top: 65px;
@@ -78,7 +74,7 @@ input {
     font-size: 16px;
 }
 
-#passField {
+#passwordField {
     position: absolute;
     height: 40px;
     width: 300px;
@@ -98,5 +94,19 @@ input {
     width: 100px;
     left: 50%;
     margin-left: -50px;
-    margin-top: 175px;
+    margin-top: 160px;
+}
+
+#changeForm {
+    position: relative;
+    bottom: 0;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 66%;
+    text-decoration: none;
+}
+
+p a {
+    text-decoration: none;
+    color: #CB2B68;
 }
