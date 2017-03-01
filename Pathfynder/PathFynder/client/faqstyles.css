@@ -86,4 +86,21 @@ body {
     font-size: 18px;
 }
 
+#accountSettingsTitle {
+    position: relative;
+    height: 50px;
+    width: 360px;
+
+    text-align: center;
+    line-height: 50px;
+    font-family: 'Raleway', sans-serif;
+    color: #CB2B68;
+    font-size: 45px;
+    font-weight: bold;
+
+    left: 50%;
+    margin-left: -180px;
+    margin-top: 1%;
+}
+
 

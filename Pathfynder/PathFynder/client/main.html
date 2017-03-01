@@ -5,6 +5,7 @@
     <link type="text/css" rel="stylesheet" href="loginstyles.css">
     <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link rel="icon" sizes="16x16" href="/favicon.ico?v=2">
 </head>
 <body>
 </body>
@@ -45,21 +46,334 @@
     <div class="header">
         <li><a href="#" class="logout">Logout</a></li>
         <li><a href="{{pathFor route='faq'}}">FAQ</a></li>
-        <li>Profile</li>
-        <li>Account Settings</li>
+        <li><a href="{{pathFor route='profile'}}">Profile</a></li>
+        <li><a href="{{pathFor route='accountsettings'}}">Account Settings</a></li>
     </div>
     <div class="navBar">
         <table>
             <tr>
-                <td id="courses">Courses</td>
-                <td id="internships">Internships</td>
-                <td id="clubs">Clubs</td>
-                <td id="residential">Residential</td>
-                <td id="dining">Dining</td>
+                <td id="courses">
+                    <div>
+                        <a href="{{pathFor route='courses'}}">Courses</a>
+                    </div>
+                </td>
+                <td id="internships">
+                    <div>
+                    <a href="{{pathFor route='internships'}}">Internships</a>
+                    </div>
+                </td>
+                <td id="clubs">
+                    <div>
+                        <a href="{{pathFor route='clubs'}}">Clubs</a>
+                    </div>
+                </td>
+                <td id="residential">
+                    <div>
+                        <a href="{{pathFor route='residential'}}">Residential</a>
+                    </div>
+                </td>
+                <td id="dining">
+                    <div>
+                        <a href="{{pathFor route='dining'}}">Dining</a>
+                    </div>
+                </td>
             </tr>
         </table>
     </div>
-    <div class="pageTitle">Welcome Back!</div>
+</template>
+
+<template name="courses">
+    <div class="logo"><a href="{{pathFor route='home'}}">PathFynder</a></div>
+    <div class="header">
+        <li><a href="#" class="logout">Logout</a></li>
+        <li><a href="{{pathFor route='faq'}}">FAQ</a></li>
+        <li><a href="{{pathFor route='profile'}}">Profile</a></li>
+        <li><a href="{{pathFor route='accountsettings'}}">Account Settings</a></li>
+    </div>
+    <div class="navBar">
+        <table>
+            <tr>
+                <td class="currentTab">
+                    <div>
+                        <a href="{{pathFor route='courses'}}">Courses</a>
+                    </div>
+                </td>
+                <td id="internships">
+                    <div>
+                        <a href="{{pathFor route='internships'}}">Internships</a>
+                    </div>
+                </td>
+                <td id="clubs">
+                    <div>
+                        <a href="{{pathFor route='clubs'}}">Clubs</a>
+                    </div>
+                </td>
+                <td id="residential">
+                    <div>
+                        <a href="{{pathFor route='residential'}}">Residential</a>
+                    </div>
+                </td>
+                <td id="dining">
+                    <div>
+                        <a href="{{pathFor route='dining'}}">Dining</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="pageTitle">Courses</div>
+</template>
+
+<template name="internships">
+    <div class="logo"><a href="{{pathFor route='home'}}">PathFynder</a></div>
+    <div class="header">
+        <li><a href="#" class="logout">Logout</a></li>
+        <li><a href="{{pathFor route='faq'}}">FAQ</a></li>
+        <li><a href="{{pathFor route='profile'}}">Profile</a></li>
+        <li><a href="{{pathFor route='accountsettings'}}">Account Settings</a></li>
+    </div>
+    <div class="navBar">
+        <table>
+            <tr>
+                <td id="courses">
+                    <div>
+                        <a href="{{pathFor route='courses'}}">Courses</a>
+                    </div>
+                </td>
+                <td class="currentTab">
+                    <div>
+                        <a href="{{pathFor route='internships'}}">Internships</a>
+                    </div>
+                </td>
+                <td id="clubs">
+                    <div>
+                        <a href="{{pathFor route='clubs'}}">Clubs</a>
+                    </div>
+                </td>
+                <td id="residential">
+                    <div>
+                        <a href="{{pathFor route='residential'}}">Residential</a>
+                    </div>
+                </td>
+                <td id="dining">
+                    <div>
+                        <a href="{{pathFor route='dining'}}">Dining</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="pageTitle">Internships</div>
+</template>
+
+<template name="clubs">
+    <div class="logo"><a href="{{pathFor route='home'}}">PathFynder</a></div>
+    <div class="header">
+        <li><a href="#" class="logout">Logout</a></li>
+        <li><a href="{{pathFor route='faq'}}">FAQ</a></li>
+        <li><a href="{{pathFor route='profile'}}">Profile</a></li>
+        <li><a href="{{pathFor route='accountsettings'}}">Account Settings</a></li>
+    </div>
+    <div class="navBar">
+        <table>
+            <tr>
+                <td id="courses">
+                    <div>
+                        <a href="{{pathFor route='courses'}}">Courses</a>
+                    </div>
+                </td>
+                <td id="internships">
+                    <div>
+                        <a href="{{pathFor route='internships'}}">Internships</a>
+                    </div>
+                </td>
+                <td class="currentTab">
+                    <div>
+                        <a href="{{pathFor route='clubs'}}">Clubs</a>
+                    </div>
+                </td>
+                <td id="residential">
+                    <div>
+                        <a href="{{pathFor route='residential'}}">Residential</a>
+                    </div>
+                </td>
+                <td id="dining">
+                    <div>
+                        <a href="{{pathFor route='dining'}}">Dining</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="pageTitle">Clubs</div>
+</template>
+
+<template name="residential">
+    <div class="logo"><a href="{{pathFor route='home'}}">PathFynder</a></div>
+    <div class="header">
+        <li><a href="#" class="logout">Logout</a></li>
+        <li><a href="{{pathFor route='faq'}}">FAQ</a></li>
+        <li><a href="{{pathFor route='profile'}}">Profile</a></li>
+        <li><a href="{{pathFor route='accountsettings'}}">Account Settings</a></li>
+    </div>
+    <div class="navBar">
+        <table>
+            <tr>
+                <td id="courses">
+                    <div>
+                        <a href="{{pathFor route='courses'}}">Courses</a>
+                    </div>
+                </td>
+                <td id="internships">
+                    <div>
+                        <a href="{{pathFor route='internships'}}">Internships</a>
+                    </div>
+                </td>
+                <td id="clubs">
+                    <div>
+                        <a href="{{pathFor route='clubs'}}">Clubs</a>
+                    </div>
+                </td>
+                <td class="currentTab">
+                    <div>
+                        <a href="{{pathFor route='residential'}}">Residential</a>
+                    </div>
+                </td>
+                <td id="dining">
+                    <div>
+                        <a href="{{pathFor route='dining'}}">Dining</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="pageTitle">Residential</div>
+</template>
+
+<template name="dining">
+    <div class="logo"><a href="{{pathFor route='home'}}">PathFynder</a></div>
+    <div class="header">
+        <li><a href="#" class="logout">Logout</a></li>
+        <li><a href="{{pathFor route='faq'}}">FAQ</a></li>
+        <li><a href="{{pathFor route='profile'}}">Profile</a></li>
+        <li><a href="{{pathFor route='accountsettings'}}">Account Settings</a></li>
+    </div>
+    <div class="navBar">
+        <table>
+            <tr>
+                <td id="courses">
+                    <div>
+                        <a href="{{pathFor route='courses'}}">Courses</a>
+                    </div>
+                </td>
+                <td id="internships">
+                    <div>
+                        <a href="{{pathFor route='internships'}}">Internships</a>
+                    </div>
+                </td>
+                <td id="clubs">
+                    <div>
+                        <a href="{{pathFor route='clubs'}}">Clubs</a>
+                    </div>
+                </td>
+                <td id="residential">
+                    <div>
+                        <a href="{{pathFor route='residential'}}">Residential</a>
+                    </div>
+                </td>
+                <td class="currentTab">
+                    <div>
+                        <a href="{{pathFor route='dining'}}">Dining</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="pageTitle">Dining</div>
+</template>
+
+<template name="accountsettings">
+    <div class="logo"><a href="{{pathFor route='home'}}">PathFynder</a></div>
+    <div class="header">
+        <li><a href="#" class="logout">Logout</a></li>
+        <li><a href="{{pathFor route='faq'}}">FAQ</a></li>
+        <li><a href="{{pathFor route='profile'}}">Profile</a></li>
+        <li><a href="{{pathFor route='accountsettings'}}">Account Settings</a></li>
+    </div>
+    <div class="navBar">
+        <table>
+            <tr>
+                <td id="courses">
+                    <div>
+                        <a href="{{pathFor route='courses'}}">Courses</a>
+                    </div>
+                </td>
+                <td id="internships">
+                    <div>
+                        <a href="{{pathFor route='internships'}}">Internships</a>
+                    </div>
+                </td>
+                <td id="clubs">
+                    <div>
+                        <a href="{{pathFor route='clubs'}}">Clubs</a>
+                    </div>
+                </td>
+                <td id="residential">
+                    <div>
+                        <a href="{{pathFor route='residential'}}">Residential</a>
+                    </div>
+                </td>
+                <td id="dining">
+                    <div>
+                        <a href="{{pathFor route='dining'}}">Dining</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="accountSettingsTitle">Account Settings</div>
+</template>
+
+<template name="profile">
+    <div class="logo"><a href="{{pathFor route='home'}}">PathFynder</a></div>
+    <div class="header">
+        <li><a href="#" class="logout">Logout</a></li>
+        <li><a href="{{pathFor route='faq'}}">FAQ</a></li>
+        <li><a href="{{pathFor route='profile'}}">Profile</a></li>
+        <li><a href="{{pathFor route='accountsettings'}}">Account Settings</a></li>
+    </div>
+    <div class="navBar">
+        <table>
+            <tr>
+                <td id="courses">
+                    <div>
+                        <a href="{{pathFor route='courses'}}">Courses</a>
+                    </div>
+                </td>
+                <td id="internships">
+                    <div>
+                        <a href="{{pathFor route='internships'}}">Internships</a>
+                    </div>
+                </td>
+                <td id="clubs">
+                    <div>
+                        <a href="{{pathFor route='clubs'}}">Clubs</a>
+                    </div>
+                </td>
+                <td id="residential">
+                    <div>
+                        <a href="{{pathFor route='residential'}}">Residential</a>
+                    </div>
+                </td>
+                <td id="dining">
+                    <div>
+                        <a href="{{pathFor route='dining'}}">Dining</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="pageTitle">Profile</div>
 </template>
 
 <template name="faq">
@@ -67,17 +381,37 @@
     <div class="header">
         <li><a href="#" class="logout">Logout</a></li>
         <li><a href="{{pathFor route='faq'}}">FAQ</a></li>
-        <li>Profile</li>
-        <li>Account Settings</li>
+        <li><a href="{{pathFor route='profile'}}">Profile</a></li>
+        <li><a href="{{pathFor route='accountsettings'}}">Account Settings</a></li>
     </div>
     <div class="navBar">
         <table>
             <tr>
-                <td id="courses">Courses</td>
-                <td id="internships">Internships</td>
-                <td id="clubs">Clubs</td>
-                <td id="residential">Residential</td>
-                <td id="dining">Dining</td>
+                <td id="courses">
+                    <div>
+                        <a href="{{pathFor route='courses'}}">Courses</a>
+                    </div>
+                </td>
+                <td id="internships">
+                    <div>
+                        <a href="{{pathFor route='internships'}}">Internships</a>
+                    </div>
+                </td>
+                <td id="clubs">
+                    <div>
+                        <a href="{{pathFor route='clubs'}}">Clubs</a>
+                    </div>
+                </td>
+                <td id="residential">
+                    <div>
+                        <a href="{{pathFor route='residential'}}">Residential</a>
+                    </div>
+                </td>
+                <td id="dining">
+                    <div>
+                        <a href="{{pathFor route='dining'}}">Dining</a>
+                    </div>
+                </td>
             </tr>
         </table>
     </div>
