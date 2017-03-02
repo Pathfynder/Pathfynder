@@ -14,13 +14,13 @@
     <div id="logodiv">PathFynder</div>
     <div class="page">
         <p id="loginTitle">Forgotten Password</p>
+        <p id="edu">Enter your .edu email</p>
         <form action="/forgot" id="forgotPasswordForm" method="post">
             <input id="userField" type="text" name="email" placeholder="Email Address">
             <input id="forgotSubmit" class="btn-submit" type="submit" value="Send">
         </form>
+        <p id="returnToLogin"><a href="{{pathFor route='login'}}">Return to login</a></p>
     </div>
-    <!-- end #forgot-password-form -->
-
 </template>
 
 <template name="ResetPassword">
@@ -33,8 +33,6 @@
             <input id="resetSubmit" class="btn-submit" type="submit" value="Reset">
         </form>
     </div>
-        <!-- end #reset-password-form -->
-
 </template>
 
 <template name = "register">
@@ -238,8 +236,11 @@
 </template>
 
 <template name="checkemail">
-    <h1>Please check your email</h1>
-    <p>Once you verify, you'll be able to login!</p>
+    <div id="logodiv">PathFynder</div>
+    <div id="checkEmailText">
+        <h1>Please check your email</h1>
+        <p>Once you verify, you'll be able to login!</p>
+    </div>
 </template>
 
 <template name="verified">

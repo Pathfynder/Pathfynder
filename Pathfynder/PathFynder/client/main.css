@@ -125,3 +125,9 @@ table {
     margin-left: -165px;
     margin-top: 1%;
 }
+
+#checkEmailText {
+    color: #117F99;
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+}
