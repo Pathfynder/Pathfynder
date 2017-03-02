@@ -103,12 +103,15 @@ Template.ForgotPassword.events({
             Accounts.forgotPassword({email: email}, function(err) {
                 if (err) {
                     if (err.message === 'User not found [403]') {
-                        console.log('This email does not exist.');
+                        alert("User does not exist!");
+                        window.location.reload();
                     } else {
-                        console.log('We are sorry but something went wrong.');
+                        alert("Something went wrong!");
+                        window.location.reload();
                     }
                 } else {
-                    console.log('Email Sent. Check your mailbox.');
+                    alert("Email sent. Check your mailbox, and click on that link to continue. This window will close.");
+                    window.close();
                 }
             });
         return false;
@@ -138,7 +141,7 @@ Template.ResetPassword.events({
                 if (err) {
                     console.log('We are sorry but something went wrong.');
                 } else {
-                    console.log('Your password has been changed. Welcome back!');
+                    alert("Your password has been changed! Welcome Back! You will be redirected to the login page!");
                     Session.set('resetPasswordToken', null);
                     Router.go('/login')
                 }
@@ -164,14 +167,23 @@ Template.register.events ({
         event.preventDefault();
         var email = $('[name=email]').val();
         var password = $('[name=password]').val();
+        if(!validateEmail(email)) {
+            if(!email.endsWith(".edu")) {
+                alert("Must be a .edu account!")
+                window.location.reload();
+            }
+        }
         Accounts.createUser({
             email: email,
             password: password
         }, function(err) {
             if (err) {
-                console.log("Unable to register.", err);
                 if (err.reason === "Email already exists.") {
-                    console.log("Display password reset form?");
+                    alert("User already exists!");
+                    window.location.reload();
+                } else {
+                    alert("Something went wrong!")
+                    window.location.reload();
                 }
             } else {
                 console.log("Registration successfull");
@@ -179,7 +191,7 @@ Template.register.events ({
                 // has logged in successfully.
                 var userId = Meteor.userId();
                 Meteor.call('serverVerifyEmail', email, userId, function () {
-                    console.log("Verification Email Sent");
+                    alert("Verification email sent!");
                     Router.go('/checkemail');
                 });
             }
@@ -187,12 +199,22 @@ Template.register.events ({
     }
 });
 
+function validateEmail(email) {
+    var re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return re.test(email);
+}
+
 Template.login.events({
     'submit form': function(event) {
         event.preventDefault();
         var email = $('[name=email]').val();
         var password = $('[name=password]').val();
-        Meteor.loginWithPassword(email, password);
+        Meteor.loginWithPassword(email, password, function(error){
+            if(error) {
+                alert("Wrong Username or Password! Thank you, come again! Page will refresh!");
+                window.location.reload();
+            }
+        });
         Router.go('home');
     }
 });
