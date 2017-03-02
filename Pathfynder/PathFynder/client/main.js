@@ -10,7 +10,7 @@ var isSignedIn = function() {
     }
 };
 
-Router.onBeforeAction(isSignedIn, {except: ['register', 'login', 'forgotpassword','resetpassword']});
+Router.onBeforeAction(isSignedIn, {except: ['register', 'login', 'forgotpassword','resetpassword', 'checkemail']});
 
 Router.route('/register', {
     name: 'register',
@@ -197,6 +197,7 @@ Template.register.events ({
                     alert("Verification email sent!");
                     Router.go('/checkemail');
                 });
+                Meteor.logout();
             }
         });
     }
@@ -209,6 +210,9 @@ function validateEmail(email) {
 
 Template.login.events({
     'submit form': function(event) {
+        if (!Meteor.user()._verified) {
+            Router.go('/checkemail')
+        }
         event.preventDefault();
         var email = $('[name=email]').val();
         var password = $('[name=password]').val();
