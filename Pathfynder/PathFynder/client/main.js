@@ -86,7 +86,12 @@ Router.route('/forgot-password', {
 });
 Router.route('/reset-password/:token', {
     name: 'resetpassword',
+    onBeforeAction: function() {
+        Accounts._resetPasswordToken = this.params.token;
+        this.next();
+    },
     template: 'ResetPassword',
+
 });
 Template.ForgotPassword.events({
     'submit #forgotPasswordForm': function(e, t) {
@@ -110,30 +115,32 @@ Template.ForgotPassword.events({
     },
 });
 
-if (Accounts._resetPasswordToken) {
-    Session.set('resetPasswordToken', Accounts._resetPasswordToken);
-}
+
 
 Template.ResetPassword.helpers({
     resetPassword: function(){
-        return Session.get('resetPassword');
+        console.log(Session.get('resetPasswordToken'));
+        return Session.get('resetPasswordToken');
     }
 });
 
 Template.ResetPassword.events({
     'submit #resetPasswordForm': function(e, t) {
+        if (Accounts._resetPasswordToken) {
+            Session.set('resetPasswordToken', Accounts._resetPasswordToken);
+        }
         e.preventDefault();
 
         var resetPasswordForm = $(e.currentTarget),
             password = resetPasswordForm.find('#resetPasswordPassword').val(),
             passwordConfirm = resetPasswordForm.find('#resetPasswordPasswordConfirm').val();
-            Accounts.resetPassword(Session.get('resetPassword'), password, function(err) {
+            Accounts.resetPassword(Session.get('resetPasswordToken'), password, function(err) {
                 if (err) {
                     console.log('We are sorry but something went wrong.');
                 } else {
                     console.log('Your password has been changed. Welcome back!');
-                    Session.set('resetPassword', null);
-                    Route.go('/login')
+                    Session.set('resetPasswordToken', null);
+                    Router.go('/login')
                 }
             });
         return false;
