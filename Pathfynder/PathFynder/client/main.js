@@ -113,9 +113,9 @@ Template.ForgotPassword.events({
                         window.location.reload();
                     }
                 } else {
-                    alert("Email sent. Check your mailbox, and click on that link to continue. This window will close.");
-                    window.close();
-                }
+                    alert("Email sent. Check your mailbox, and click on that link to continue.");
+                    Router.go('/login')
+     }
             });
         return false;
     },
