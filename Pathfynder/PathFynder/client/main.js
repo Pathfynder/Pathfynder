@@ -98,8 +98,10 @@ Template.ForgotPassword.events({
         e.preventDefault();
 
         var forgotPasswordForm = $(e.currentTarget),
-            email = (forgotPasswordForm.find('#forgotPasswordEmail').val().toLowerCase());
-
+            email = forgotPasswordForm.find('#forgotPasswordEmail').val();
+        if (email != null) {//email is null for some reason
+            email = email.toLowerCase();
+        }
             Accounts.forgotPassword({email: email}, function(err) {
                 if (err) {
                     if (err.message === 'User not found [403]') {
@@ -212,11 +214,15 @@ Template.login.events({
         var password = $('[name=password]').val();
         Meteor.loginWithPassword(email, password, function(error){
             if(error) {
-                alert("Wrong Username or Password! Thank you, come again! Page will refresh!");
-                window.location.reload();
+                alert("Wrong Username or Password! Please try again.");
+                Router.go('login');
+
+            }
+            else {
+                Router.go('home');
+
             }
         });
-        Router.go('home');
     }
 });
 
