@@ -24,11 +24,15 @@
 </template>
 
 <template name="ResetPassword">
+    <div id="logodiv">PathFynder</div>
+    <div class="page">
+        <p id="resetTitle">Reset Password</p>
         <form action="/reset-password"  id="resetPasswordForm" method="post">
             <input id="resetPasswordPassword" name="password" placeholder="New Password" type="password">
             <input id="resetPasswordPasswordConfirm" name="password-confirm" placeholder="Confirm" type="password">
-            <input class="btn-submit" type="submit" value="Reset">
+            <input id="resetSubmit" class="btn-submit" type="submit" value="Reset">
         </form>
+    </div>
         <!-- end #reset-password-form -->
 
 </template>

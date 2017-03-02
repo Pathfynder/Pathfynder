@@ -41,6 +41,12 @@ div p {
     text-align: center;
 }
 
+#resetTitle {
+    font-size: 40px;
+    margin-top: 25px;
+    text-align: center;
+}
+
 input {
     border: none;
     -webkit-border-radius: 7px;
@@ -73,7 +79,36 @@ input {
     text-decoration: none;
     font-size: 16px;
 }
-
+#resetPasswordPassword {
+    position: absolute;
+    height: 40px;
+    width: 300px;
+    left: 50%;
+    margin-left: -150px;
+    text-decoration: none;
+    font-size: 16px;
+}
+#resetPasswordPasswordConfirm {
+    position: absolute;
+    height: 40px;
+    width: 300px;
+    left: 50%;
+    margin-left: -150px;
+    margin-top: 90px;
+    text-decoration: none;
+    font-size: 16px;
+}
+#resetSubmit {
+    position: absolute;
+    background-color: white;
+    color: #CB2B68;
+    font-size: 18px;
+    height: 25px;
+    width: 100px;
+    left: 50%;
+    margin-left: -50px;
+    margin-top: 160px;
+}
 #passwordField {
     position: absolute;
     height: 40px;

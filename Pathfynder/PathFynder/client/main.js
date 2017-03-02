@@ -108,7 +108,6 @@ Template.ForgotPassword.events({
                         alert("User does not exist!");
                         window.location.reload();
                     } else {
-                        console.log(err);
                         alert("Something went wrong!");
                         window.location.reload();
                     }
