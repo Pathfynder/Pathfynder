@@ -105,7 +105,12 @@ input {
     margin-top: 66%;
     text-decoration: none;
 }
-
+#resetPassword {
+    position: absolute;
+    text-align: center;
+    font-size: 14px;
+    text-decoration: none;
+}
 p a {
     text-decoration: none;
     color: #CB2B68;

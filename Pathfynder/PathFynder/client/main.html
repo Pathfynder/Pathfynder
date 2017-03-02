@@ -9,7 +9,25 @@
 </head>
 <body>
 </body>
+<template name="ForgotPassword">
 
+    <form action="/forgot" id="forgotPasswordForm" method="post">
+        <input id="forgotPasswordEmail" type="text" name="email" placeholder="Email Address">
+        <input class="btn-submit" type="submit" value="Send">
+    </form>
+    <!-- end #forgot-password-form -->
+
+</template>
+
+<template name="ResetPassword">
+        <form action="/reset-password"  id="resetPasswordForm" method="post">
+            <input id="resetPasswordPassword" name="password" placeholder="New Password" type="password">
+            <input id="resetPasswordPasswordConfirm" name="password-confirm" placeholder="Confirm" type="password">
+            <input class="btn-submit" type="submit" value="Reset">
+        </form>
+        <!-- end #reset-password-form -->
+
+</template>
 
 <template name = "register">
     <div id="logodiv">PathFynder</div>
@@ -38,6 +56,7 @@
             <input id="submit" type="submit" value="Login">
         </form>
         <p id="changeForm"><a href="{{pathFor route='register'}}">New user? Create account</a></p>
+        <p id="resetPassword"><a href="{{pathFor route='forgotpassword'}}">Forgot password?</a></p>
     </div>
 </template>
 
@@ -207,7 +226,14 @@
     </div>
     <div class="pageTitle">Clubs</div>
 </template>
-
+<template name="checkemail">
+    <h1>Please check your email</h1>
+    <p>Once you verify, you'll be able to login!</p>
+</template>
+<template name="verified">
+    <h1>Thank you for verifying your email address!</h1>
+    <p>now you can use PathFynder!</p>
+</template>
 <template name="residential">
     <div class="logo"><a href="{{pathFor route='home'}}">PathFynder</a></div>
     <div class="header">
