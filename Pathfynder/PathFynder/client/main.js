@@ -98,7 +98,7 @@ Template.ForgotPassword.events({
         e.preventDefault();
 
         var forgotPasswordForm = $(e.currentTarget),
-            email = forgotPasswordForm.find('#forgotPasswordEmail').val();
+            email = forgotPasswordForm.find('#userField').val();
         if (email != null) {//email is null for some reason
             email = email.toLowerCase();
         }
@@ -108,6 +108,7 @@ Template.ForgotPassword.events({
                         alert("User does not exist!");
                         window.location.reload();
                     } else {
+                        console.log(err);
                         alert("Something went wrong!");
                         window.location.reload();
                     }
