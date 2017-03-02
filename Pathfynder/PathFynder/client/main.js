@@ -10,7 +10,7 @@ var isSignedIn = function() {
     }
 };
 
-Router.onBeforeAction(isSignedIn, {except: ['register', 'login', 'forgotpassword','resetpassword', 'checkemail']});
+Router.onBeforeAction(isSignedIn, {except: ['register', 'login', 'forgotpassword','resetpassword', 'checkemail','verifyEmail','verified']});
 
 Router.route('/register', {
     name: 'register',
@@ -67,13 +67,16 @@ Router.route("/profile", {
 });
 Router.route('checkemail', {
     path:'/checkemail',
-    template:'checkemail'
+    template:'checkemail',
 });
 Router.route('verified', {
-    name:'/verified',
-    template:'verified'
+    name: 'verified',
+    path:'/verified',
+    controller: 'VerifiedController',
+    action: 'VerifiedAccount'
 });
 Router.route('verifyEmail', {
+    name: 'verifyEmail',
     controller: 'AccountController',
     path: '/verify-email/:token',
     action:'verifyEmail'
@@ -93,6 +96,13 @@ Router.route('/reset-password/:token', {
     template: 'ResetPassword',
 
 });
+VerifiedController = RouteController.extend({
+    VerifiedAccount: function () {
+        alert("Thanks for verifying your account!");
+        Router.go('home');
+    }
+});
+
 Template.ForgotPassword.events({
     'submit #forgotPasswordForm': function(e, t) {
         e.preventDefault();
@@ -157,9 +167,9 @@ Template.ResetPassword.events({
 AccountController = RouteController.extend({
     verifyEmail: function () {
         Accounts.verifyEmail(this.params.token, function() {
+            var user = Meteor.user();
             Router.go('/verified');
         });
-        Meteor.logout();
     }
 });
 
@@ -193,6 +203,7 @@ Template.register.events ({
                 // Success. Account has been created and the user
                 // has logged in successfully.
                 var userId = Meteor.userId();
+                var user = Meteor.user();
                 Meteor.call('serverVerifyEmail', email, userId, function () {
                     alert("Verification email sent!");
                     Router.go('/checkemail');
@@ -208,23 +219,31 @@ function validateEmail(email) {
     return re.test(email);
 }
 
+
 Template.login.events({
     'submit form': function(event) {
-        if (!Meteor.user()._verified) {
-            Router.go('/checkemail')
-        }
         event.preventDefault();
         var email = $('[name=email]').val();
         var password = $('[name=password]').val();
-        Meteor.loginWithPassword(email, password, function(error){
-            if(error) {
-                alert("Wrong Username or Password! Please try again.");
-                Router.go('login');
+        console.log(email);
+        console.log(password);
+        Meteor.call('checkEmailVerification', email, function(error, data) {
+            if(data == "verified") {
+                Meteor.loginWithPassword(email, password, function(error){
+                    if(error) {
+                        alert("Wrong Username or Password! Please try again.");
+                        Router.go('login');
+                    }
+                    else {
+                        Router.go('home');
 
-            }
-            else {
-                Router.go('home');
-
+                    }
+                });
+            } else if (data == "unverified") {
+                alert("You have not verified this account!");
+                Router.go('/checkemail')
+            } else {
+                alert("Something went wrong.");
             }
         });
     }
@@ -311,6 +330,7 @@ Template.clubs.events ({
 });
 
 Meteor.loginWithPassword(email, password, function(error) {
+    checkValidation();
     //this will be where we can check .edu
     if (error) {
         console.log(error.reason);

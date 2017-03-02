@@ -11,10 +11,25 @@ Meteor.startup(() => {
         var token = url.substring(url.lastIndexOf('/')+1, url.length);
         var newUrl = Meteor.absoluteUrl('reset-password/' + token);
         var str = 'Hello,\n';
-        str+= 'To reset your password, please click follow link...\n';
+        str+= 'To reset your password, please click the following link...\n';
         str+= newUrl;
         return str;
     }
+    Accounts.emailTemplates.resetPassword.from = function () {
+        // Overrides value set in Accounts.emailTemplates.from when resetting passwords
+        return "PathFynder Support <no-reply@pathfynder.ltd>";
+    };
+    Accounts.emailTemplates.verifyEmail.from = function () {
+        // Overrides value set in Accounts.emailTemplates.from when resetting passwords
+        return "PathFynder Support <no-reply@pathfynder.ltd>";
+    };
+    Accounts.emailTemplates.verifyEmail.subject = function () {
+        return "Verification Email for PathFynder"
+    };
+    Accounts.emailTemplates.resetPassword.subject = function () {
+        return "Reset Password for PathFynder"
+    };
+
 });
 //Accounts.urls.verifyEmail = function (token) {
 //   return Meteor.absoluteUrl('verify-email/' + token);
@@ -29,6 +44,18 @@ Meteor.methods({
         Accounts.sendVerificationEmail(userId, email);
         if (typeof callback !== 'undefined') {
             callback();
+        }
+    },
+    checkEmailVerification: function(email) {
+        var found_user = Meteor.users.findOne({ 'emails.address' : email })
+        if(found_user){
+            if(found_user.emails[0].verified == true){
+                return "verified";
+            }else{
+                return "unverified";
+            }
+        }else{
+            return "notfound";
         }
     }
 });
