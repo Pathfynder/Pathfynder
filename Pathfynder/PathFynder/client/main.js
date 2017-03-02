@@ -98,7 +98,7 @@ Template.ForgotPassword.events({
         e.preventDefault();
 
         var forgotPasswordForm = $(e.currentTarget),
-            email = forgotPasswordForm.find('#forgotPasswordEmail').val();
+            email = forgotPasswordForm.find('#userField').val();
         if (email != null) {//email is null for some reason
             email = email.toLowerCase();
         }
@@ -108,6 +108,7 @@ Template.ForgotPassword.events({
                         alert("User does not exist!");
                         window.location.reload();
                     } else {
+                        console.log(err);
                         alert("Something went wrong!");
                         window.location.reload();
                     }
@@ -159,6 +160,7 @@ AccountController = RouteController.extend({
         Accounts.verifyEmail(this.params.token, function() {
             Router.go('/verified');
         });
+        Meteor.logout();
     }
 });
 
@@ -328,5 +330,5 @@ Accounts.createUser({
 });
 
 Accounts.config({
-    //restrictCreationByEmailDomain: 'purdue.edu'
+    restrictCreationByEmailDomain: 'purdue.edu'
 });
