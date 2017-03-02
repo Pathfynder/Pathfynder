@@ -243,7 +243,7 @@ Template.login.events({
                 alert("You have not verified this account!");
                 Router.go('/checkemail')
             } else {
-                alert("Something went wrong.");
+                alert("Something went wrong. (Email and password are case sensitive)");
             }
         });
     }
