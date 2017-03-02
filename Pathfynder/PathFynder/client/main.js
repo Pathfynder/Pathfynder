@@ -157,6 +157,7 @@ AccountController = RouteController.extend({
         Accounts.verifyEmail(this.params.token, function() {
             Router.go('/verified');
         });
+        Meteor.logout();
     }
 });
 
@@ -322,5 +323,5 @@ Accounts.createUser({
 });
 
 Accounts.config({
-    //restrictCreationByEmailDomain: 'purdue.edu'
+    restrictCreationByEmailDomain: 'purdue.edu'
 });
