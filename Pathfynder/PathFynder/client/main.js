@@ -123,7 +123,7 @@ Template.ForgotPassword.events({
                     }
                 } else {
                     alert("Email sent. Check your mailbox, and click on that link to continue.");
-                    Router.go('/login')
+                    window.close();
      }
             });
         return false;
