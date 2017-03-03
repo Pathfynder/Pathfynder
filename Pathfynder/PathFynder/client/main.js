@@ -194,7 +194,11 @@ Template.register.events ({
                 if (err.reason === "Email already exists.") {
                     alert("User already exists!");
                     window.location.reload();
+                } else if (err.reason === "@purdue.edu email required") {
+                    alert("Purdue Edu email required!");
+                    window.location.reload();
                 } else {
+                    console.log(err.reason);
                     alert("Something went wrong!")
                     window.location.reload();
                 }

@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 
 Meteor.startup(() => {
     // code to run on server at startup
-    process.env.MAIL_URL='smtp://allenkenobi2@sandboxe19a2b27f9c341a88a7a405dbb68cf95.mailgun.org:cookies@smtp.mailgun.org:587';
+    process.env.MAIL_URL="smtp://postmaster@pathfynder.ltd:cookies@smtp.mailgun.org:587";
     console.log(process.env);
     Accounts.urls.verifyEmail = function (token) {
         return Meteor.absoluteUrl('verify-email/' + token);
