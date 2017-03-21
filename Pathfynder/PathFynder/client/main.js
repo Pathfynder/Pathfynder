@@ -56,15 +56,6 @@ Router.route('/dining', {
     name: 'dining',
     template: 'dining'
 });
-
-Router.route('/accountsettings', {
-    name: 'accountsettings',
-    template: 'accountsettings'
-});
-Router.route("/profile", {
-    name: 'profile',
-    template: 'profile'
-});
 Router.route('checkemail', {
     path:'/checkemail',
     template:'checkemail',
@@ -302,22 +293,6 @@ Template.residential.events ({
 });
 
 Template.dining.events ({
-    'click .logout': function(event) {
-        event.preventDefault();
-        Meteor.logout();
-        Router.go('login');
-    }
-});
-
-Template.accountsettings.events ({
-    'click .logout': function(event) {
-        event.preventDefault();
-        Meteor.logout();
-        Router.go('login');
-    }
-});
-
-Template.profile.events ({
     'click .logout': function(event) {
         event.preventDefault();
         Meteor.logout();
