@@ -19,7 +19,7 @@ Course.schema = new SimpleSchema({
     number: {type: Number},
     avgWorkloadRating: {type: Number},
     avgDifficultyRating: {type: Number},
-    avgUtilityRating: {type Number}
+    avgUtilityRating: {type: Number}
 });
 
 CourseReview.schema = new SimpleSchema({
