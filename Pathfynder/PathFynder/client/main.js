@@ -32,30 +32,6 @@ Router.route('/faq' , {
     template: 'faq'
 });
 
-Router.route('/courses', {
-    name: 'courses',
-    template: 'courses'
-});
-
-Router.route('/internships', {
-    name: 'internships',
-    template: 'internships'
-});
-
-Router.route('/clubs', {
-    name: 'clubs',
-    template: 'clubs'
-});
-
-Router.route('/residential', {
-    name: 'residential',
-    template: 'residential'
-});
-
-Router.route('/dining', {
-    name: 'dining',
-    template: 'dining'
-});
 Router.route('checkemail', {
     path:'/checkemail',
     template:'checkemail',
@@ -253,54 +229,6 @@ Template.home.events({
 });
 
 Template.faq.events ({
-    'click .logout': function(event) {
-        event.preventDefault();
-        Meteor.logout();
-        Router.go('login');
-    }
-});
-
-Template.courses.events ({
-    'click .logout': function(event) {
-        event.preventDefault();
-        Meteor.logout();
-        Router.go('login');
-    }
-});
-
-Template.internships.events ({
-    'click .logout': function(event) {
-        event.preventDefault();
-        Meteor.logout();
-        Router.go('login');
-    }
-});
-
-Template.clubs.events ({
-    'click .logout': function(event) {
-        event.preventDefault();
-        Meteor.logout();
-        Router.go('login');
-    }
-});
-
-Template.residential.events ({
-    'click .logout': function(event) {
-        event.preventDefault();
-        Meteor.logout();
-        Router.go('login');
-    }
-});
-
-Template.dining.events ({
-    'click .logout': function(event) {
-        event.preventDefault();
-        Meteor.logout();
-        Router.go('login');
-    }
-});
-
-Template.clubs.events ({
     'click .logout': function(event) {
         event.preventDefault();
         Meteor.logout();
