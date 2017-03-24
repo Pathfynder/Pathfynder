@@ -47,6 +47,9 @@ a {
     color: #CB2B68;
 }
 
+.header li a:hover {
+    color: #D9CB43;
+}
 
 .navBar{
     margin-top: 1%;
@@ -57,7 +60,27 @@ a {
     margin-right: 15%;
 }
 
+.navBar td div {
+    height: 100%;
+    width: 100%;
+}
 
+.navBar td div a {
+    display: block;
+    height: 100%;
+    width: 100%;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+}
+
+.navBar td div:hover {
+    background-color: #F2F2F2;
+}
+
+.navBar td a:hover {
+    background-color: #117F99;
+}
 table {
     width: 100%;
     height: 100%;
@@ -65,8 +88,8 @@ table {
     table-layout: fixed;
 }
 
-table td {
-    background-color: #23CBF2;
+.navBar td {
+    background-color: #F2F2F2;
     -webkit-border-radius: 7px;
     -moz-border-radius: 7px;
     border-radius: 7px;
@@ -76,8 +99,16 @@ table td {
     font-weight: bold;
     font-size: 18px;
     font-size: 1.15vw;
+    height: 100%;
 }
 
+.currentTab {
+    background-color: #D9CB43;
+}
+
+.currentTab a {
+    background-color: #D9CB43;
+}
 .pageTitle {
     position: relative;
     height: 50px;
@@ -93,4 +124,10 @@ table td {
     left: 50%;
     margin-left: -165px;
     margin-top: 1%;
+}
+
+#checkEmailText {
+    color: #117F99;
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
 }

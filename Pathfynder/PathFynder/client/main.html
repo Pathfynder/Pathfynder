@@ -5,10 +5,35 @@
     <link type="text/css" rel="stylesheet" href="loginstyles.css">
     <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link rel="icon" sizes="16x16" href="/favicon.ico?v=2">
 </head>
 <body>
 </body>
 
+<template name="ForgotPassword">
+    <div id="logodiv">PathFynder</div>
+    <div class="page">
+        <p id="loginTitle">Forgotten Password</p>
+        <p id="edu">Enter your .edu email</p>
+        <form action="/forgot" id="forgotPasswordForm" method="post">
+            <input id="userField" type="text" name="email" placeholder="Email Address">
+            <input id="forgotSubmit" class="btn-submit" type="submit" value="Send">
+        </form>
+        <p id="returnToLogin"><a href="{{pathFor route='login'}}">Return to login</a></p>
+    </div>
+</template>
+
+<template name="ResetPassword">
+    <div id="logodiv">PathFynder</div>
+    <div class="page">
+        <p id="resetTitle">Reset Password</p>
+        <form action="/reset-password"  id="resetPasswordForm" method="post">
+            <input id="resetPasswordPassword" name="password" placeholder="New Password" type="password">
+            <input id="resetPasswordPasswordConfirm" name="password-confirm" placeholder="Confirm" type="password">
+            <input id="resetSubmit" class="btn-submit" type="submit" value="Reset">
+        </form>
+    </div>
+</template>
 
 <template name = "register">
     <div id="logodiv">PathFynder</div>
@@ -36,7 +61,10 @@
             <input id="passwordField" type="password" name="password">
             <input id="submit" type="submit" value="Login">
         </form>
-        <p id="changeForm"><a href="{{pathFor route='register'}}">New user? Create account</a></p>
+        <div id="loginpagefooter">
+            <li id="logoleft"><a href="{{pathFor route='forgotpassword'}}">Forgot password?</a></li>
+            <li id="logoright"><a href="{{pathFor route='register'}}">New user? Create account</a></li>
+        </div>
     </div>
 </template>
 
@@ -45,21 +73,53 @@
     <div class="header">
         <li><a href="#" class="logout">Logout</a></li>
         <li><a href="{{pathFor route='faq'}}">FAQ</a></li>
-        <li>Profile</li>
-        <li>Account Settings</li>
+        <li><a href="{{pathFor route='profile'}}">Profile</a></li>
+        <li><a href="{{pathFor route='accountsettings'}}">Account Settings</a></li>
     </div>
     <div class="navBar">
         <table>
             <tr>
-                <td id="courses">Courses</td>
-                <td id="internships">Internships</td>
-                <td id="clubs">Clubs</td>
-                <td id="residential">Residential</td>
-                <td id="dining">Dining</td>
+                <td id="courses">
+                    <div>
+                        <a href="{{pathFor route='courses'}}">Courses</a>
+                    </div>
+                </td>
+                <td id="internships">
+                    <div>
+                    <a href="{{pathFor route='internships'}}">Internships</a>
+                    </div>
+                </td>
+                <td id="clubs">
+                    <div>
+                        <a href="{{pathFor route='clubs'}}">Clubs</a>
+                    </div>
+                </td>
+                <td id="residential">
+                    <div>
+                        <a href="{{pathFor route='residential'}}">Residential</a>
+                    </div>
+                </td>
+                <td id="dining">
+                    <div>
+                        <a href="{{pathFor route='dining'}}">Dining</a>
+                    </div>
+                </td>
             </tr>
         </table>
     </div>
-    <div class="pageTitle">Welcome Back!</div>
+</template>
+
+<template name="checkemail">
+    <div id="logodiv">PathFynder</div>
+    <div id="checkEmailText">
+        <h1>Please check your email</h1>
+        <p>Once you verify, you'll be able to login!</p>
+    </div>
+</template>
+
+<template name="verified">
+    <h1>Thank you for verifying your email address!</h1>
+    <p>You can now access PathFynder!</p>
 </template>
 
 <template name="faq">
@@ -67,17 +127,37 @@
     <div class="header">
         <li><a href="#" class="logout">Logout</a></li>
         <li><a href="{{pathFor route='faq'}}">FAQ</a></li>
-        <li>Profile</li>
-        <li>Account Settings</li>
+        <li><a href="{{pathFor route='profile'}}">Profile</a></li>
+        <li><a href="{{pathFor route='accountsettings'}}">Account Settings</a></li>
     </div>
     <div class="navBar">
         <table>
             <tr>
-                <td id="courses">Courses</td>
-                <td id="internships">Internships</td>
-                <td id="clubs">Clubs</td>
-                <td id="residential">Residential</td>
-                <td id="dining">Dining</td>
+                <td id="courses">
+                    <div>
+                        <a href="{{pathFor route='courses'}}">Courses</a>
+                    </div>
+                </td>
+                <td id="internships">
+                    <div>
+                        <a href="{{pathFor route='internships'}}">Internships</a>
+                    </div>
+                </td>
+                <td id="clubs">
+                    <div>
+                        <a href="{{pathFor route='clubs'}}">Clubs</a>
+                    </div>
+                </td>
+                <td id="residential">
+                    <div>
+                        <a href="{{pathFor route='residential'}}">Residential</a>
+                    </div>
+                </td>
+                <td id="dining">
+                    <div>
+                        <a href="{{pathFor route='dining'}}">Dining</a>
+                    </div>
+                </td>
             </tr>
         </table>
     </div>

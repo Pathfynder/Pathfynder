@@ -1,0 +1,62 @@
+.profileBody {
+    position: relative;
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 3%;
+}
+
+
+.editProfile {
+    position: relative;
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 3%;
+}
+
+#editProfileLinkText {
+    float: right;
+    font-family: 'Raleway', sans-serif;
+    color: #CB2B68;
+    font-size: 20px;
+    margin-top: -7.5%;
+    margin-right: .5%;
+}
+
+.editProfileOption {
+    margin-bottom: 5%;
+}
+
+#editProfileType {
+    margin-top: -.5%;
+    color: #117F99;
+    font-family: 'Lobster', cursive;
+    font-size: 30px;
+}
+
+#currentProfileOption {
+    margin-top: -2%;
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+}
+
+#changeProfileOption {
+    position: absolute;
+    margin-top: -7px;
+    margin-left: 375px;
+    height: 20px;
+    width: 400px;
+}
+
+#changeProfileSubmit {
+    height: 20px;
+    position: absolute;
+    margin-top: -6px;
+    margin-left: 800px;
+    color: #CB2B68;
+    background-color: #23CBF2;
+}
+span {
+    color: #117F99;
+}
