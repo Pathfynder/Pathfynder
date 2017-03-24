@@ -247,18 +247,6 @@ Meteor.loginWithPassword(email, password, function(error) {
     }
 });
 
-Accounts.createUser({
-    email: email,
-    password: password
-},  function(error) {
-    if (error) {
-        console.log(error.reason);
-    }
-    else {
-        Router.go("home");
-    }
-});
-
 Accounts.config({
     restrictCreationByEmailDomain: 'purdue.edu'
 });
