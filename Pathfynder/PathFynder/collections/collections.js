@@ -9,6 +9,8 @@ Dining = new Mongo.Collection('dining');
 DiningReview = new Mongo.Collection('diningReview');
 Club = new Mongo.Collection('club');
 ClubReview = new Mongo.Collection('clubReview');
+Departments = new Meteor.Collection('departments');
+Courses = new Meteor.Collection('courses');
 
 testCourse = new Mongo.Collection('testCourse');
 
