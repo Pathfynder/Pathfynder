@@ -350,7 +350,105 @@
     <div class="pageTitle">Courses</div>
         <p>This is the course</p>
 
+<<<<<<< HEAD
     <!--added by ahad-3/22/17-->
         <div id="courseReview"></div>
         <script src="https://www.komentify.io/api/embed?appId=JhCw6qG9LtQeEH8xn&selectorId=courseReview"></script>
+=======
+                        <a href="{{pathFor route='courses'}}">Courses</a>
+                    </div>
+                </td>
+                <td id="internships">
+                    <div>
+                        <a href="{{pathFor route='internships'}}">Internships</a>
+                    </div>
+                </td>
+                <td id="clubs">
+                    <div>
+                        <a href="{{pathFor route='clubs'}}">Clubs</a>
+                    </div>
+                </td>
+                <td id="residential">
+                    <div>
+                        <a href="{{pathFor route='residential'}}">Residential</a>
+                    </div>
+                </td>
+                <td id="dining">
+                    <div>
+                        <a href="{{pathFor route='dining'}}">Dining</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="pageTitle">Courses</div>
+    <p>Boiler up son</p>
+    <div id="schoolCourseBody">
+        <form action="">
+            <select name="course">
+                <option value="cs180">CS 180</option>
+                <option value="cs182">CS 182</option>
+                <option value="cs240">CS 240</option>
+                <option value="cs250">CS 250</option>
+                <option value="cs251">CS 251</option>
+                <option value="cs252">CS 252</option>
+                <option value="cs307">CS 307</option>
+            </select>
+            <br><br>
+            <input type="submit">
+        </form>
+    </div>
+</template>
+
+<template name="coursesPurdueCScs307">
+    <div class="logo"><a href="{{pathFor route='home'}}">PathFynder</a></div>
+    <div class="header">
+        <li><a href="#" class="logout">Logout</a></li>
+        <li><a href="{{pathFor route='faq'}}">FAQ</a></li>
+        <li><a href="{{pathFor route='profile'}}">Profile</a></li>
+        <li><a href="{{pathFor route='accountsettings'}}">Account Settings</a></li>
+    </div>
+    <div class="navBar">
+        <table>
+            <tr>
+                <td class="currentTab">
+                    <div>
+
+                        <a href="{{pathFor route='courses'}}">Courses</a>
+                    </div>
+                </td>
+                <td id="internships">
+                    <div>
+                        <a href="{{pathFor route='internships'}}">Internships</a>
+                    </div>
+                </td>
+                <td id="clubs">
+                    <div>
+                        <a href="{{pathFor route='clubs'}}">Clubs</a>
+                    </div>
+                </td>
+                <td id="residential">
+                    <div>
+                        <a href="{{pathFor route='residential'}}">Residential</a>
+                    </div>
+                </td>
+                <td id="dining">
+                    <div>
+                        <a href="{{pathFor route='dining'}}">Dining</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="pageTitle">Courses</div>
+    <p>Boiler up son</p>
+    <div id="schoolCourseReviewBody"><div class="editProfileOption">
+            <form class="makeReview">
+<textarea name="makeReview" cols="40" rows="5" placeholder = "Share your experiences!"></textarea>
+                <input id="submitReview" type="submit" value="Submit">
+            </form>
+        </div>	
+
+    </div>
+>>>>>>> 79afae539525c9245316976cfc2866a06e6ffc76
 </template>

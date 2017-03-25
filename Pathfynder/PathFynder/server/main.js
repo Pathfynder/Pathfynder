@@ -57,5 +57,16 @@ Meteor.methods({
         }else{
             return "notfound";
         }
+    },
+});
+Accounts.onCreateUser(function(options, user) {
+    if (options.profile) {
+        user.profile = options.profile;
+    } else {
+        user.profile = {};
     }
+    user.profile.username = '';
+    user.profile.university = '';
+    user.profile.gradDate = '';
+    return user;
 });

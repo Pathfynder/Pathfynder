@@ -142,18 +142,27 @@
     <div class="pageTitle">Edit Profile</div>
     <div class="editProfile">
         <div class="editProfileOption">
-            <form class="changeUsername">
+            <form class="changeUsername" id="changeUsernameForm">
                 <p id="editProfileType">Change Username</p>
-                <p id="currentProfileOption">Current Username: <span>Current Username</span></p>
+                <p id="currentProfileOption">
+                    <script>
+                            //console.log("Entered here");
+                            if(!Meteor.loggingIn()) {
+                                var username = Meteor.user().profile.username;
+                            } else {
+                                var username = Meteor.user().profile.username;
+                            }
+                            console.log(username);
+                            if(username === '') {
+                                //console.log("Entered");
+                                document.getElementById("currentProfileOption").innerHTML = 'No username on record';
+                            } else {
+                                //console.log("Entered1");
+                                document.getElementById("currentProfileOption").innerHTML = 'Current Username: ' + username;
+                        }
+                    </script>
+                </p>
                 <input id ="changeProfileOption" type="text" name="userName"  placeholder="Enter new Username">
-                <input id="changeProfileSubmit" type="submit" value="Update">
-            </form>
-        </div>
-        <div class="editProfileOption">
-            <form class="changeSomething1">
-                <p id="editProfileType">Change Something</p>
-                <p id="currentProfileOption">Current Something: <span>Current Something</span></p>
-                <input id ="changeProfileOption" type="text" name="userName"  placeholder="Enter new Something">
                 <input id="changeProfileSubmit" type="submit" value="Update">
             </form>
         </div>

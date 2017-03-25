@@ -12,6 +12,8 @@ ClubReview = new Mongo.Collection('clubReview');
 Departments = new Meteor.Collection('departments');
 Courses = new Meteor.Collection('courses');
 
+testCourse = new Mongo.Collection('testCourse');
+
 
 //Schemas
 
@@ -25,6 +27,8 @@ Course.schema = new SimpleSchema({
 });
 
 CourseReview.schema = new SimpleSchema({
+    course: {type: Meteor.Collection.ObjectID},
+    userId: {type: Meteor.Collection.ObjectID},
     date: {type: Date},
     review: {type: String},
     difficutlyRating: {type: Number},
