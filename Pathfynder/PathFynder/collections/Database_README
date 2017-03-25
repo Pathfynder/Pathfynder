@@ -1,0 +1,16 @@
+First off make sure that mongodb is installed on your local machine.
+
+Then, open three terminal tabs in the pathfynder meteor project folder.
+
+In tab 1, run "meteor" in one to get the mongodb started up.
+
+In tab 2, run meteor mongo.
+
+In tab 3, navigate to the collections folder:
+    then run:
+    	mongoimport -h localhost:3001 --db meteor --collection course --type csv --file CoursesCSV.csv --headerline
+
+This will import all of the data that you need to get all of the courses into the database.
+
+Afterward, you can go to the meteor mongodb shell and run db.courses.find() to see the results
+
