@@ -26,24 +26,31 @@ Router.route('/dining', {
     template: 'dining'
 });
 
-Router.route('/courses/purdue', {
-    name: 'coursespurdue',
-    template: 'coursesPurdue'
+Router.route('/courses/:_school/:_department/', {
+    template: 'departments',
+    data: function(){
+        console.log(this.params._department);
+        var currentList = this.params._department;
+        return Departments.findOne({ department: currentList });
+    }
 });
 
-Router.route('/courses/notpurdue', {
-    name: 'coursesnotpurdue',
-    template: 'coursesNotPurdue'
+Router.route('/courses/:_school/:_department/:_course', {
+    template: 'departmentCourses',
+    data: function(){
+        console.log(this.params._department);
+        var currentList = this.params._department;
+        return Departments.findOne({ department: currentList });
+    }
 });
 
-Router.route('/courses/purdue/cs', {
-    name: 'coursespurdueCS',
-    template: 'coursesPurdueCS'
-});
-
-Router.route('/courses/purdue/cs/cs307', {
-    name: 'coursespurdueCScs307',
-    template: 'coursesPurdueCScs307'
+Template.internships.events ( {
+    'submit form': function(event) {
+        event.preventDefault();
+        Departments.insert( {
+           department: event.target.department.value
+        });
+    }
 });
 
 Template.courses.events ({
@@ -56,40 +63,10 @@ Template.courses.events ({
     'submit form': function(event) {
         event.preventDefault();
         var schoolName = event.target.school.value;
-        var schoolPage = 'courses'.concat(schoolName);
-        Router.go(schoolPage);
-    }
-});
-
-Template.coursesPurdue.events ({
-    'click .logout': function(event) {
-        event.preventDefault();
-        Meteor.logout();
-        Router.go('login');
-    },
-
-    'submit form': function(event) {
-        event.preventDefault();
         var departmentName = event.target.department.value;
-        var departmentPage = 'coursespurdue'.concat(departmentName);
-        Router.go(departmentPage);
+        console.log('/courses/' + schoolName +'/' + departmentName);
+        Router.go('/courses/' + schoolName +'/' + departmentName);
     }
-});
-
-Template.coursesPurdueCS.events ({
-    'click .logout': function(event) {
-        event.preventDefault();
-        Meteor.logout();
-        Router.go('login');
-    },
-
-    'submit form': function(event) {
-        event.preventDefault();
-        var courseName = event.target.course.value;
-        var coursePage = 'coursespurdueCS'.concat(courseName);
-        Router.go(coursePage);
-    }
-
 });
 
 Template.internships.events ({
@@ -123,3 +100,27 @@ Template.dining.events ({
         Router.go('login');
     }
 });
+
+Template.departments.events( {
+    'click .logout': function(event) {
+        event.preventDefault();
+        Meteor.logout();
+        Router.go('login');
+    },
+
+    'submit form': function(event) {
+        event.preventDefault();
+        var courseName = event.target.course.value;
+        console.log(Router.current().url + '/' + courseName);
+        Router.go(Router.current().url + '/' + courseName);
+    }
+});
+
+Template.departmentCourses.events({
+    'click .logout': function(event) {
+        event.preventDefault();
+        Meteor.logout();
+        Router.go('login');
+    },
+});
+
