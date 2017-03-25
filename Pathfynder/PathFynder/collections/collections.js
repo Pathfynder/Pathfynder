@@ -16,12 +16,12 @@ testCourse = new Mongo.Collection('testCourse');
 //Schemas
 
 Course.schema = new SimpleSchema({
-    name: {type: String},
-    abrev: {type: String},
-    number: {type: Number},
-    avgWorkloadRating: {type: Number},
-    avgDifficultyRating: {type: Number},
-    avgUtilityRating: {type: Number}
+    Title: {type: String},
+    Number: {type: Number},
+    Abbreviation: {type: String},
+    AvgWorkloadRating: {type: Number},
+    AvgDifficultyRating: {type: Number},
+    AvgUtilityRating: {type: Number}
 });
 
 CourseReview.schema = new SimpleSchema({
