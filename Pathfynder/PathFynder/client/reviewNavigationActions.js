@@ -122,5 +122,15 @@ Template.departmentCourses.events({
         Meteor.logout();
         Router.go('login');
     },
+
+    'submit form': function(event) {
+        event.preventDefault();
+    }
+});
+
+Template.reviews.helpers({
+   'reviews': function() {
+       return CourseReview.find({}, {sort: {createdAt: -1}});
+   }
 });
 
