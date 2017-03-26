@@ -143,13 +143,6 @@ Template.departmentCourses.events({
         })
     },
 
-    'getReviews': function() {
-        console.log("got here");
-        var courseId = Course.findOne({"Abbreviation": this[0], "Number": Number(this[1])})._id;
-        var reviews = CourseReview.find({"course": courseId});
-        console.log(reviews);
-        return reviews;
-    }
 });
 
 
@@ -181,7 +174,11 @@ Template.departments.helpers({
 });
 
 Template.departmentCourses.helpers({
-    something : function() {
-        console.log(this);
+    'getReviews': function() {
+        console.log("got here");
+        var courseId = Course.findOne({"Abbreviation": this[0], "Number": Number(this[1])})._id;
+        var reviews = CourseReview.find({"course": courseId});
+        console.log(reviews);
+        return reviews;
     }
 });

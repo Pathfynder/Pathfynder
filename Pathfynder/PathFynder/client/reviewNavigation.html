@@ -342,7 +342,6 @@
     </div>
     <div class="pageTitle">Courses</div>
         <p>This is the course</p>
-        {{getReviews}}
         <div id="schoolCourseReviewBody">
         <form class="makeReview">
             <textarea name="makeReview" cols="40" rows="5" placeholder = "Share your experiences!"></textarea>
@@ -387,7 +386,7 @@
         </form>
             <ul>
                 {{#each getReviews}}
-                    <li>{{this.userdId}}{{this.date}}{{this.review}}{{this.difficultyRating}}{{this.workloadRating}}{{this.utilityRating}}</li>
+                    <li>{{this.userId}}{{this.date}}{{this.review}}{{this.difficultyRating}}{{this.workloadRating}}{{this.utilityRating}}</li>
                 {{/each}}
             </ul>
         </div>
