@@ -130,7 +130,25 @@ Template.departmentCourses.events({
         var workload = event.target.workload.value;
         var utility = event.target.utility.value;
         var currentUser = Meteor.userId();
-        var currentDate = new Date().toString();
+        var currentDate = new Date();
+        var courseId = this[0] + ' ' + this[1];
+        console.log(courseId);
+        console.log(reviewText);
+        console.log(difficulty);
+        console.log(workload);
+        console.log(utility);
+        console.log(currentUser);
+        console.log(currentDate);
+        var actualCourseId = Course.findOne({"Abbreviation": this[0], "Number": Number(this[1])})._id;
+        CourseReview.insert({
+            course: actualCourseId,
+            userId: currentUser,
+            date: currentDate,
+            review: reviewText,
+            difficultyRating: difficulty,
+            workloadRating: workload,
+            utilityRating: utility
+        })
     }
 });
 
@@ -169,8 +187,6 @@ Template.departments.helpers({
 
 Template.departmentCourses.helpers({
    getCourse : function() {
-       console.log(this.course);
-       console.log(this.department);
        console.log(this);
    }
 });
