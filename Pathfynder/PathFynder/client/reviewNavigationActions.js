@@ -38,7 +38,10 @@ Router.route('/courses/:_school/:_department/:_course', {
     template: 'departmentCourses',
     data: function(){
         var currentList = this.params._department;
-        return Departments.findOne({ department: currentList });
+        var args = [];
+        args[0] = this.params._department;//Departments.findOne({ department: currentList });
+        args[1] = this.params._course;
+        return args;
     }
 });
 
@@ -156,14 +159,18 @@ Template.courses.helpers( {
 });
 
 Template.departments.helpers({
-    doSomething : function() {
-        console.log(this.department);
-    },
-
     getCourseNumbers : function() {
         var ret = Course.find({"Abbreviation": this.department});
         //console.log(ret.Number + "here");
         return ret;
     }
 
+});
+
+Template.departmentCourses.helpers({
+   getCourse : function() {
+       console.log(this.course);
+       console.log(this.department);
+       console.log(this);
+   }
 });
