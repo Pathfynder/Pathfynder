@@ -288,7 +288,6 @@
     <div class="pageTitle">Courses</div>
     <p>{{school}}</p>
     <p>{{department}}</p>
-    <!-- <p>{{getCourseNumbers}}</p> -->
     <form action="">
         <select name="course">
           {{#each getCourseNumbers}}
@@ -343,7 +342,7 @@
     </div>
     <div class="pageTitle">Courses</div>
         <p>This is the course</p>
-        {{getCourse}}
+        {{getReviews}}
         <div id="schoolCourseReviewBody">
         <form class="makeReview">
             <textarea name="makeReview" cols="40" rows="5" placeholder = "Share your experiences!"></textarea>
@@ -386,13 +385,12 @@
 
             <input id="submitReview" type="submit" value="Submit">
         </form>
-    </div>
+            <ul>
+                {{#each getReviews}}
+                    <li>{{this.userdId}}{{this.date}}{{this.review}}{{this.difficultyRating}}{{this.workloadRating}}{{this.utilityRating}}</li>
+                {{/each}}
+            </ul>
+        </div>
+
 </template>
 
-<template name="reviews">
-    <ul>
-    {{#each review}}
-        <li></li>
-    {{/each}}
-    </ul>
-</template>

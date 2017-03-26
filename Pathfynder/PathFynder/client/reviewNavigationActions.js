@@ -131,17 +131,9 @@ Template.departmentCourses.events({
         var utility = event.target.utility.value;
         var currentUser = Meteor.userId();
         var currentDate = new Date();
-        var courseId = this[0] + ' ' + this[1];
-        console.log(courseId);
-        console.log(reviewText);
-        console.log(difficulty);
-        console.log(workload);
-        console.log(utility);
-        console.log(currentUser);
-        console.log(currentDate);
-        var actualCourseId = Course.findOne({"Abbreviation": this[0], "Number": Number(this[1])})._id;
+        var courseId = Course.findOne({"Abbreviation": this[0], "Number": Number(this[1])})._id;
         CourseReview.insert({
-            course: actualCourseId,
+            course: courseId,
             userId: currentUser,
             date: currentDate,
             review: reviewText,
@@ -149,14 +141,17 @@ Template.departmentCourses.events({
             workloadRating: workload,
             utilityRating: utility
         })
+    },
+
+    'getReviews': function() {
+        console.log("got here");
+        var courseId = Course.findOne({"Abbreviation": this[0], "Number": Number(this[1])})._id;
+        var reviews = CourseReview.find({"course": courseId});
+        console.log(reviews);
+        return reviews;
     }
 });
 
-Template.reviews.helpers({
-   'reviews': function() {
-       return CourseReview.find({}, {sort: {createdAt: -1}});
-   }
-});
 
 Template.internships.helpers({
     'queryAbbreviation': function() {
@@ -186,7 +181,7 @@ Template.departments.helpers({
 });
 
 Template.departmentCourses.helpers({
-   getCourse : function() {
-       console.log(this);
-   }
+    something : function() {
+        console.log(this);
+    }
 });
