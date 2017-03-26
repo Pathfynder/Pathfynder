@@ -161,10 +161,9 @@ Template.departments.helpers({
     },
 
     getCourseNumbers : function() {
-        return Courses.find({"Abbreviation": this.department});
+        var ret = Course.find({"Abbreviation": this.department});
+        //console.log(ret.Number + "here");
+        return ret;
     }
 
 });
-
-
-

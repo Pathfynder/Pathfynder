@@ -288,16 +288,13 @@
     <div class="pageTitle">Courses</div>
     <p>{{school}}</p>
     <p>{{department}}</p>
-    <p>{{getCourseNumbers}}</p>
+    <!-- <p>{{getCourseNumbers}}</p> -->
     <form action="">
         <select name="course">
-            <option value="cs180">CS 180</option>
-            <option value="cs182">CS 182</option>
-            <option value="cs240">CS 240</option>
-            <option value="cs250">CS 250</option>
-            <option value="cs251">CS 251</option>
-            <option value="cs252">CS 252</option>
-            <option value="cs307">CS 307</option>
+          {{#each getCourseNumbers}}
+              <option value="{{this.Number}}">{{this.Number}}</option>
+              <!-- <li>{{this.Number}}</li> -->
+          {{/each}}
         </select>
         <br><br>
         <input type="submit">
@@ -398,5 +395,3 @@
     {{/each}}
     </ul>
 </template>
-
-
