@@ -144,57 +144,107 @@
         <div class="editProfileOption">
             <form class="changeUsername" id="changeUsernameForm">
                 <p id="editProfileType">Change Username</p>
-                <p id="currentProfileOption">
+                <p id="currentUsernameOption">
                     <script>
                             //console.log("Entered here");
-                            if(!Meteor.loggingIn()) {
-                                var username = Meteor.user().profile.username;
-                            } else {
-                                var username = Meteor.user().profile.username;
+                            var user = Meteor.users.findOne({_id: Meteor.userId()});
+                            if(user) {
+                                if (!Meteor.loggingIn()) {
+                                    var username = user.profile.username;
+                                } else {
+                                    var username = user.profile.username;
+                                }
                             }
                             console.log(username);
                             if(username === '') {
                                 //console.log("Entered");
-                                document.getElementById("currentProfileOption").innerHTML = 'No username on record';
+                                document.getElementById("currentUsernameOption").innerHTML = 'No username on record';
                             } else {
                                 //console.log("Entered1");
-                                document.getElementById("currentProfileOption").innerHTML = 'Current Username: ' + username;
+                                document.getElementById("currentUsernameOption").innerHTML = 'Current Username: ' + username;
                         }
                     </script>
                 </p>
-                <input id ="changeProfileOption" type="text" name="userName"  placeholder="Enter new Username">
-                <input id="changeProfileSubmit" type="submit" value="Update">
-            </form>
-        </div>
-        <div class="editProfileOption">
-            <form class="changeSomething1">
-                <p id="editProfileType">Change Something</p>
-                <p id="currentProfileOption">Current Something: <span>Current Something</span></p>
-                <input id ="changeProfileOption" type="text" name="userName"  placeholder="Enter new Something">
-                <input id="changeProfileSubmit" type="submit" value="Update">
-            </form>
-        </div>
-        <div class="editProfileOption">
-            <form class="changeSomething1">
-                <p id="editProfileType">Change Something</p>
-                <p id="currentProfileOption">Current Something: <span>Current Something</span></p>
-                <input id ="changeProfileOption" type="text" name="userName"  placeholder="Enter new Something">
-                <input id="changeProfileSubmit" type="submit" value="Update">
-            </form>
-        </div>
-        <div class="editProfileOption">
-            <form class="changeSomething1">
-                <p id="editProfileType">Change Something</p>
-                <p id="currentProfileOption">Current Something: <span>Current Something</span></p>
-                <input id ="changeProfileOption" type="text" name="userName"  placeholder="Enter new Something">
-                <input id="changeProfileSubmit" type="submit" value="Update">
-            </form>
-        </div>
-        <div class="editProfileOption">
-            <form class="changeSomething1">
-                <p id="editProfileType">Change Something</p>
-                <p id="currentProfileOption">Current Something: <span>Current Something</span></p>
-                <input id ="changeProfileOption" type="text" name="userName"  placeholder="Enter new Something">
+                <input id ="changeUsernameOption" type="text" name="userName"  placeholder="Enter new Username">
+                <p id="editProfileType">Change University</p>
+                <p id="currentUniversityOption">
+                    <script>
+                        //console.log("Entered here");
+                        console.log("User ID: " + Meteor.userId())
+                        var user = Meteor.users.findOne({_id: Meteor.userId()});
+                        console.log("Current User: " + Meteor.users.findOne({_id: Meteor.userId()}));
+                        if(user) {
+                            console.log("User exists right now");
+                            if (!Meteor.loggingIn()) {
+                                console.log("Time issue");
+                                var university = user.profile.university;
+                            } else {
+                                console.log("Not time issue");
+                                var university = user.profile.university;
+                            }
+                        } else {
+                            console.log("User isn't defined problem");
+                            console.log(Meteor.userId());
+                        }
+                        console.log(university);
+                        if(university === '') {
+                            //console.log("Entered");
+                            document.getElementById("currentUniversityOption").innerHTML = 'No university on record';
+                        } else {
+                            //console.log("Entered1");
+                            document.getElementById("currentUniversityOption").innerHTML = 'Current University: ' + university;
+                        }
+                    </script>
+                </p>
+                <input id ="changeUniversityOption" type="text" name="university"  placeholder="Enter new University">
+                <p id="editProfileType">Change Major</p>
+                <p id="currentMajorOption">
+                    <script>
+                        //console.log("Entered here");
+                        var user = Meteor.users.findOne({_id: Meteor.userId()});
+                        if(user) {
+                            if (!Meteor.loggingIn()) {
+                                var major = user.profile.major;
+                            } else {
+                                var major = user.profile.major;
+                            }
+                        }
+                        console.log(major);
+                        if(major === '') {
+                            //console.log("Entered");
+                            document.getElementById("currentMajorOption").innerHTML = 'No major on record';
+                        } else {
+                            //console.log("Entered1");
+                            document.getElementById("currentMajorOption").innerHTML = 'Current Major: ' + major;
+                        }
+                    </script>
+                </p>
+                <input id ="changeMajorOption" type="text" name="major"  placeholder="Enter new Major">
+                <p id="editProfileType">Change Graduation Date</p>
+                <p id="currentGradDateOption">
+                    <script>
+                        //console.log("Entered here");
+                        var user = Meteor.users.findOne({_id: Meteor.userId()});
+                        if(user) {
+                            if (!Meteor.loggingIn()) {
+                                var graddate = user.profile.gradDate;
+                                console.log("Entered: " + Meteor.user().profile.gradDate);
+                            } else {
+                                var graddate = user.profile.gradDate;
+                                console.log("Didn't enter: " + Meteor.user().profile.gradDate);
+                            }
+                        }
+                        console.log(graddate);
+                        if(graddate === '') {
+                            //console.log("Entered");
+                            document.getElementById("currentGradDateOption").innerHTML = 'No Graduation Date on record';
+                        } else {
+                            //console.log("Entered1");
+                            document.getElementById("currentGradDateOption").innerHTML = 'Current Graduation Date: ' + graddate;
+                        }
+                    </script>
+                </p>
+                <input id ="changeGradDateOption" type="text" name="GradDate"  placeholder="Enter new Graduation Date">
                 <input id="changeProfileSubmit" type="submit" value="Update">
             </form>
         </div>

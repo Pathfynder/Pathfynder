@@ -41,11 +41,26 @@ Template.editprofile.events ({
         //console.log("Gets here");
         e.preventDefault();
         var changeUsernameform = $(e.currentTarget),
-            newUsername = changeUsernameform.find('#changeProfileOption').val();
+            newUsername = changeUsernameform.find('#changeUsernameOption').val(),
+            newUniversity = changeUsernameform.find('#changeUniversityOption').val(),
+            newMajor = changeUsernameform.find('#changeMajorOption').val(),
+            newGradDate = changeUsernameform.find('#changeGradDateOption').val();
+
         //console.log(newUsername);
         if(Meteor.user()) {
             //console.log("Entered");
-            Meteor.users.update({_id: Meteor.userId()}, {$set: {"profile.username" : newUsername}});
+            if(newUsername !== "") {
+                Meteor.users.update({_id: Meteor.userId()}, {$set: {"profile.username": newUsername}});
+            }
+            if(newUniversity !== "") {
+                Meteor.users.update({_id: Meteor.userId()}, {$set: {"profile.university": newUniversity}});
+            }
+            if(newMajor !== "") {
+                Meteor.users.update({_id: Meteor.userId()}, {$set: {"profile.major": newMajor}});
+            }
+            if(newGradDate !== "") {
+                Meteor.users.update({_id: Meteor.userId()}, {$set: {"profile.gradDate": newGradDate}});
+            }
             Router.go('profile');
         } else {
             //console.log("Didn't enter");

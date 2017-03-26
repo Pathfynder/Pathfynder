@@ -47,7 +47,7 @@ Meteor.methods({
         }
     },
     checkEmailVerification: function(email) {
-        var found_user = Meteor.users.findOne({ 'emails.address' : email })
+        var found_user = Meteor.users.findOne({ 'emails.address' : email });
         if(found_user){
             if(found_user.emails[0].verified == true){
                 return "verified";
@@ -68,5 +68,6 @@ Accounts.onCreateUser(function(options, user) {
     user.profile.username = '';
     user.profile.university = '';
     user.profile.gradDate = '';
+    user.profile.major = '';
     return user;
 });

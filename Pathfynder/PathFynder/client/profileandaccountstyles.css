@@ -35,13 +35,28 @@
     font-size: 30px;
 }
 
-#currentProfileOption {
+#currentUsernameOption {
     margin-top: -2%;
     font-family: 'Raleway', sans-serif;
     font-size: 18px;
 }
 
-#changeProfileOption {
+#currentUniversityOption {
+    margin-top: -2%;
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+}
+#currentMajorOption {
+    margin-top: -2%;
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+}
+#currentGradDateOption {
+    margin-top: -2%;
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+}
+#changeUsernameOption {
     position: absolute;
     margin-top: -7px;
     margin-left: 375px;
@@ -49,6 +64,29 @@
     width: 400px;
 }
 
+#changeUniversityOption {
+    position: absolute;
+    margin-top: -7px;
+    margin-left: 375px;
+    height: 20px;
+    width: 400px;
+}
+
+#changeMajorOption {
+    position: absolute;
+    margin-top: -7px;
+    margin-left: 375px;
+    height: 20px;
+    width: 400px;
+}
+
+#changeGradDateOption {
+    position: absolute;
+    margin-top: -7px;
+    margin-left: 375px;
+    height: 20px;
+    width: 400px;
+}
 #changeProfileSubmit {
     height: 20px;
     position: absolute;

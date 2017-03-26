@@ -236,17 +236,6 @@ Template.faq.events ({
     }
 });
 
-Meteor.loginWithPassword(email, password, function(error) {
-    checkValidation();
-    //this will be where we can check .edu
-    if (error) {
-        console.log(error.reason);
-    }
-    else {
-        Router.go("home");
-    }
-});
-
 Accounts.config({
     restrictCreationByEmailDomain: 'purdue.edu'
 });
