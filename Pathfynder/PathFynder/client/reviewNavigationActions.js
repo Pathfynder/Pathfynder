@@ -44,11 +44,7 @@ Router.route('/courses/:_school/:_department/:_course', {
 
 Template.internships.events ( {
     'submit form': function(event) {
-        event.preventDefault();
-        Departments.insert( {
-           department: event.target.department.value
-        });
-    }
+        event.preventDefault();    }
 });
 
 Template.courses.events ({
@@ -62,6 +58,9 @@ Template.courses.events ({
         event.preventDefault();
         var schoolName = event.target.school.value;
         var departmentName = event.target.department.value;
+Departments.insert( {
+           department: event.target.department.value
+        });
 
 
         Router.go('/courses/' + schoolName +'/' + departmentName);
