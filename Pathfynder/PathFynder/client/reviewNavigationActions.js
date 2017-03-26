@@ -29,7 +29,6 @@ Router.route('/dining', {
 Router.route('/courses/:_school/:_department/', {
     template: 'departments',
     data: function(){
-        console.log(this.params._department);
         var currentList = this.params._department;
         return Departments.findOne({ department: currentList });
     }
@@ -38,7 +37,6 @@ Router.route('/courses/:_school/:_department/', {
 Router.route('/courses/:_school/:_department/:_course', {
     template: 'departmentCourses',
     data: function(){
-        console.log(this.params._department);
         var currentList = this.params._department;
         return Departments.findOne({ department: currentList });
     }
@@ -64,7 +62,8 @@ Template.courses.events ({
         event.preventDefault();
         var schoolName = event.target.school.value;
         var departmentName = event.target.department.value;
-        console.log('/courses/' + schoolName +'/' + departmentName);
+
+
         Router.go('/courses/' + schoolName +'/' + departmentName);
     }
 });
@@ -111,7 +110,6 @@ Template.departments.events( {
     'submit form': function(event) {
         event.preventDefault();
         var courseName = event.target.course.value;
-        console.log(Router.current().url + '/' + courseName);
         Router.go(Router.current().url + '/' + courseName);
     }
 });
@@ -125,6 +123,12 @@ Template.departmentCourses.events({
 
     'submit form': function(event) {
         event.preventDefault();
+        var reviewText = event.target.makeReview.value;
+        var difficulty = event.target.difficulty.value;
+        var workload = event.target.workload.value;
+        var utility = event.target.utility.value;
+        var currentUser = Meteor.userId();
+        var currentDate = new Date().toString();
     }
 });
 
@@ -132,5 +136,23 @@ Template.reviews.helpers({
    'reviews': function() {
        return CourseReview.find({}, {sort: {createdAt: -1}});
    }
+});
+
+Template.internships.helpers({
+    'queryAbbreviation': function() {
+        var abbreviations = _.uniq(Course.find({}, {
+            sort: {["Abbreviation"]: 1}, fields: {["Abbreviation"]: 1}
+        }).fetch().map(x=> x["Abbreviation"]), true);
+        return abbreviations;
+    }
+});
+
+Template.courses.helpers( {
+    'queryAbbreviation': function() {
+        var abbreviations = _.uniq(Course.find({}, {
+            sort: {["Abbreviation"]: 1}, fields: {["Abbreviation"]: 1}
+        }).fetch().map(x=> x["Abbreviation"]), true);
+        return abbreviations;
+    }
 });
 

@@ -31,7 +31,7 @@ CourseReview.schema = new SimpleSchema({
     userId: {type: Meteor.Collection.ObjectID},
     date: {type: Date},
     review: {type: String},
-    difficutlyRating: {type: Number},
+    difficultyRating: {type: Number},
     workloadRating: {type: Number},
     utilityRating: {type: Number}
 });

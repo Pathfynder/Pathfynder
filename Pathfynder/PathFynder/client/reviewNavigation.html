@@ -57,11 +57,9 @@
                 <option value="notpurdue" name="notpurdue">Not Purdue University</option>
             </select>
             <select name="department">
-                <option value="AGR">Agriculture</option>
-                <option value="BIOL">Biology</option>
-                <option value="CS">Computer Science</option>
-                <option value="EE">Electrical Engineering</option>
-                <option value="GREK">Greek</option>
+                {{#each queryAbbreviation}}
+                    <option value="{{this}}">{{this}}</option>
+                {{/each}}
             </select>
             <br><br>
             <input type="submit">
@@ -112,11 +110,9 @@
     <div class="pageTitle">Internships</div>
     <form action="">
         <select name="department">
-            <option value="AGR">Agriculture</option>
-            <option value="BIOL">Biology</option>
-            <option value="CS">Computer Science</option>
-            <option value="EE">Electrical Engineering</option>
-            <option value="GREK">Greek</option>
+            {{#each queryAbbreviation}}
+                <option value="{{this}}">{{this}}</option>
+            {{/each}}
         </select>
         <br><br>
         <input type="submit">
@@ -355,6 +351,14 @@
             <select name="difficulty">
                 <option value="1">1</option>
                 <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
             </select>
             <select name="workload">
                 <option value="1">1</option>
@@ -362,9 +366,23 @@
                 <option value="3">3</option>
                 <option value="4">4</option>
                 <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
             </select>
             <select name="utility">
-
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
             </select>
 
             <input id="submitReview" type="submit" value="Submit">
