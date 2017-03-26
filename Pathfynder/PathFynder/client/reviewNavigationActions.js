@@ -58,7 +58,7 @@ Template.courses.events ({
         event.preventDefault();
         var schoolName = event.target.school.value;
         var departmentName = event.target.department.value;
-Departments.insert( {
+        Departments.insert( {
            department: event.target.department.value
         });
 
@@ -154,4 +154,17 @@ Template.courses.helpers( {
         return abbreviations;
     }
 });
+
+Template.departments.helpers({
+    doSomething : function() {
+        console.log(this.department);
+    },
+
+    getCourseNumbers : function() {
+        return Courses.find({"Abbreviation": this.department});
+    }
+
+});
+
+
 
