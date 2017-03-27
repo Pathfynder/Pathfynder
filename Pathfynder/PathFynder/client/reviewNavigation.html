@@ -201,6 +201,14 @@
         </table>
     </div>
     <div class="pageTitle">Residential</div>
+    <div id="ResidentialBody">
+        <form action="">
+            <select name="school">
+                <option value="purdue" name="purdue">Purdue University</option>
+            </select>
+            <input type="submit">
+        </form>
+    </div>
 </template>
 
 <template name="dining">
@@ -400,6 +408,45 @@
 </template>
 
 <template name="diningCourts">
+    <div class="logo"><a href="{{pathFor route='home'}}">PathFynder</a></div>
+    <div class="header">
+        <li><a href="#" class="logout">Logout</a></li>
+        <li><a href="{{pathFor route='faq'}}">FAQ</a></li>
+        <li><a href="{{pathFor route='profile'}}">Profile</a></li>
+        <li><a href="{{pathFor route='accountsettings'}}">Account Settings</a></li>
+    </div>
+    <div class="navBar">
+        <table>
+            <tr>
+                <td id="courses">
+                    <div>
+                        <a href="{{pathFor route='courses'}}">Courses</a>
+                    </div>
+                </td>
+                <td id="internships">
+                    <div>
+                        <a href="{{pathFor route='internships'}}">Internships</a>
+                    </div>
+                </td>
+                <td id="clubs">
+                    <div>
+                        <a href="{{pathFor route='clubs'}}">Clubs</a>
+                    </div>
+                </td>
+                <td id="residential">
+                    <div>
+                        <a href="{{pathFor route='residential'}}">Residential</a>
+                    </div>
+                </td>
+                <td class="currentTab">
+                    <div>
+                        <a href="{{pathFor route='dining'}}">Dining</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="pageTitle">Dining</div>
     <form>
         <select name="diningCourt">
             <option value="earhart" name="hillenbrand">Earhart</option>
@@ -413,6 +460,150 @@
 </template>
 
 <template name="diningCourt">
+    <div class="logo"><a href="{{pathFor route='home'}}">PathFynder</a></div>
+    <div class="header">
+        <li><a href="#" class="logout">Logout</a></li>
+        <li><a href="{{pathFor route='faq'}}">FAQ</a></li>
+        <li><a href="{{pathFor route='profile'}}">Profile</a></li>
+        <li><a href="{{pathFor route='accountsettings'}}">Account Settings</a></li>
+    </div>
+    <div class="navBar">
+        <table>
+            <tr>
+                <td id="courses">
+                    <div>
+                        <a href="{{pathFor route='courses'}}">Courses</a>
+                    </div>
+                </td>
+                <td id="internships">
+                    <div>
+                        <a href="{{pathFor route='internships'}}">Internships</a>
+                    </div>
+                </td>
+                <td id="clubs">
+                    <div>
+                        <a href="{{pathFor route='clubs'}}">Clubs</a>
+                    </div>
+                </td>
+                <td id="residential">
+                    <div>
+                        <a href="{{pathFor route='residential'}}">Residential</a>
+                    </div>
+                </td>
+                <td class="currentTab">
+                    <div>
+                        <a href="{{pathFor route='dining'}}">Dining</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="pageTitle">Dining</div>
+</template>
 
+<template name="resHalls">
+    <div class="logo"><a href="{{pathFor route='home'}}">PathFynder</a></div>
+    <div class="header">
+        <li><a href="#" class="logout">Logout</a></li>
+        <li><a href="{{pathFor route='faq'}}">FAQ</a></li>
+        <li><a href="{{pathFor route='profile'}}">Profile</a></li>
+        <li><a href="{{pathFor route='accountsettings'}}">Account Settings</a></li>
+    </div>
+    <div class="navBar">
+        <table>
+            <tr>
+                <td id="courses">
+                    <div>
+                        <a href="{{pathFor route='courses'}}">Courses</a>
+                    </div>
+                </td>
+                <td id="internships">
+                    <div>
+                        <a href="{{pathFor route='internships'}}">Internships</a>
+                    </div>
+                </td>
+                <td id="clubs">
+                    <div>
+                        <a href="{{pathFor route='clubs'}}">Clubs</a>
+                    </div>
+                </td>
+                <td class="currentTab">
+                    <div>
+                        <a href="{{pathFor route='residential'}}">Residential</a>
+                    </div>
+                </td>
+                <td id="dining">
+                    <div>
+                        <a href="{{pathFor route='dining'}}">Dining</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="pageTitle">Residential</div>
+    <form>
+        <select name="resHall">
+            <option value="cary">Cary Quadrangle</option>
+            <option value="earhart">Earhart Hall</option>
+            <option value="firststreet">First Street Towers</option>
+            <option value="harrison">Harrison Hall</option>
+            <option value="hawkins">Hawkins Hall</option>
+            <option value="hillenbrand">Hillenbrand Hall</option>
+            <option value="hilltop">Hilltop Apartments</option>
+            <option value="honors">Honors College</option>
+            <option value="mccutcheon">McCutcheon Hall</option>
+            <option value="meredith">Meredith Hall</option>
+            <option value="owen">Owen Hall</option>
+            <option value="purduevillage">Purdue Village</option>
+            <option value="shreve">Shreve Hall</option>
+            <option value="tarkington">Tarkington Hall</option>
+            <option value="thirdstreet">Third Street Suites</option>
+            <option value="wiley">Wiley Hall</option>
+            <option value="windsor">Windsor Halls</option>
+        </select>
+        <input type="submit">
+    </form>
+</template>
+
+<template name="dorm">
+    <div class="logo"><a href="{{pathFor route='home'}}">PathFynder</a></div>
+    <div class="header">
+        <li><a href="#" class="logout">Logout</a></li>
+        <li><a href="{{pathFor route='faq'}}">FAQ</a></li>
+        <li><a href="{{pathFor route='profile'}}">Profile</a></li>
+        <li><a href="{{pathFor route='accountsettings'}}">Account Settings</a></li>
+    </div>
+    <div class="navBar">
+        <table>
+            <tr>
+                <td id="courses">
+                    <div>
+                        <a href="{{pathFor route='courses'}}">Courses</a>
+                    </div>
+                </td>
+                <td id="internships">
+                    <div>
+                        <a href="{{pathFor route='internships'}}">Internships</a>
+                    </div>
+                </td>
+                <td id="clubs">
+                    <div>
+                        <a href="{{pathFor route='clubs'}}">Clubs</a>
+                    </div>
+                </td>
+                <td class="currentTab">
+                    <div>
+                        <a href="{{pathFor route='residential'}}">Residential</a>
+                    </div>
+                </td>
+                <td id="dining">
+                    <div>
+                        <a href="{{pathFor route='dining'}}">Dining</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="pageTitle">Residential</div>
 </template>
 

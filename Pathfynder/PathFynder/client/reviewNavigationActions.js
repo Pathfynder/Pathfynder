@@ -61,6 +61,22 @@ Router.route('/dining/:_school/:_diningCourt', {
     }
 });
 
+Router.route('/residential/:_school', {
+    template: 'resHalls',
+    data: function() {
+        var school = this.params._school;
+        return school;
+    }
+});
+
+Router.route('/residential/:_school/:_resHall', {
+    template: 'dorm',
+    data: function() {
+        var resHall = this.params._resHall;
+        return resHall;
+    }
+});
+
 Template.internships.events ( {
     'submit form': function(event) {
         event.preventDefault();    }
@@ -107,6 +123,12 @@ Template.residential.events ({
         event.preventDefault();
         Meteor.logout();
         Router.go('login');
+    },
+
+    'submit form': function(event) {
+        event.preventDefault();
+        var schoolName = event.target.school.value;
+        Router.go('/residential/' + schoolName);
     }
 });
 
@@ -178,6 +200,20 @@ Template.diningCourts.events({
         event.preventDefault();
         var diningCourt = event.target.diningCourt.value;
         Router.go(Router.current().url + '/' + diningCourt);
+    }
+});
+
+Template.resHalls.events({
+    'click .logout': function(event) {
+        event.preventDefault();
+        Meteor.logout();
+        Router.go('login');
+    },
+
+    'submit form': function(event) {
+        event.preventDefault();
+        var resHall = event.target.resHall.value;
+        Router.go(Router.current().url + '/' + resHall);
     }
 });
 
