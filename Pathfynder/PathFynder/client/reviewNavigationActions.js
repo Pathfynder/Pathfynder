@@ -240,6 +240,10 @@ Template.departments.helpers({
     getCourseNumbers : function() {
         var ret = Course.find({"Abbreviation": this.department});
         return ret;
+    },
+
+    getDepartment : function() {
+      return this.Abbreviation;
     }
 
 });
