@@ -167,7 +167,6 @@ Template.courses.helpers( {
 Template.departments.helpers({
     getCourseNumbers : function() {
         var ret = Course.find({"Abbreviation": this.department});
-        //console.log(ret.Number + "here");
         return ret;
     }
 
@@ -175,10 +174,12 @@ Template.departments.helpers({
 
 Template.departmentCourses.helpers({
     'getReviews': function() {
-        console.log("got here");
         var courseId = Course.findOne({"Abbreviation": this[0], "Number": Number(this[1])})._id;
         var reviews = CourseReview.find({"course": courseId});
-        console.log(reviews);
         return reviews;
+    },
+
+    'printCourse': function() {
+        return this[0] + ' ' + this[1];
     }
 });

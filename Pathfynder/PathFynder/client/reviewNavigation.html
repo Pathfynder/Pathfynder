@@ -292,7 +292,6 @@
         <select name="course">
           {{#each getCourseNumbers}}
               <option value="{{this.Number}}">{{this.Number}}</option>
-              <!-- <li>{{this.Number}}</li> -->
           {{/each}}
         </select>
         <br><br>
@@ -341,7 +340,7 @@
         </table>
     </div>
     <div class="pageTitle">Courses</div>
-        <p>This is the course</p>
+        <p>{{printCourse}}</p>
         <div id="schoolCourseReviewBody">
         <form class="makeReview">
             <textarea name="makeReview" cols="40" rows="5" placeholder = "Share your experiences!"></textarea>
