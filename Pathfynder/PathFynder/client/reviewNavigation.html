@@ -243,6 +243,14 @@
         </table>
     </div>
     <div class="pageTitle">Dining</div>
+    <div id="DiningBody">
+        <form action="">
+            <select name="school">
+                <option value="purdue" name="purdue">Purdue University</option>
+            </select>
+            <input type="submit">
+        </form>
+    </div>
 </template>
 
 <template name = "departments">
@@ -389,6 +397,22 @@
                 {{/each}}
             </ul>
         </div>
+</template>
+
+<template name="diningCourts">
+    <form>
+        <select name="diningCourt">
+            <option value="earhart" name="hillenbrand">Earhart</option>
+            <option value="ford" name="ford">Ford</option>
+            <option value="hillenbrand" name="hillenbrand">Hillenbrand</option>
+            <option value="wiley" name="wiley">Wiley</option>
+            <option value="windsor" name="windsor">Windsor</option>
+        </select>
+        <input type="submit">
+    </form>
+</template>
+
+<template name="diningCourt">
 
 </template>
 
