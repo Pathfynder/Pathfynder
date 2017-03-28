@@ -108,15 +108,14 @@
         </table>
     </div>
     <div class="pageTitle">Internships</div>
-    <form action="">
-        <select name="department">
-            {{#each queryAbbreviation}}
-                <option value="{{this}}">{{this}}</option>
-            {{/each}}
-        </select>
-        <br><br>
-        <input type="submit">
-    </form>
+    <div id="InternshipBody">
+        <form action="">
+            <select name="school">
+                <option value="purdue" name="purdue">Purdue University</option>
+            </select>
+            <input type="submit">
+        </form>
+    </div>
 </template>
 
 <template name="clubs">
@@ -159,6 +158,14 @@
         </table>
     </div>
     <div class="pageTitle">Clubs</div>
+    <div id="ClubsBody">
+        <form action="">
+            <select name="school">
+                <option value="purdue" name="purdue">Purdue University</option>
+            </select>
+            <input type="submit">
+        </form>
+    </div>
 </template>
 
 <template name="residential">
@@ -607,3 +614,54 @@
     <div class="pageTitle">Residential</div>
 </template>
 
+<template name="schoolClubs">
+    <form action="">
+        <select name="club">
+            {{#each getClubs}}
+                <option value="{{this.name}}">{{this.name}}</option>
+            {{/each}}
+        </select>
+        <br><br>
+        <input type="submit" id ="selectClub">
+        <br><br>
+    </form>
+    {{> addClub}}
+</template>
+
+<template name="addClub">
+    <form action="">
+        <input type="text" name="newClubName" placeholder="Don't see you club? Enter it here">
+        <br><br>
+        <input id="addNewClub" type="submit" value="Submit">
+    </form>
+</template>
+
+<template name="club">
+
+</template>
+
+<template name="internshipList">
+    <form action="">
+        <select name="internship">
+            {{#each getInternships}}
+                <option value="{{this.name}}">{{this.name}}</option>
+            {{/each}}
+        </select>
+        <br><br>
+        <input type="submit" id ="selectInternship">
+        <br><br>
+    </form>
+    {{> addInternship}}
+</template>
+
+<template name="addInternship">
+    <form action="">
+        <input type="text" name="newInternshipName" placeholder="Don't see you internship? Enter it here">
+        <br><br>
+        <input id="addNewInternship" type="submit" value="Submit">
+    </form>
+</template>
+
+<template name="internship">
+
+</template>

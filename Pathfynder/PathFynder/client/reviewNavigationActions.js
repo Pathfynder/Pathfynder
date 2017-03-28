@@ -77,9 +77,41 @@ Router.route('/residential/:_school/:_resHall', {
     }
 });
 
-Template.internships.events ( {
-    'submit form': function(event) {
-        event.preventDefault();    }
+Router.route('/clubs/:_school', {
+    template: 'schoolClubs',
+    data: function() {
+        var school = this.params._school;
+        return school;
+    }
+});
+
+Router.route('/clubs/:_school/:_club', {
+    template: 'club',
+    data: function() {
+        return this.params._club;
+    }
+});
+
+Router.route('/internships/:_school', {
+    template: 'internshipList',
+    data:function() {
+        return this.params._school;
+    }
+});
+
+Router.route('/internships/:_school/:_internship', {
+    template: 'internship',
+    data: function() {
+        var school = this.params._internship;
+        return school;
+    }
+});
+
+Router.route('/clubs/:_school/:_internship', {
+    template: 'internship',
+    data: function() {
+        return this.params._club;
+    }
 });
 
 Template.courses.events ({
@@ -96,8 +128,6 @@ Template.courses.events ({
         Departments.insert( {
            department: event.target.department.value
         });
-
-
         Router.go('/courses/' + schoolName +'/' + departmentName);
     }
 });
@@ -107,6 +137,12 @@ Template.internships.events ({
         event.preventDefault();
         Meteor.logout();
         Router.go('login');
+    },
+
+    'submit form': function(event) {
+        event.preventDefault();
+        var schoolName = event.target.school.value;
+        Router.go('/internships/' + schoolName);
     }
 });
 
@@ -115,6 +151,12 @@ Template.clubs.events ({
         event.preventDefault();
         Meteor.logout();
         Router.go('login');
+    },
+
+    'submit form': function(event) {
+        event.preventDefault();
+        var schoolName = event.target.school.value;
+        Router.go('/clubs/' + schoolName);
     }
 });
 
@@ -217,6 +259,58 @@ Template.resHalls.events({
     }
 });
 
+Template.schoolClubs.events({
+    'click .logout': function(event) {
+        event.preventDefault();
+        Meteor.logout();
+        Router.go('login');
+    },
+
+    'submit form': function(event) {
+        event.preventDefault();
+        var clubName = event.target.club.value;
+        Router.go(Router.current().url + '/' + clubName);
+    }
+});
+
+Template.addClub.events({
+    'submit form': function(event) {
+        event.preventDefault();
+        var newClubName = event.target.newClubName.value;
+        Club.insert({
+            name: newClubName
+        });
+        Router.go(Router.current().url + '/' + newClubName);
+    }
+
+});
+
+Template.internshipList.events({
+    'click .logout': function(event) {
+        event.preventDefault();
+        Meteor.logout();
+        Router.go('login');
+    },
+
+    'submit form': function(event) {
+        event.preventDefault();
+        var internshipName = event.target.internship.value;
+        Router.go(Router.current().url + '/' + internshipName);
+    }
+});
+
+Template.addInternship.events({
+    'submit form': function(event) {
+        event.preventDefault();
+        var newInternshipName = event.target.newInternshipName.value;
+        Internship.insert({
+            name: newInternshipName
+        });
+        Router.go(Router.current().url + '/' + newInternshipName);
+    }
+
+});
+
 
 Template.internships.helpers({
     'queryAbbreviation': function() {
@@ -257,5 +351,17 @@ Template.departmentCourses.helpers({
 
     'printCourse': function() {
         return this[0] + ' ' + this[1];
+    }
+});
+
+Template.schoolClubs.helpers({
+    getClubs: function() {
+        return Club.find();
+    }
+});
+
+Template.internshipList.helpers({
+    getInternships: function() {
+        return Internship.find();
     }
 });
