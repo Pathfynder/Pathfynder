@@ -51,19 +51,22 @@
     </div>
     <div class="pageTitle">Courses</div>
     <div id="coursesBody">
+        <div id="coursesSchoolDrop">
+        <p>Select your school and department</p>
         <form action="">
-            <select name="school">
-                <option value="purdue" name="purdue">Purdue University</option>
-                <option value="notpurdue" name="notpurdue">Not Purdue University</option>
-            </select>
-            <select name="department">
-                {{#each queryAbbreviation}}
-                    <option value="{{this}}">{{this}}</option>
-                {{/each}}
-            </select>
-            <br><br>
-            <input type="submit">
+                <select name="school">
+                    <option value="purdue" name="purdue">Purdue University</option>
+                    <option value="notpurdue" name="notpurdue">Not Purdue University</option>
+                </select>
+                <select name="department">
+                    {{#each queryAbbreviation}}
+                        <option value="{{this}}">{{this}}</option>
+                    {{/each}}
+                </select>
+                <br><br>
+                <input type="submit">
         </form>
+        </div>
     </div>
 </template>
 

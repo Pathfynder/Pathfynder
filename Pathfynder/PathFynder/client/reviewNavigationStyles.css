@@ -4,6 +4,31 @@
     margin-left: 15%;
     margin-right: 15%;
     margin-top: 3%;
+    font-family: 'Raleway', sans-serif;
+}
+
+#coursesBody p {
+    text-align: center;
+    color: #117F99;
+    font-size: 24px;
+}
+
+#coursesSchoolDrop {
+    position: absolute;
+    width: 400px;
+    left: 50%;
+    margin-left: -200px;
+}
+
+#coursesSchoolDrop input {
+    position: absolute;
+    background-color: white;
+    color: #CB2B68;
+    font-size: 18px;
+    height: 25px;
+    width: 100px;
+    left: 50%;
+    margin-left: -50px;
 }
 
 #schoolCourseReviewBody {
