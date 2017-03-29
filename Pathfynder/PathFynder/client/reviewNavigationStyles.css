@@ -6,3 +6,42 @@
     margin-top: 3%;
 }
 
+#schoolCourseReviewBody {
+    position: relative;
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 3%;
+}
+
+.reviewObject {
+    height: 200px;
+    margin-top: 50px;
+    font-family: 'Raleway', sans-serif;
+}
+
+.reviewDetails p {
+    color: #117F99;
+}
+
+.reviewText {
+    color: black;
+}
+
+.reviewDetails {
+    background-color: white;
+    height: 80%;
+    width: 15%;
+    border-radius: 7px;
+    float: left;
+}
+
+.reviewText {
+    background-color: white;
+    overflow: auto;
+    height: 80%;
+    width: 80%;
+    border-radius: 7px;
+    float: right;
+}
+
