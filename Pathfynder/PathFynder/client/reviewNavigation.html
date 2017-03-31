@@ -52,20 +52,23 @@
     <div class="pageTitle">Courses</div>
     <div id="coursesBody">
         <div id="coursesSchoolDrop">
-        <p>Select your school and department</p>
-        <form action="">
-                <select name="school">
-                    <option value="purdue" name="purdue">Purdue University</option>
-                    <option value="notpurdue" name="notpurdue">Not Purdue University</option>
-                </select>
-                <select name="department">
-                    {{#each queryAbbreviation}}
-                        <option value="{{this}}">{{this}}</option>
-                    {{/each}}
-                </select>
-                <br><br>
-                <input type="submit">
-        </form>
+            <h2>Select your school and department</h2>
+            <form action="">
+                    School:
+                    <select name="school">
+                        <option value="purdue" name="purdue">Purdue University</option>
+                        <option value="notpurdue" name="notpurdue">Not Purdue University</option>
+                    </select>
+                    <br>
+                    Department:
+                    <select name="department">
+                        {{#each queryAbbreviation}}
+                            <option value="{{this}}">{{this}}</option>
+                        {{/each}}
+                    </select>
+                    <br><br>
+                    <input type="submit" class = "submitButtons">
+            </form>
         </div>
     </div>
 </template>
@@ -112,12 +115,17 @@
     </div>
     <div class="pageTitle">Internships</div>
     <div id="InternshipBody">
-        <form action="">
-            <select name="school">
-                <option value="purdue" name="purdue">Purdue University</option>
-            </select>
-            <input type="submit">
-        </form>
+        <div id="internshipSchoolDrop">
+            <h2>Select your school</h2>
+            <form action="">
+                School:
+                <select name="school">
+                    <option value="purdue" name="purdue">Purdue University</option>
+                </select>
+                <br><br>
+                <input type="submit" class="submitButtons">
+            </form>
+        </div>
     </div>
 </template>
 
@@ -284,7 +292,6 @@
             <tr>
                 <td class="currentTab">
                     <div>
-
                         <a href="{{pathFor route='courses'}}">Courses</a>
                     </div>
                 </td>
@@ -312,17 +319,22 @@
         </table>
     </div>
     <div class="pageTitle">Courses</div>
-    <p>{{school}}</p>
-    <p>{{department}}</p>
-    <form action="">
-        <select name="course">
-          {{#each getCourseNumbers}}
-              <option value="{{this.Number}}">{{getDepartment}} {{this.Number}}</option>
-          {{/each}}
-        </select>
-        <br><br>
-        <input type="submit">
-    </form>
+    <div id="departmentBody">
+        <div id="selectCourseDrop">
+            <h1 class="departmentTitle">{{department}}</h1>
+            <h2 id="selectCourse">Select a course</h2>
+            <form action="">
+                Course:
+                <select name="course">
+                {{#each getCourseNumbers}}
+                    <option value="{{this.Number}}">{{getDepartment}} {{this.Number}}</option>
+                {{/each}}
+                </select>
+                <br><br>
+                <input type="submit" class="submitButtons">
+            </form>
+        </div>
+    </div>
 </template>
 
 <template name = "departmentCourses">
@@ -627,6 +639,45 @@
 </template>
 
 <template name="schoolClubs">
+    <div class="logo"><a href="{{pathFor route='home'}}">PathFynder</a></div>
+    <div class="header">
+        <li><a href="#" class="logout">Logout</a></li>
+        <li><a href="{{pathFor route='faq'}}">FAQ</a></li>
+        <li><a href="{{pathFor route='profile'}}">Profile</a></li>
+        <li><a href="{{pathFor route='accountsettings'}}">Account Settings</a></li>
+    </div>
+    <div class="navBar">
+        <table>
+            <tr>
+                <td id="courses">
+                    <div>
+                        <a href="{{pathFor route='courses'}}">Courses</a>
+                    </div>
+                </td>
+                <td id="internships">
+                    <div>
+                        <a href="{{pathFor route='internships'}}">Internships</a>
+                    </div>
+                </td>
+                <td class="currentTab">
+                    <div>
+                        <a href="{{pathFor route='clubs'}}">Clubs</a>
+                    </div>
+                </td>
+                <td id="residential">
+                    <div>
+                        <a href="{{pathFor route='residential'}}">Residential</a>
+                    </div>
+                </td>
+                <td id="dining">
+                    <div>
+                        <a href="{{pathFor route='dining'}}">Dining</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="pageTitle">Clubs</div>
     <form action="">
         <select name="club">
             {{#each getClubs}}
@@ -653,25 +704,77 @@
 </template>
 
 <template name="internshipList">
-    <form action="">
-        <select name="internship">
-            {{#each getInternships}}
-                <option value="{{this.name}}">{{this.name}}</option>
-            {{/each}}
-        </select>
-        <br><br>
-        <input type="submit" id ="selectInternship">
-        <br><br>
-    </form>
-    {{> addInternship}}
+    <div class="logo"><a href="{{pathFor route='home'}}">PathFynder</a></div>
+    <div class="header">
+        <li><a href="#" class="logout">Logout</a></li>
+        <li><a href="{{pathFor route='faq'}}">FAQ</a></li>
+        <li><a href="{{pathFor route='profile'}}">Profile</a></li>
+        <li><a href="{{pathFor route='accountsettings'}}">Account Settings</a></li>
+    </div>
+    <div class="navBar">
+        <table>
+            <tr>
+                <td id="courses">
+                    <div>
+                        <a href="{{pathFor route='courses'}}">Courses</a>
+                    </div>
+
+                </td>
+                <td class="currentTab">
+                    <div>
+                        <a href="{{pathFor route='internships'}}">Internships</a>
+                    </div>
+                </td>
+                <td id="clubs">
+                    <div>
+                        <a href="{{pathFor route='clubs'}}">Clubs</a>
+                    </div>
+                </td>
+                <td id="residential">
+                    <div>
+                        <a href="{{pathFor route='residential'}}">Residential</a>
+                    </div>
+                </td>
+                <td id="dining">
+                    <div>
+                        <a href="{{pathFor route='dining'}}">Dining</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="pageTitle">Internships</div>
+    <div id="InternshipBody">
+        <div id="internshipListDrop">
+            <form action="">
+                <h2>Select a company</h2>
+                Company:
+                <select name="internship">
+                    {{#each getInternships}}
+                        <option value="{{this.name}}">{{this.name}}</option>
+                    {{/each}}
+                </select>
+                <br><br>
+                <input type="submit" class="submitButtons">
+                <br><br>
+            </form>
+            <br><br>
+            <h2>Add a company</h2>
+            <div id="centerNewInternship">
+                {{> addInternship}}
+            </div>
+        </div>
+    </div>
 </template>
 
 <template name="addInternship">
-    <form action="">
-        <input type="text" name="newInternshipName" placeholder="Don't see you internship? Enter it here">
-        <br><br>
-        <input id="addNewInternship" type="submit" value="Submit">
-    </form>
+
+        <form action="">
+            <input type="text" name="newInternshipName" placeholder="Don't see you internship? Enter it here" id="newInternship" size="30">
+            <br><br>
+            <input class="submitButtons" type="submit" value="Submit">
+        </form>
+
 </template>
 
 <template name="internship">
