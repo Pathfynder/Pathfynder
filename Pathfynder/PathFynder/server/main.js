@@ -85,5 +85,8 @@ Accounts.onCreateUser(function(options, user) {
     user.profile.university = '';
     user.profile.gradDate = '';
     user.profile.major = '';
+    user.profile.majorBool = false;
+    user.profile.usernameBool = false;
+    user.profile.gradDateBool = false;
     return user;
 });
