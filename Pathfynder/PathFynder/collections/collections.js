@@ -91,6 +91,7 @@ DiningReview.schema = new SimpleSchema({
     userId: {type: Meteor.Collection.ObjectID},
     date: {type: Date},
     review: {type: String},
-    foodQualityRating: {type: Number}
+    foodQualityRating: {type: Number},
     healthRating: {type: Number}
-)};
+});
+
