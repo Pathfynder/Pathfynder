@@ -20,6 +20,29 @@ Template.accountsettings.events ({
         event.preventDefault();
         Meteor.logout();
         Router.go('login');
+    },
+    'submit #deleteAccountForm': function(e,t) {
+        Meteor.call('remove', Meteor.userId(), function(error){
+            if(error) {
+                console.log("Something went wrong removing user", error);
+            } else {
+                console.log("Success");
+            }
+        });
+        Router.go('login');
+    },
+    'submit #changePasswordForm': function(e, t) {
+        var changePasswordForm = $(e.currentTarget),
+            newPassword = changePasswordForm.find('#changePasswordField').val();
+        Meteor.call('setPassword', Meteor.userId(), newPassword, function(error) {
+            if(error) {
+                console.log("Something went wrong changing password", error);
+            } else {
+                console.log("Success");
+            }
+        });
+        alert("Password changed!");
+        Router.go('accountsettings');
     }
 });
 
@@ -49,16 +72,16 @@ Template.editprofile.events ({
         //console.log(newUsername);
         if(Meteor.user()) {
             //console.log("Entered");
-            if(newUsername !== "") {
+            if(newUsername !== "" && newUsername !== undefined && newUsername !== null) {
                 Meteor.users.update({_id: Meteor.userId()}, {$set: {"profile.username": newUsername}});
             }
-            if(newUniversity !== "") {
+            if(newUniversity !== "" && newUniversity !== undefined && newUsername !== null) {
                 Meteor.users.update({_id: Meteor.userId()}, {$set: {"profile.university": newUniversity}});
             }
-            if(newMajor !== "") {
+            if(newMajor !== "" && newMajor !== undefined && newMajor !== null) {
                 Meteor.users.update({_id: Meteor.userId()}, {$set: {"profile.major": newMajor}});
             }
-            if(newGradDate !== "") {
+            if(newGradDate !== "" && newGradDate !== undefined && newGradDate !== null) {
                 Meteor.users.update({_id: Meteor.userId()}, {$set: {"profile.gradDate": newGradDate}});
             }
             Router.go('profile');

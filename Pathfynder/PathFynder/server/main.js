@@ -58,6 +58,22 @@ Meteor.methods({
             return "notfound";
         }
     },
+    remove: function(userId, error) {
+        console.log(userId);
+        try {
+            Meteor.users.remove(userId);
+        } catch (e) {
+            console.log('Something went wrong trying to delete account');
+        }
+    },
+    setPassword: function(userId, newPassword, error) {
+        console.log(newPassword);
+        try {
+            Accounts.setPassword(userId, newPassword);
+        } catch (e) {
+            console.log('Something went wrong trying to change password.');
+        }
+    }
 });
 Accounts.onCreateUser(function(options, user) {
     if (options.profile) {
@@ -69,5 +85,8 @@ Accounts.onCreateUser(function(options, user) {
     user.profile.university = '';
     user.profile.gradDate = '';
     user.profile.major = '';
+    user.profile.majorBool = false;
+    user.profile.usernameBool = false;
+    user.profile.gradDateBool = false;
     return user;
 });
