@@ -16,6 +16,42 @@
     font-family: 'Raleway', sans-serif;
 }
 
+#ClubsBody {
+    position: relative;
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 3%;
+    font-family: 'Raleway', sans-serif;
+}
+
+#InternshipBody {
+    position: relative;
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 3%;
+    font-family: 'Raleway', sans-serif;
+}
+
+#ResidentialBody {
+    position: relative;
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 3%;
+    font-family: 'Raleway', sans-serif;
+}
+
+#DiningBody {
+    position: relative;
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 3%;
+    font-family: 'Raleway', sans-serif;
+}
+
 .submitButtons {
     position: absolute;
     background-color: white;
@@ -32,16 +68,31 @@
     color: #117F99;
 }
 
+#InternshipBody h2 {
+    text-align: center;
+    color: #117F99;
+}
+
+#ClubsBody h2 {
+    text-align: center;
+    color: #117F99;
+}
+
+#ResidentialBody h2 {
+    text-align: center;
+    color: #117F99;
+}
+
+#DiningBody h2 {
+    text-align: center;
+    color: #117F99;
+}
+
 #coursesSchoolDrop {
     position: absolute;
     width: 392px;
     left: 50%;
     margin-left: -196px;
-}
-
-#InternshipBody h2 {
-    text-align: center;
-    color: #117F99;
 }
 
 #schoolCourseReviewBody {
@@ -79,6 +130,58 @@
     width: 240px;
     left: 50%;
     margin-left: -120px;
+}
+
+#centerNewClub {
+    position: absolute;
+    width: 240px;
+    left: 50%;
+    margin-left: -120px;
+}
+
+#clubsSchoolDrop {
+    position: absolute;
+    width: 208px;
+    left: 50%;
+    margin-left: -104px;
+    font-family: 'Raleway', sans-serif;
+}
+
+#clubsListDrop {
+    position: absolute;
+    width: 240px;
+    left: 50%;
+    margin-left: -120px;
+}
+
+#residentialSchoolDrop {
+    position: absolute;
+    width: 208px;
+    left: 50%;
+    margin-left: -104px;
+    font-family: 'Raleway', sans-serif;
+}
+
+#selectResDrop {
+    position: absolute;
+    width: 264px;
+    left: 50%;
+    margin-left: -132px;
+}
+
+#diningSchoolDrop {
+    position: absolute;
+    width: 208px;
+    left: 50%;
+    margin-left: -104px;
+    font-family: 'Raleway', sans-serif;
+}
+
+#selectDiningDrop {
+    position: absolute;
+    width: 218px;
+    left: 50%;
+    margin-left: -109px;
 }
 
 .departmentTitle {

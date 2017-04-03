@@ -46,18 +46,18 @@ Router.route('/courses/:_school/:_department/:_course', {
 });
 
 Router.route('/dining/:_school', {
-   template: 'diningCourts',
+    template: 'diningCourts',
     data: function() {
-       var school = this.params._school;
-       return school;
+        var school = this.params._school;
+        return school;
     }
 });
 
 Router.route('/dining/:_school/:_diningCourt', {
-   template: 'diningCourt',
+    template: 'diningCourt',
     data: function() {
-       var diningCourt = this.params._diningCourt;
-       return diningCourt;
+        var diningCourt = this.params._diningCourt;
+        return diningCourt;
     }
 });
 
@@ -126,7 +126,7 @@ Template.courses.events ({
         var schoolName = event.target.school.value;
         var departmentName = event.target.department.value;
         Departments.insert( {
-           department: event.target.department.value
+            department: event.target.department.value
         });
         Router.go('/courses/' + schoolName +'/' + departmentName);
     }
@@ -311,6 +311,38 @@ Template.addInternship.events({
 
 });
 
+Template.internship.events({
+    'click .logout': function(event) {
+        event.preventDefault();
+        Meteor.logout();
+        Router.go('login');
+    }
+});
+
+Template.club.events({
+    'click .logout': function(event) {
+        event.preventDefault();
+        Meteor.logout();
+        Router.go('login');
+    }
+});
+
+Template.dorm.events({
+    'click .logout': function(event) {
+        event.preventDefault();
+        Meteor.logout();
+        Router.go('login');
+    }
+});
+
+Template.diningCourt.events({
+    'click .logout': function(event) {
+        event.preventDefault();
+        Meteor.logout();
+        Router.go('login');
+    }
+});
+
 
 Template.internships.helpers({
     'queryAbbreviation': function() {
@@ -337,7 +369,7 @@ Template.departments.helpers({
     },
 
     getDepartment : function() {
-      return this.Abbreviation;
+        return this.Abbreviation;
     }
 
 });
