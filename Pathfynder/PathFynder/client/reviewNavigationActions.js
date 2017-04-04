@@ -240,6 +240,9 @@ Template.diningCourts.events({
     'submit form': function(event) {
         event.preventDefault();
         var diningCourt = event.target.diningCourt.value;
+        Dining.insert({
+           name: diningCourt
+        });
         Router.go(Router.current().url + '/' + diningCourt);
     }
 });
@@ -254,6 +257,9 @@ Template.resHalls.events({
     'submit form': function(event) {
         event.preventDefault();
         var resHall = event.target.resHall.value;
+        ResHall.insert({
+            name: resHall
+        });
         Router.go(Router.current().url + '/' + resHall);
     }
 });
@@ -370,6 +376,23 @@ Template.dorm.events({
         event.preventDefault();
         Meteor.logout();
         Router.go('login');
+    },
+
+    'submit form' :function(event) {
+        event.preventDefault();
+        var reviewText = event.target.makeReview.value;
+        var location = event.target.location.value;
+        var starRating = event.target.star.value;
+        var currentUser = Meteor.userId();
+        var currentDate = new Date();
+        var dormId = ResHall.findOne({"name": this.toString()})._id;
+        ResReview.insert({
+            resHall: dormId,
+            userId: currentUser,
+            date: currentDate,
+            review: reviewText,
+            starRating: starRating
+        })
     }
 });
 
@@ -378,6 +401,26 @@ Template.diningCourt.events({
         event.preventDefault();
         Meteor.logout();
         Router.go('login');
+    },
+
+    'submit form' : function(event) {
+      event.preventDefault();
+        var reviewText = event.target.makeReview.value;
+        var foodQuality = event.target.foodQuality.value;
+        var health = event.target.health.value;
+        var starRating = event.target.star.value;
+        var currentUser = Meteor.userId();
+        var currentDate = new Date();
+        var diningId = Dining.findOne({"name": this.toString()})._id;
+        DiningReview.insert({
+            diningId: diningId,
+            userId: currentUser,
+            date: currentDate,
+            review: reviewText,
+            foodQualityRating: foodQuality,
+            healthRating: health,
+            starRating: starRating
+        })
     }
 });
 
@@ -462,3 +505,26 @@ Template.club.helpers({
     }
 });
 
+Template.dorm.helpers({
+    getReviews: function() {
+      var dormId = ResHall.findOne({"name": this.toString()})._id;
+      var reviews = ResReview.find({"resHall": dormId});
+      return reviews;
+    },
+
+    printDorm: function() {
+        return this.toString();
+    }
+});
+
+Template.diningCourt.helpers({
+    getReviews: function() {
+        var diningId = Dining.findOne({"name": this.toString()})._id;
+        var reviews = DiningReview.find({"diningId": diningId});
+        return reviews;
+    },
+
+    printDining: function() {
+        return this.toString();
+    }
+});

@@ -95,6 +95,6 @@ DiningReview.schema = new SimpleSchema({
     date: {type: Date},
     review: {type: String},
     foodQualityRating: {type: Number},
-    healthRating: {type: Number}
+    healthRating: {type: Number},
+    starRating: {type: Number}
 });
-

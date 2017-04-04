@@ -552,6 +552,63 @@
         </table>
     </div>
     <div class="pageTitle">Dining</div>
+    <div id="DiningBody">
+        <p>{{printDining}}</p>
+        <form class="makeReview">
+            <textarea name="makeReview" cols="40" rows="5" placeholder = "Share your experiences!"></textarea>
+            <select name="foodQuality">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+            <select name="health">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+            <select name="star">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+            <input id="submitReview" type="submit" value="Submit">
+        </form>
+        {{#each getReviews}}
+            <div class = "reviewObject">
+                <p>{{this.date}}</p>
+                <div class = "reviewDetails">
+                    <p>{{this.userId}}</p>
+                    <p>Star Rating: {{this.starRating}}</p>
+                    <p>Food Quality Rating: {{this.foodQualityRating}}</p>
+                    <p>Healthy Rating: {{this.healthRating}}</p>
+                </div>
+                <div class = "reviewText">
+                    {{this.review}}
+                </div>
+            </div>
+        {{/each}}
+    </div>
 </template>
 
 <template name="resHalls">
@@ -665,6 +722,38 @@
         </table>
     </div>
     <div class="pageTitle">Residential</div>
+    <div id="ResidentialBody">
+        <p>{{printDorm}}</p>
+        <form class="makeReview">
+            <textarea name="makeReview" cols="40" rows="5" placeholder = "Share your experiences!"></textarea>
+            <textarea name="location" cols="20" rows = "5" placeholder = "Location"></textarea>
+            <select name="star">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+            <input id="submitReview" type="submit" value="Submit">
+        </form>
+        {{#each getReviews}}
+            <div class = "reviewObject">
+                <p>{{this.date}}</p>
+                <div class = "reviewDetails">
+                    <p>{{this.userId}}</p>
+                    <p>Star Rating: {{this.starRating}}</p>
+                </div>
+                <div class = "reviewText">
+                    {{this.review}}
+                </div>
+            </div>
+        {{/each}}
+    </div>
 </template>
 
 <template name="schoolClubs">
