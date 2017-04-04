@@ -779,7 +779,48 @@
     </div>
     <div class="pageTitle">Clubs</div>
     <div id="ClubsBody">
-
+        <p>{{printClub}}</p>
+        <form class="makeReview">
+            <textarea name="makeReview" cols="40" rows="5" placeholder = "Share your experiences!"></textarea>
+            <select name="time">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+            <select name="utility">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+            <input id="submitReview" type="submit" value="Submit">
+        </form>
+        {{#each getReviews}}
+            <div class = "reviewObject">
+                <p>{{this.date}}</p>
+                <div class = "reviewDetails">
+                    <p>{{this.userId}}</p>
+                    <p>Time Commitment: {{this.workloadRating}}</p>
+                    <p>Utility: {{this.utilityRating}}</p>
+                </div>
+                <div class = "reviewText">
+                    {{this.review}}
+                </div>
+            </div>
+        {{/each}}
     </div>
 </template>
 
@@ -896,4 +937,61 @@
         </table>
     </div>
     <div class="pageTitle">Internships</div>
+    <div id="schoolInternshipReviewBody">
+        <p>{{printInternship}}</p>
+        <form class="makeReview">
+            <textarea name="makeReview" cols="40" rows="5" placeholder = "Share your experiences!"></textarea>
+            <select name="interview">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+            <select name="workload">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+            <select name="utility">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+            <input id="submitReview" type="submit" value="Submit">
+        </form>
+        {{#each getReviews}}
+            <div class = "reviewObject">
+                <p>{{this.date}}</p>
+                <div class = "reviewDetails">
+                    <p>{{this.userId}}</p>
+                    <p>Interview: {{this.interviewRating}}</p>
+                    <p>Workload: {{this.workloadRating}}</p>
+                    <p>Utility: {{this.utilityRating}}</p>
+                </div>
+                <div class = "reviewText">
+                    {{this.review}}
+                </div>
+            </div>
+        {{/each}}
+    </div>
 </template>

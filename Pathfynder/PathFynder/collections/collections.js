@@ -45,6 +45,7 @@ Internship.schema = new SimpleSchema({
 InternReview.schema = new SimpleSchema({
     internship: {type: Meteor.Collection.ObjectID},
     userId: {type: Meteor.Collection.ObjectID},
+    date: {type: Date},
     review: {type: String},
     interviewRating: {type: Number},
     workloadRating: {type: Number},
@@ -67,7 +68,8 @@ ResReview.schema = new SimpleSchema({
 
 Club.schema = new SimpleSchema({
     name: {type: String},
-    avgTimeRating: {type: Number}
+    avgTimeRating: {type: Number},
+    avgUtilRating: {type: Number}
 });
 
 ClubReview.schema = new SimpleSchema({
@@ -75,7 +77,8 @@ ClubReview.schema = new SimpleSchema({
     userId: {type: Meteor.Collection.ObjectID},
     date: {type: Date},
     review: {type: String},
-    timeRating: {type: Number}
+    timeRating: {type: Number},
+    utilityRating: {type: Number}
 });
 
 Dining.schema = new SimpleSchema({

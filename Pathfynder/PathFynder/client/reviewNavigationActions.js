@@ -102,8 +102,8 @@ Router.route('/internships/:_school', {
 Router.route('/internships/:_school/:_internship', {
     template: 'internship',
     data: function() {
-        var school = this.params._internship;
-        return school;
+        var internship = this.params._internship;
+        return internship;
     }
 });
 
@@ -227,8 +227,7 @@ Template.departmentCourses.events({
             workloadRating: workload,
             utilityRating: utility
         })
-    },
-
+    }
 });
 
 Template.diningCourts.events({
@@ -316,6 +315,27 @@ Template.internship.events({
         event.preventDefault();
         Meteor.logout();
         Router.go('login');
+    },
+
+    'submit form': function(event) {
+        event.preventDefault();
+        var reviewText = event.target.makeReview.value;
+        var interview = event.target.interview.value;
+        var workload = event.target.workload.value;
+        var utility = event.target.utility.value;
+        var currentUser = Meteor.userId();
+        var currentDate = new Date();
+        var internshipId = Internship.findOne({"name": this.toString()}).name;
+        console.log(internshipId);
+        InternReview.insert({
+            internship: internshipId,
+            userId: currentUser,
+            date: currentDate,
+            review: reviewText,
+            interviewRating: interview,
+            workloadRating: workload,
+            utilityRating: utility,
+        })
     }
 });
 
@@ -397,3 +417,30 @@ Template.internshipList.helpers({
         return Internship.find();
     }
 });
+
+Template.internship.helpers({
+   getReviews: function() {
+     var reviews = InternReview.find({"internship": this.toString()});
+     console.log(this);
+     console.log(this.toString());
+     console.log(reviews);
+     return reviews;
+   },
+
+    printInternship: function() {
+       return this.toString();
+    },
+});
+
+Template.club.helpers({
+    getReviews: function() {
+      var clubId = Club.findOne({"name": this.toString()})._id;
+      var reviews = ClubReview.find({"club": clubId});
+      return reviews;
+    },
+
+    printClub: function() {
+        return this;
+    }
+});
+
