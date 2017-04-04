@@ -54,14 +54,19 @@
     </div>
     <div id="accountSettingsTitle">Account Settings</div>
     <div class="accountSettingsBody">
-        <p>delete account</p>
-        <form class="deleteAccount" id="deleteAccountForm">
-            <input id="deleteAccountButton" type="submit" value="Delete">
-        </form>
-        <form class="changePassword" id="changePasswordForm">
-            <input id ="changePasswordField" type="text" name="newPassword"  placeholder="Enter new Password here">
-            <input id="changePasswordButton" type="submit" value="Update">
-        </form>
+        <div class="accountSettingOption">
+            <p>Delete Account</p>
+            <form class="deleteAccount" id="deleteAccountForm">
+                <input id="deleteAccountButton" type="submit" value="Delete">
+            </form>
+        </div>
+        <div class="accountSettingOption">
+            <p>Change Password</p>
+            <form class="changePassword" id="changePasswordForm">
+                <input id ="changePasswordField" type="text" name="newPassword"  placeholder="Enter new Password here">
+                <input id="changePasswordButton" type="submit" value="Update">
+            </form>
+        </div>
     </div>
 </template>
 
@@ -151,8 +156,8 @@
     </div>
     <div class="pageTitle">Edit Profile</div>
     <div class="editProfile">
-        <div class="editProfileOption">
-            <form class="changeUsername" id="changeUsernameForm">
+        <form class="changeProfileOptions" id="changeUsernameForm">
+            <div class="editProfileOption">
                 <p id="editProfileType">Change Username</p>
                 <p id="currentUsernameOption">
                     <script>
@@ -175,7 +180,9 @@
                         }
                     </script>
                 </p>
-                <input id ="changeUsernameOption" type="text" name="userName"  placeholder="Enter new Username">
+                <input id ="changeUsernameOption" class="changeOptionText" type="text" name="userName"  placeholder="Enter new Username">
+            </div>
+            <div class="editProfileOption">
                 <p id="editProfileType">Change University</p>
                 <p id="currentUniversityOption">
                     <script>
@@ -206,7 +213,9 @@
                         }
                     </script>
                 </p>
-                <input id ="changeUniversityOption" type="text" name="university"  placeholder="Enter new University">
+                <input id ="changeUniversityOption" class="changeOptionText" type="text" name="university"  placeholder="Enter new University">
+            </div>
+            <div class="editProfileOption">
                 <p id="editProfileType">Change Major</p>
                 <p id="currentMajorOption">
                     <script>
@@ -229,7 +238,9 @@
                         }
                     </script>
                 </p>
-                <input id ="changeMajorOption" type="text" name="major"  placeholder="Enter new Major">
+                <input id ="changeMajorOption" class="changeOptionText" type="text" name="major"  placeholder="Enter new Major">
+            </div>
+            <div class="editProfileOption">
                 <p id="editProfileType">Change Graduation Date</p>
                 <p id="currentGradDateOption">
                     <script>
@@ -254,9 +265,9 @@
                         }
                     </script>
                 </p>
-                <input id ="changeGradDateOption" type="text" name="GradDate"  placeholder="Enter new Graduation Date">
-                <input id="changeProfileSubmit" type="submit" value="Update">
-            </form>
-        </div>
+                <input id ="changeGradDateOption" class="changeOptionText" type="text" name="GradDate"  placeholder="Enter new Graduation Date">
+            </div>
+            <input class="submitButtons" type="submit" value="Update">
+        </form>
     </div>
 </template>

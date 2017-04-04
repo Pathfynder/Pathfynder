@@ -15,6 +15,14 @@
     margin-top: 3%;
 }
 
+.accountSettingsBody {
+    position: relative;
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 3%;
+}
+
 #editProfileLinkText {
     float: right;
     font-family: 'Raleway', sans-serif;
@@ -25,7 +33,7 @@
 }
 
 .editProfileOption {
-    margin-bottom: 5%;
+    margin-bottom: 3%;
 }
 
 #editProfileType {
@@ -58,7 +66,7 @@
 }
 #changeUsernameOption {
     position: absolute;
-    margin-top: -7px;
+    margin-top: -40px;
     margin-left: 375px;
     height: 20px;
     width: 400px;
@@ -66,7 +74,7 @@
 
 #changeUniversityOption {
     position: absolute;
-    margin-top: -7px;
+    margin-top: -40px;
     margin-left: 375px;
     height: 20px;
     width: 400px;
@@ -74,7 +82,7 @@
 
 #changeMajorOption {
     position: absolute;
-    margin-top: -7px;
+    margin-top: -40px;
     margin-left: 375px;
     height: 20px;
     width: 400px;
@@ -82,7 +90,7 @@
 
 #changeGradDateOption {
     position: absolute;
-    margin-top: -7px;
+    margin-top: -40px;
     margin-left: 375px;
     height: 20px;
     width: 400px;
@@ -95,6 +103,44 @@
     color: #CB2B68;
     background-color: #23CBF2;
 }
+
 span {
     color: #117F99;
 }
+
+.accountSettingsBody p {
+    color: #117F99;
+    font-family: 'Lobster', cursive;
+    font-size: 30px;
+}
+
+#changePasswordField {
+    position: absolute;
+    margin-top: -57px;
+    margin-left: 325px;
+    height: 20px;
+    width: 400px;
+}
+
+#deleteAccountButton {
+    position: absolute;
+    background-color: white;
+    color: #CB2B68;
+    font-size: 18px;
+    height: 25px;
+    width: 100px;
+    margin-top: -58px;
+    margin-left: 323px;
+}
+
+#changePasswordButton {
+    position: absolute;
+    background-color: white;
+    color: #CB2B68;
+    font-size: 18px;
+    height: 25px;
+    width: 100px;
+    margin-top: -58px;
+    margin-left: 900px;
+}
+
