@@ -325,7 +325,7 @@ Template.internship.events({
         var utility = event.target.utility.value;
         var currentUser = Meteor.userId();
         var currentDate = new Date();
-        var internshipId = Internship.findOne({"name": this.toString()}).name;
+        var internshipId = Internship.findOne({"name": this.toString()})._id;
         console.log(internshipId);
         InternReview.insert({
             internship: internshipId,
@@ -344,6 +344,24 @@ Template.club.events({
         event.preventDefault();
         Meteor.logout();
         Router.go('login');
+    },
+
+    'submit form' :function(event) {
+        event.preventDefault();
+        var reviewText = event.target.makeReview.value;
+        var timeRating = event.target.time.value;
+        var utilityRating = event.target.utility.value;
+        var currentUser = Meteor.userId();
+        var currentDate = new Date();
+        var clubId = Club.findOne({"name": this.toString()})._id;
+        ClubReview.insert({
+            club: clubId,
+            userId: currentUser,
+            date: currentDate,
+            review: reviewText,
+            timeRating: timeRating,
+            utilityRating: utilityRating
+        })
     }
 });
 
@@ -420,9 +438,9 @@ Template.internshipList.helpers({
 
 Template.internship.helpers({
    getReviews: function() {
-     var reviews = InternReview.find({"internship": this.toString()});
-     console.log(this);
-     console.log(this.toString());
+     var internshipID = Internship.findOne({"name": this.toString()})._id;
+     console.log(internshipID);
+     var reviews = InternReview.find({"internship": internshipID});
      console.log(reviews);
      return reviews;
    },
@@ -440,7 +458,7 @@ Template.club.helpers({
     },
 
     printClub: function() {
-        return this;
+        return this.toString();
     }
 });
 
