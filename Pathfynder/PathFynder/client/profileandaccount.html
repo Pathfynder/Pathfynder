@@ -126,6 +126,48 @@
                         }
                     </script>
               </p>
+        <p id="currentUniversityOption">
+            <script>
+                //console.log("Entered here");
+                var user = Meteor.user();
+                console.log(Meteor.user().profile.university);
+                console.log(username);
+                var university = Meteor.user().profile.university;
+                if(university === '') {
+                    document.getElementById("currentUniversityOption").innerHTML = 'Current University: No university on record';
+                } else {
+                    document.getElementById("currentUniversityOption").innerHTML = 'Current University: ' + university;
+                }
+            </script>
+        </p>
+        <p id="currentMajorOption">
+            <script>
+                //console.log("Entered here");
+                var user = Meteor.user();
+                console.log(Meteor.user().profile.major);
+                console.log(major);
+                var major = Meteor.user().profile.major;
+                if(major === '') {
+                    document.getElementById("currentMajorOption").innerHTML = 'Current Major: No major on record';
+                } else {
+                    document.getElementById("currentMajorOption").innerHTML = 'Current Major: ' + major;
+                }
+            </script>
+        </p>
+        <p id="currentGradDateOption">
+            <script>
+                //console.log("Entered here");
+                var user = Meteor.user();
+                console.log(Meteor.user().profile.gradDate);
+                console.log(gradDate);
+                var gradDate = Meteor.user().profile.gradDate;
+                if(gradDate === '') {
+                    document.getElementById("currentGradDateOption").innerHTML = 'Current Grad Date: No Grad Date on record';
+                } else {
+                    document.getElementById("currentGradDateOption").innerHTML = 'Current Grad Date: ' + gradDate;
+                }
+            </script>
+        </p>
     </div>
 </template>
 
