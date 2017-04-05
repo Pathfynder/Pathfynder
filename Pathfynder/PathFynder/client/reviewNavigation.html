@@ -395,47 +395,52 @@
     <div class="pageTitle">Courses</div>
     <div id="schoolCourseReviewBody">
         <p>{{printCourse}}</p>
-        <form class="makeReview">
-            <textarea name="makeReview" cols="40" rows="5" placeholder = "Share your experiences!"></textarea>
-            <select name="difficulty">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-            </select>
-            <select name="workload">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-            </select>
-            <select name="utility">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-            </select>
-
-            <input id="submitReview" type="submit" value="Submit">
-        </form>
+        <button class="modalButton">Add Review</button>
+        <div class="Modal">
+            <div class="ModalContent">
+                <span class="close">&times;</span>
+                <form>
+                    <textarea class="inputReviewText" name="makeReview" cols="40" rows="5" placeholder = "Share your experiences!"></textarea>
+                    <select name="difficulty" id="courseDifficulty">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                    <select name="workload" id="courseWorkload">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                    <select name="utility" id="courseUtility">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                    <input id="submitReview" type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
         {{#each getReviews}}
             <div class = "reviewObject">
                 <p>{{this.date}}</p>
@@ -554,46 +559,52 @@
     <div class="pageTitle">Dining</div>
     <div id="DiningBody">
         <p>{{printDining}}</p>
-        <form class="makeReview">
-            <textarea name="makeReview" cols="40" rows="5" placeholder = "Share your experiences!"></textarea>
-            <select name="foodQuality">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-            </select>
-            <select name="health">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-            </select>
-            <select name="star">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-            </select>
-            <input id="submitReview" type="submit" value="Submit">
-        </form>
+        <button class="modalButton">Add Review</button>
+        <div class="Modal">
+            <div class="ModalContent">
+                <span class="close">&times;</span>
+                <form class="makeReview">
+                    <textarea class="inputReviewText" name="makeReview" cols="40" rows="5" placeholder = "Share your experiences!"></textarea>
+                    <select name="foodQuality" id="diningQuality">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                    <select name="health" id="diningHealth">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                    <select name="star" id="diningStar">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                    <input id="submitReview" type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
         {{#each getReviews}}
             <div class = "reviewObject">
                 <p>{{this.date}}</p>
@@ -724,23 +735,29 @@
     <div class="pageTitle">Residential</div>
     <div id="ResidentialBody">
         <p>{{printDorm}}</p>
-        <form class="makeReview">
-            <textarea name="makeReview" cols="40" rows="5" placeholder = "Share your experiences!"></textarea>
-            <textarea name="location" cols="20" rows = "5" placeholder = "Location"></textarea>
-            <select name="star">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-            </select>
-            <input id="submitReview" type="submit" value="Submit">
-        </form>
+        <button class="modalButton">Add Review</button>
+        <div class="Modal">
+            <div class="ModalContent">
+                <span class="close">&times;</span>
+                <form class="makeReview">
+                    <textarea class="inputReviewText" name="makeReview" cols="40" rows="5" placeholder = "Share your experiences!"></textarea>
+                    <textarea class="inputLocation" name="location" cols="20" rows = "5" placeholder = "Location"></textarea>
+                    <select name="star" id="dormStar">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                    <input id="submitReview" type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
         {{#each getReviews}}
             <div class = "reviewObject">
                 <p>{{this.date}}</p>
@@ -869,34 +886,40 @@
     <div class="pageTitle">Clubs</div>
     <div id="ClubsBody">
         <p>{{printClub}}</p>
-        <form class="makeReview">
-            <textarea name="makeReview" cols="40" rows="5" placeholder = "Share your experiences!"></textarea>
-            <select name="time">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-            </select>
-            <select name="utility">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-            </select>
-            <input id="submitReview" type="submit" value="Submit">
-        </form>
+        <button class="modalButton">Add Review</button>
+        <div class="Modal">
+            <div class="ModalContent">
+                <span class="close">&times;</span>
+                <form class="makeReview">
+                    <textarea class="inputReviewText" name="makeReview" cols="40" rows="5" placeholder = "Share your experiences!"></textarea>
+                    <select name="time" id="clubTime">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                    <select name="utility" id="clubUtility">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                    <input id="submitReview" type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
         {{#each getReviews}}
             <div class = "reviewObject">
                 <p>{{this.date}}</p>
@@ -1028,46 +1051,52 @@
     <div class="pageTitle">Internships</div>
     <div id="schoolInternshipReviewBody">
         <p>{{printInternship}}</p>
-        <form class="makeReview">
-            <textarea name="makeReview" cols="40" rows="5" placeholder = "Share your experiences!"></textarea>
-            <select name="interview">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-            </select>
-            <select name="workload">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-            </select>
-            <select name="utility">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-            </select>
-            <input id="submitReview" type="submit" value="Submit">
-        </form>
+        <button class="modalButton">Add Review</button>
+        <div class="Modal">
+            <div class="ModalContent">
+                <span class="close">&times;</span>
+                <form class="makeReview">
+                    <textarea class="inputReviewText" name="makeReview" cols="40" rows="5" placeholder = "Share your experiences!"></textarea>
+                    <select name="interview" id="internInterview">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                    <select name="workload" id="internWorkload">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                    <select name="utility" id="internUtility">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                    <input id="submitReview" type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
         {{#each getReviews}}
             <div class = "reviewObject">
                 <p>{{this.date}}</p>

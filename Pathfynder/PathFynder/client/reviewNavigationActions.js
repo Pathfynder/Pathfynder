@@ -209,7 +209,27 @@ Template.departmentCourses.events({
         Router.go('login');
     },
 
-    'submit form': function(event) {
+    'click .modalButton': function(event, template) {
+        event.preventDefault();
+        var modal = template.find('.Modal');
+        modal.style.display = 'block';
+    },
+
+    'click .close' : function(event, template) {
+        event.preventDefault();
+        var modal = template.find('.Modal');
+        modal.style.display = "none";
+        var textField = template.find('.inputReviewText');
+        var workload = template.find('#courseWorkload');
+        var difficulty = template.find('#courseDifficulty');
+        var utility = template.find('#courseUtility');
+        textField.value = "";
+        workload.value = 1;
+        difficulty.value = 1;
+        utility.value = 1;
+    },
+
+    'submit form': function(event, template) {
         event.preventDefault();
         var reviewText = event.target.makeReview.value;
         var difficulty = event.target.difficulty.value;
@@ -226,7 +246,13 @@ Template.departmentCourses.events({
             difficultyRating: difficulty,
             workloadRating: workload,
             utilityRating: utility
-        })
+        });
+        var modal = template.find('.Modal');
+        modal.style.display = "none";
+        event.target.makeReview.value = "";
+        event.target.difficulty.value = 1;
+        event.target.workload.value = 1;
+        event.target.utility.value = 1;
     }
 });
 
@@ -323,7 +349,27 @@ Template.internship.events({
         Router.go('login');
     },
 
-    'submit form': function(event) {
+    'click .modalButton': function(event, template) {
+        event.preventDefault();
+        var modal = template.find('.Modal');
+        modal.style.display = 'block';
+    },
+
+    'click .close' : function(event, template) {
+        event.preventDefault();
+        var modal = template.find('.Modal');
+        modal.style.display = "none";
+        var textField = template.find('.inputReviewText');
+        var utility = template.find('#internUtility');
+        var interview = template.find('#internInterview');
+        var workload = template.find('#internWorkload');
+        textField.value = "";
+        interview.value = 1;
+        utility.value = 1;
+        workload.value = 1;
+    },
+
+    'submit form': function(event, template) {
         event.preventDefault();
         var reviewText = event.target.makeReview.value;
         var interview = event.target.interview.value;
@@ -341,7 +387,13 @@ Template.internship.events({
             interviewRating: interview,
             workloadRating: workload,
             utilityRating: utility,
-        })
+        });
+        var modal = template.find('.Modal');
+        modal.style.display = "none";
+        event.target.makeReview.value = "";
+        event.target.interview.value = 1;
+        event.target.utility.value = 1;
+        event.target.workload.value = 1;
     }
 });
 
@@ -352,7 +404,25 @@ Template.club.events({
         Router.go('login');
     },
 
-    'submit form' :function(event) {
+    'click .modalButton': function(event, template) {
+        event.preventDefault();
+        var modal = template.find('.Modal');
+        modal.style.display = 'block';
+    },
+
+    'click .close' : function(event, template) {
+        event.preventDefault();
+        var modal = template.find('.Modal');
+        modal.style.display = "none";
+        var textField = template.find('.inputReviewText');
+        var utility = template.find('#clubUtility');
+        var time = template.find('#clubTime');
+        textField.value = "";
+        time.value = 1;
+        utility.value = 1;
+    },
+
+    'submit form' :function(event, template) {
         event.preventDefault();
         var reviewText = event.target.makeReview.value;
         var timeRating = event.target.time.value;
@@ -367,7 +437,12 @@ Template.club.events({
             review: reviewText,
             timeRating: timeRating,
             utilityRating: utilityRating
-        })
+        });
+        var modal = template.find('.Modal');
+        modal.style.display = "none";
+        event.target.makeReview.value = "";
+        event.target.time.value = 1;
+        event.target.utility.value = 1;
     }
 });
 
@@ -378,7 +453,25 @@ Template.dorm.events({
         Router.go('login');
     },
 
-    'submit form' :function(event) {
+    'click .modalButton': function(event, template) {
+        event.preventDefault();
+        var modal = template.find('.Modal');
+        modal.style.display = 'block';
+    },
+
+    'click .close' : function(event, template) {
+        event.preventDefault();
+        var modal = template.find('.Modal');
+        modal.style.display = "none";
+        var textField = template.find('.inputReviewText');
+        var star = template.find('#dormStar');
+        var location = template.find('.inputLocation');
+        location.value = "";
+        textField.value = "";
+        star.value = 1;
+    },
+
+    'submit form' :function(event, template) {
         event.preventDefault();
         var reviewText = event.target.makeReview.value;
         var location = event.target.location.value;
@@ -392,7 +485,12 @@ Template.dorm.events({
             date: currentDate,
             review: reviewText,
             starRating: starRating
-        })
+        });
+        var modal = template.find('.Modal');
+        modal.style.display = "none";
+        event.target.makeReview.value = "";
+        event.target.location.value = "";
+        event.target.star.value = 1;
     }
 });
 
@@ -403,7 +501,27 @@ Template.diningCourt.events({
         Router.go('login');
     },
 
-    'submit form' : function(event) {
+    'click .modalButton': function(event, template) {
+        event.preventDefault();
+        var modal = template.find('.Modal');
+        modal.style.display = 'block';
+    },
+
+    'click .close' : function(event, template) {
+        event.preventDefault();
+        var modal = template.find('.Modal');
+        modal.style.display = "none";
+        var textField = template.find('.inputReviewText');
+        var quality = template.find('#diningQuality');
+        var health = template.find('#diningHealth');
+        var star = template.find('#diningStar');
+        textField.value = "";
+        quality.value = 1;
+        health.value = 1;
+        star.value = 1;
+    },
+
+    'submit form' : function(event, template) {
       event.preventDefault();
         var reviewText = event.target.makeReview.value;
         var foodQuality = event.target.foodQuality.value;
@@ -420,7 +538,13 @@ Template.diningCourt.events({
             foodQualityRating: foodQuality,
             healthRating: health,
             starRating: starRating
-        })
+        });
+        var modal = template.find('.Modal');
+        modal.style.display = "none";
+        event.target.makeReview.value = "";
+        event.target.foodQuality.value = 1;
+        event.target.health.value = 1;
+        event.target.star.value = 1;
     }
 });
 
