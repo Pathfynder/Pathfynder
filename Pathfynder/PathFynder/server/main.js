@@ -81,12 +81,12 @@ Accounts.onCreateUser(function(options, user) {
     } else {
         user.profile = {};
     }
-    user.profile.username = '';
+    user.profile.username = 'Anonymous';
     user.profile.university = '';
     user.profile.gradDate = '';
     user.profile.major = '';
-    user.profile.majorBool = false;
-    user.profile.usernameBool = false;
-    user.profile.gradDateBool = false;
+    user.profile.majorBool = 1;
+    user.profile.usernameBool = 1;
+    user.profile.gradDateBool = 1;
     return user;
 });

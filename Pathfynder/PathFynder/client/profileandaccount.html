@@ -112,6 +112,40 @@
     <div class="pageTitle">Profile</div>
     <div class="profileBody">
         <div class="editProfileLink"><a href="{{pathFor route='editprofile'}}"><span id="editProfileLinkText">Edit Profile</span></a></div>
+              <p id="currentUsernameOption">
+                    <script>
+                            //console.log("Entered here");
+                            var user = Meteor.user();					 console.log(Meteor.user().profile.username);
+var username = Meteor.user().profile.username;
+var major = Meteor.user().profile().major;
+var college = Meteor.user().profile().university;
+var grad = Meteor.user().profile().university;
+
+                            console.log(username);
+                            if(username === 'Anonymous') {
+                           document.getElementById("currentUsernameOption").innerHTML = 'Anonymous';
+                            } else {
+                                document.getElementById("currentUsernameOption").innerHTML = 'Current Username: ' + username;
+                        }
+
+if(major === '') {
+                           document.getElementById("currentUsernameOption").innerHTML = 'Anonymous';
+                            } else {
+                                document.getElementById("currentUsernameOption").innerHTML = 'Current Major: ' + major;
+                        }
+if(college === '') {
+                           document.getElementById("currentUsernameOption").innerHTML = '';
+                            } else {
+                                document.getElementById("currentUsernameOption").innerHTML = 'Current College: ' + university;
+                        }
+if(grad === '') {
+                           document.getElementById("currentUsernameOption").innerHTML = 'Anonymous';
+                            } else {
+                                document.getElementById("currentUsernameOption").innerHTML = 'Current Graduation Date: ' + grad;
+                        }
+
+                    </script>
+                </p>
     </div>
 </template>
 
