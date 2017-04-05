@@ -12,6 +12,8 @@ ClubReview = new Mongo.Collection('clubReview');
 Departments = new Meteor.Collection('departments');
 Courses = new Meteor.Collection('courses');
 
+console.log("this is working");
+
 
 
 //Schemas
