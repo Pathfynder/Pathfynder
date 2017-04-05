@@ -295,7 +295,7 @@
     margin-left: 150px;
 }
 
-.modalButton {
+.addReviewButton {
     position: absolute;
     background-color: white;
     color: #CB2B68;
@@ -306,4 +306,30 @@
     margin-left: -50px;
     border: 1px solid #888;
     margin-top: 40px;
+}
+
+.addClubReviewButton {
+    position: absolute;
+    background-color: white;
+    color: #CB2B68;
+    font-size: 18px;
+    height: 25px;
+    width: 100px;
+    left: 50%;
+    margin-left: -50px;
+    border: 1px solid #888;
+    margin-top: 100px;
+}
+
+.addDormReviewButton {
+    position: absolute;
+    background-color: white;
+    color: #CB2B68;
+    font-size: 18px;
+    height: 25px;
+    width: 100px;
+    left: 50%;
+    margin-left: -50px;
+    border: 1px solid #888;
+    margin-top: 175px;
 }
