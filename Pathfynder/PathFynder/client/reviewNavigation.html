@@ -399,8 +399,11 @@
         <div class="Modal">
             <div class="ModalContent">
                 <span class="close">&times;</span>
+                <h1>Write a Review</h1>
                 <form>
-                    <textarea class="inputReviewText" name="makeReview" cols="40" rows="5" placeholder = "Share your experiences!"></textarea>
+                    <textarea class="inputReviewText" name="makeReview" cols="120" rows="13" placeholder = "Share your experiences!"></textarea>
+                    <div id="dropdown1">
+                    <p>Course Difficulty:</p>
                     <select name="difficulty" id="courseDifficulty">
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -413,6 +416,9 @@
                         <option value="9">9</option>
                         <option value="10">10</option>
                     </select>
+                    </div>
+                    <div id="dropdown2">
+                    <p>Course Workload:</p>
                     <select name="workload" id="courseWorkload">
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -425,6 +431,9 @@
                         <option value="9">9</option>
                         <option value="10">10</option>
                     </select>
+                    </div>
+                    <div id="dropdown3">
+                    <p>Course Utility</p>
                     <select name="utility" id="courseUtility">
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -437,7 +446,8 @@
                         <option value="9">9</option>
                         <option value="10">10</option>
                     </select>
-                    <input id="submitReview" type="submit" value="Submit">
+                    </div>
+                    <input class="modalButton" type="submit" value="Submit">
                 </form>
             </div>
         </div>
@@ -668,7 +678,7 @@
             <form>
                 Residence Hall:
                 <select name="resHall">
-                    <option value="cary">Cary Quadrangle</option>
+                    <option value="Cary Quadrangle">Cary Quadrangle</option>
                     <option value="earhart">Earhart Hall</option>
                     <option value="firststreet">First Street Towers</option>
                     <option value="harrison">Harrison Hall</option>
