@@ -118,9 +118,11 @@
                         var user = Meteor.user();
                         console.log(Meteor.user().profile.username);
                         console.log(username);
+                        var usernameBool = Meteor.user().profile.usernameBool;
                         var username = Meteor.user().profile.username;
-                        if(username === 'Anonymous') {
-                            document.getElementById("currentUsernameOption").innerHTML = 'Anonymous';
+
+                        if(usernameBool === 0) {
+                            document.getElementById("currentUsernameOption").innerHTML = 'Current Username is anonymous';
                         } else {
                             document.getElementById("currentUsernameOption").innerHTML = 'Current Username: ' + username;
                         }
@@ -236,6 +238,7 @@
                         }
                     </script>
                 </p>
+                <input id = "usernameBoolean" type="checkbox" name="usernameBoolean" > Make Private <br>
                 <input id ="changeUsernameOption" class="changeOptionText" type="text" name="userName"  placeholder="Enter new Username">
             </div>
             <div class="editProfileOption">
