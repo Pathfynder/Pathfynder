@@ -1,5 +1,5 @@
-console.log("Hello node");
-//import { Meteor } from 'meteor/meteor';
+console.log("Hello nodeAPPTEST");
+import { meteor } from 'meteor/meteor';
 CourseReview = new Mongo.Collection("testCourseReview");
 
 describe("Course Reviews", function(){
@@ -24,7 +24,7 @@ describe("Course Reviews", function(){
     };
   });
 
-  it("Successful Removal of prebious reviews to Courses", function() {
+  it("Successful Removal of previous reviews to Courses", function() {
     //var ret = CourseReview.findOne({"course": i});
     for(i = 0; i < 20; i++){
       var ret = CourseReview.findOne({"course": i});
@@ -44,8 +44,6 @@ describe("Course Reviews", function(){
     };
   });
 
-
-
 /*
   it("User Creation Verification", function(){
     console.log("Creating single user with proper entry syntax...");
@@ -54,7 +52,13 @@ describe("Course Reviews", function(){
     console.log("checking previously registered email error");
     var check1 = addUser("person@purdue.edu", "password");
     var user = meteor.users.findOne({"email": "person@purdue.edu"});
-    Meteor.user.remove(user._id);
+    Meteor.call('remove', user._id, function(error){
+        if(error) {
+            console.log("Something went wrong removing user", error);
+        } else {
+            console.log("Success");
+        }
+    });
     console.log("checking non '*purdue.edu' email error");
     var check2 = addUser("person@indana.edu", "password");
 
