@@ -209,7 +209,7 @@ Template.departmentCourses.events({
         Router.go('login');
     },
 
-    'click .modalButton': function(event, template) {
+    'click .addReview': function(event, template) {
         event.preventDefault();
         var modal = template.find('.Modal');
         modal.style.display = 'block';
@@ -349,7 +349,7 @@ Template.internship.events({
         Router.go('login');
     },
 
-    'click .modalButton': function(event, template) {
+    'click .addReview': function(event, template) {
         event.preventDefault();
         var modal = template.find('.Modal');
         modal.style.display = 'block';
@@ -404,7 +404,7 @@ Template.club.events({
         Router.go('login');
     },
 
-    'click .modalButton': function(event, template) {
+    'click .addReview': function(event, template) {
         event.preventDefault();
         var modal = template.find('.Modal');
         modal.style.display = 'block';
@@ -453,7 +453,7 @@ Template.dorm.events({
         Router.go('login');
     },
 
-    'click .modalButton': function(event, template) {
+    'click .addReview': function(event, template) {
         event.preventDefault();
         var modal = template.find('.Modal');
         modal.style.display = 'block';
@@ -502,7 +502,7 @@ Template.diningCourt.events({
         Router.go('login');
     },
 
-    'click .modalButton': function(event, template) {
+    'click .addReview': function(event, template) {
         event.preventDefault();
         var modal = template.find('.Modal');
         modal.style.display = 'block';
