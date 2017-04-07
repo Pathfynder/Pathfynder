@@ -2,6 +2,16 @@ console.log("Hello nodeAPPTEST");
 import { meteor } from 'meteor/meteor';
 CourseReview = new Mongo.Collection("testCourseReview");
 
+CourseReview.schema = new SimpleSchema({
+    course: {type: Meteor.Collection.ObjectID},
+    userId: {type: Meteor.Collection.ObjectID},
+    date: {type: Date},
+    review: {type: String},
+    difficultyRating: {type: Number},
+    workloadRating: {type: Number},
+    utilityRating: {type: Number}
+});
+
 describe("Course Reviews", function(){
   it("Successful addition of reviews to Courses", function() {
     for(i = 0; i < 20; i++){
@@ -9,6 +19,7 @@ describe("Course Reviews", function(){
           course: i,
           userId: 1,
           date: new Date(),
+          //date: "teststuff",
           review: "This is test review number " + i,
           difficultyRating: 5,
           workloadRating: 5,
@@ -17,6 +28,7 @@ describe("Course Reviews", function(){
     };
     for(i = 0; i < 20; i++){
       var ret = CourseReview.findOne({"course": i});
+      console.log(ret);
       if (ret == undefined){
         throw 'CourseNotFoundError';
       };
@@ -43,6 +55,23 @@ describe("Course Reviews", function(){
       };
     };
   });
+
+  it("Garbage Entry Testing", function(){
+    CourseReview.insert({
+        course: 1,
+        userId: 1,
+        date: "test stuff",
+        review: i,
+        difficultyRating: 5,
+        workloadRating: 5,
+        utilityRating: "hello",
+        sample: "woooo"
+    });
+    var ret = CourseReview.findOne({"course": 1});
+    if (ret.utilityRating == "hello") throw 'failGarbageEntry';
+    console.log("newthing");
+    console.log(ret);
+  })
 
 /*
   it("User Creation Verification", function(){
