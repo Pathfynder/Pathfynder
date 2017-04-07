@@ -27,8 +27,11 @@ describe("Course Reviews", function(){
   });
 
   it("Successful Removal of prebious reviews to Courses", function() {
+    //var ret = CourseReview.findOne({"course": i});
     for(i = 0; i < 20; i++){
-    CourseReview.remove({"course": i});
+      var ret = CourseReview.findOne({"course": i});
+      var rem = CourseReview.remove(ret._id);
+      console.log(rem);
       if (rem == undefined){
         throw 'CourseNotFoundError';
       };
@@ -36,6 +39,7 @@ describe("Course Reviews", function(){
     };
     for(i = 0; i < 20; i++){
       var ret = CourseReview.findOne({"course": i});
+      console.log(ret);
       if (ret != undefined){
         throw 'CourseNotRemovedError';
       };
