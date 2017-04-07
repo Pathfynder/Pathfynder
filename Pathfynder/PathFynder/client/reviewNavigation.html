@@ -399,8 +399,11 @@
         <div class="Modal">
             <div class="ModalContent">
                 <span class="close">&times;</span>
+                <h1>Write a Review</h1>
                 <form>
-                    <textarea class="inputReviewText" name="makeReview" cols="40" rows="5" placeholder = "Share your experiences!"></textarea>
+                    <textarea class="inputReviewText" name="makeReview" cols="120" rows="13" placeholder = "Share your experiences!"></textarea>
+                    <div id="dropdown1">
+                    <p>Course Difficulty:</p>
                     <select name="difficulty" id="courseDifficulty">
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -413,6 +416,9 @@
                         <option value="9">9</option>
                         <option value="10">10</option>
                     </select>
+                    </div>
+                    <div id="dropdown2">
+                    <p>Course Workload:</p>
                     <select name="workload" id="courseWorkload">
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -425,6 +431,9 @@
                         <option value="9">9</option>
                         <option value="10">10</option>
                     </select>
+                    </div>
+                    <div id="dropdown3">
+                    <p>Course Utility</p>
                     <select name="utility" id="courseUtility">
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -437,7 +446,8 @@
                         <option value="9">9</option>
                         <option value="10">10</option>
                     </select>
-                    <input id="submitReview" type="submit" value="Submit">
+                    </div>
+                    <input class="addReviewButton" type="submit" value="Submit">
                 </form>
             </div>
         </div>
@@ -504,11 +514,11 @@
             <form>
                 Dining Hall:
                 <select name="diningCourt">
-                    <option value="earhart" name="hillenbrand">Earhart</option>
-                    <option value="ford" name="ford">Ford</option>
-                    <option value="hillenbrand" name="hillenbrand">Hillenbrand</option>
-                    <option value="wiley" name="wiley">Wiley</option>
-                    <option value="windsor" name="windsor">Windsor</option>
+                    <option value="Earhart" name="hillenbrand">Earhart</option>
+                    <option value="Ford" name="ford">Ford</option>
+                    <option value="Hillenbrand" name="hillenbrand">Hillenbrand</option>
+                    <option value="Wiley" name="wiley">Wiley</option>
+                    <option value="Windsor" name="windsor">Windsor</option>
                 </select>
                 <br><br>
                 <input type="submit" class="submitButtons">
@@ -563,8 +573,11 @@
         <div class="Modal">
             <div class="ModalContent">
                 <span class="close">&times;</span>
+                <h1>Write a Review</h1>
                 <form class="makeReview">
-                    <textarea class="inputReviewText" name="makeReview" cols="40" rows="5" placeholder = "Share your experiences!"></textarea>
+                    <textarea class="inputReviewText" name="makeReview" cols="120" rows="13" placeholder = "Share your experiences!"></textarea>
+                    <div id="dropdown1">
+                        <p>Dining Hall Food Quality:</p>
                     <select name="foodQuality" id="diningQuality">
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -577,6 +590,9 @@
                         <option value="9">9</option>
                         <option value="10">10</option>
                     </select>
+                    </div>
+                    <div id="dropdown2">
+                        <p>Dining Hall Healthy Rating:</p>
                     <select name="health" id="diningHealth">
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -589,6 +605,9 @@
                         <option value="9">9</option>
                         <option value="10">10</option>
                     </select>
+                    </div>
+                    <div id="dropdown3">
+                        <p>Dining Hall Star Rating:</p>
                     <select name="star" id="diningStar">
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -601,7 +620,8 @@
                         <option value="9">9</option>
                         <option value="10">10</option>
                     </select>
-                    <input id="submitReview" type="submit" value="Submit">
+                    </div>
+                    <input class="addReviewButton" type="submit" value="Submit">
                 </form>
             </div>
         </div>
@@ -668,23 +688,23 @@
             <form>
                 Residence Hall:
                 <select name="resHall">
-                    <option value="cary">Cary Quadrangle</option>
-                    <option value="earhart">Earhart Hall</option>
-                    <option value="firststreet">First Street Towers</option>
-                    <option value="harrison">Harrison Hall</option>
-                    <option value="hawkins">Hawkins Hall</option>
-                    <option value="hillenbrand">Hillenbrand Hall</option>
-                    <option value="hilltop">Hilltop Apartments</option>
-                    <option value="honors">Honors College</option>
-                    <option value="mccutcheon">McCutcheon Hall</option>
-                    <option value="meredith">Meredith Hall</option>
-                    <option value="owen">Owen Hall</option>
-                    <option value="purduevillage">Purdue Village</option>
-                    <option value="shreve">Shreve Hall</option>
-                    <option value="tarkington">Tarkington Hall</option>
-                    <option value="thirdstreet">Third Street Suites</option>
-                    <option value="wiley">Wiley Hall</option>
-                    <option value="windsor">Windsor Halls</option>
+                    <option value="Cary Quadrangle">Cary Quadrangle</option>
+                    <option value="Earhart Hall">Earhart Hall</option>
+                    <option value="First Street Towers">First Street Towers</option>
+                    <option value="Harrison Hall">Harrison Hall</option>
+                    <option value="Hawkins Hall">Hawkins Hall</option>
+                    <option value="Hillenbrand Hall">Hillenbrand Hall</option>
+                    <option value="Hilltop Apartments">Hilltop Apartments</option>
+                    <option value="Honors College">Honors College</option>
+                    <option value="McCutcheon Hall">McCutcheon Hall</option>
+                    <option value="Meredith Hall">Meredith Hall</option>
+                    <option value="Owen Hall">Owen Hall</option>
+                    <option value="Purdue Village">Purdue Village</option>
+                    <option value="Shreve Hall">Shreve Hall</option>
+                    <option value="Tarkington Hall">Tarkington Hall</option>
+                    <option value="Third Street Suites">Third Street Suites</option>
+                    <option value="Wiley Hall">Wiley Hall</option>
+                    <option value="Windsor Halls">Windsor Halls</option>
                 </select>
                 <br><br>
                 <input type="submit" class="submitButtons">
@@ -739,9 +759,12 @@
         <div class="Modal">
             <div class="ModalContent">
                 <span class="close">&times;</span>
+                <h1>Write a Review</h1>
                 <form class="makeReview">
-                    <textarea class="inputReviewText" name="makeReview" cols="40" rows="5" placeholder = "Share your experiences!"></textarea>
-                    <textarea class="inputLocation" name="location" cols="20" rows = "5" placeholder = "Location"></textarea>
+                    <textarea class="inputReviewText" name="makeReview" cols="125" rows="13" placeholder = "Share your experiences!"></textarea>
+                    <!--<textarea class="inputLocation" name="location" cols="20" rows = "5" placeholder = "Location"></textarea> -->
+                    <div id="dropdown1">
+                        <p>Residence Hall Star Rating:</p>
                     <select name="star" id="dormStar">
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -754,7 +777,8 @@
                         <option value="9">9</option>
                         <option value="10">10</option>
                     </select>
-                    <input id="submitReview" type="submit" value="Submit">
+                    </div>
+                    <input class="addDormReviewButton" type="submit" value="Submit">
                 </form>
             </div>
         </div>
@@ -890,8 +914,11 @@
         <div class="Modal">
             <div class="ModalContent">
                 <span class="close">&times;</span>
+                <h1>Write a Review</h1>
                 <form class="makeReview">
-                    <textarea class="inputReviewText" name="makeReview" cols="40" rows="5" placeholder = "Share your experiences!"></textarea>
+                    <textarea class="inputReviewText" name="makeReview" cols="120" rows="13" placeholder = "Share your experiences!"></textarea>
+                    <div id="dropdown1">
+                        <p>Club Time Commitment:</p>
                     <select name="time" id="clubTime">
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -904,6 +931,9 @@
                         <option value="9">9</option>
                         <option value="10">10</option>
                     </select>
+                    </div>
+                    <div id="dropdown2">
+                        <p>Club Utility:</p>
                     <select name="utility" id="clubUtility">
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -916,7 +946,8 @@
                         <option value="9">9</option>
                         <option value="10">10</option>
                     </select>
-                    <input id="submitReview" type="submit" value="Submit">
+                    </div>
+                    <input class="addClubReviewButton" type="submit" value="Submit">
                 </form>
             </div>
         </div>
@@ -1055,8 +1086,11 @@
         <div class="Modal">
             <div class="ModalContent">
                 <span class="close">&times;</span>
+                <h1>Write a Review</h1>
                 <form class="makeReview">
-                    <textarea class="inputReviewText" name="makeReview" cols="40" rows="5" placeholder = "Share your experiences!"></textarea>
+                    <textarea class="inputReviewText" name="makeReview" cols="120" rows="13" placeholder = "Share your experiences!"></textarea>
+                    <div id="dropdown1">
+                        <p>Internship Interview Difficulty:</p>
                     <select name="interview" id="internInterview">
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -1069,6 +1103,9 @@
                         <option value="9">9</option>
                         <option value="10">10</option>
                     </select>
+                    </div>
+                    <div id="dropdown2">
+                        <p>Internship Workload:</p>
                     <select name="workload" id="internWorkload">
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -1081,6 +1118,9 @@
                         <option value="9">9</option>
                         <option value="10">10</option>
                     </select>
+                    </div>
+                    <div id="dropdown3">
+                        <p>Internship Utility:</p>
                     <select name="utility" id="internUtility">
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -1093,7 +1133,8 @@
                         <option value="9">9</option>
                         <option value="10">10</option>
                     </select>
-                    <input id="submitReview" type="submit" value="Submit">
+                    </div>
+                    <input class="addReviewButton" type="submit" value="Submit">
                 </form>
             </div>
         </div>

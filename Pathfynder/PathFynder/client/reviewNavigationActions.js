@@ -588,7 +588,7 @@ Template.departmentCourses.helpers({
 
     'printCourse': function() {
         return this[0] + ' ' + this[1];
-    }
+    },
 });
 
 Template.schoolClubs.helpers({

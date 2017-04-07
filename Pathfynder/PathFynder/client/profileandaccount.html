@@ -112,6 +112,68 @@
     <div class="pageTitle">Profile</div>
     <div class="profileBody">
         <div class="editProfileLink"><a href="{{pathFor route='editprofile'}}"><span id="editProfileLinkText">Edit Profile</span></a></div>
+              <p id="currentUsernameOption">
+                    <script>
+                        //console.log("Entered here");
+                        var user = Meteor.user();
+                        console.log(Meteor.user().profile.username);
+                        console.log(username);
+                        var usernameBool = Meteor.user().profile.usernameBool;
+                        var username = Meteor.user().profile.username;
+
+                        if(usernameBool === 0) {
+                            document.getElementById("currentUsernameOption").innerHTML = 'Current Username is anonymous';
+                        } else {
+                            document.getElementById("currentUsernameOption").innerHTML = 'Current Username: ' + username;
+                        }
+                    </script>
+              </p>
+        <p id="currentUniversityOption">
+            <script>
+                //console.log("Entered here");
+                var user = Meteor.user();
+                console.log(Meteor.user().profile.university);
+                console.log(username);
+                var university = Meteor.user().profile.university;
+                if(university === '') {
+                    document.getElementById("currentUniversityOption").innerHTML = 'Current University: No university on record';
+                } else {
+                    document.getElementById("currentUniversityOption").innerHTML = 'Current University: ' + university;
+                }
+            </script>
+        </p>
+        <p id="currentMajorOption">
+            <script>
+                //console.log("Entered here");
+                var user = Meteor.user();
+                console.log(Meteor.user().profile.major);
+                console.log(major);
+                var major = Meteor.user().profile.major;
+                var majorBool = Meteor.user().profile.majorBool;
+
+                if(majorBool === 0) {
+                    document.getElementById("currentMajorOption").innerHTML = 'Current Major: Anonymous';
+                } else {
+                    document.getElementById("currentMajorOption").innerHTML = 'Current Major: ' + major;
+                }
+            </script>
+        </p>
+        <p id="currentGradDateOption">
+            <script>
+                //console.log("Entered here");
+                var user = Meteor.user();
+               // console.log(Meteor.user().profile.gradDateBool + "HERE");
+                console.log(gradDate);
+                var gradDate = Meteor.user().profile.gradDate;
+                var gradBool = Meteor.user().profile.gradDateBool;
+
+                if(gradBool === 0) {
+                    document.getElementById("currentGradDateOption").innerHTML = 'Current Grad Date: Anonymous';
+                } else {
+                    document.getElementById("currentGradDateOption").innerHTML = 'Current Grad Date: ' + gradDate;
+                }
+            </script>
+        </p>
     </div>
 </template>
 
@@ -180,6 +242,7 @@
                         }
                     </script>
                 </p>
+                <input id = "usernameBoolean" type="checkbox" name="usernameBoolean" > Make Private <br>
                 <input id ="changeUsernameOption" class="changeOptionText" type="text" name="userName"  placeholder="Enter new Username">
             </div>
             <div class="editProfileOption">
@@ -213,6 +276,7 @@
                         }
                     </script>
                 </p>
+
                 <input id ="changeUniversityOption" class="changeOptionText" type="text" name="university"  placeholder="Enter new University">
             </div>
             <div class="editProfileOption">
@@ -238,6 +302,7 @@
                         }
                     </script>
                 </p>
+                <input id = "majorBoolean" type="checkbox" name="majorBoolean" > Make Private <br>
                 <input id ="changeMajorOption" class="changeOptionText" type="text" name="major"  placeholder="Enter new Major">
             </div>
             <div class="editProfileOption">
@@ -265,6 +330,8 @@
                         }
                     </script>
                 </p>
+                <input id = "gradBoolean" type="checkbox" name="gradBoolean2" > Make Private <br>
+
                 <input id ="changeGradDateOption" class="changeOptionText" type="text" name="GradDate"  placeholder="Enter new Graduation Date">
             </div>
             <input class="submitButtons" type="submit" value="Update">

@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 
 Meteor.startup(() => {
     // code to run on server at startup
-    process.env.MAIL_URL="smtp://postmaster@pathfynder.ltd:cookies@smtp.mailgun.org:587";
+    process.env.MAIL_URL="smtp://postmaster@mail.pathfynder.ltd:040290bafa1f8586df07331ae666ea42@smtp.mailgun.org:587";
     console.log(process.env);
     Accounts.urls.verifyEmail = function (token) {
         return Meteor.absoluteUrl('verify-email/' + token);
@@ -81,12 +81,12 @@ Accounts.onCreateUser(function(options, user) {
     } else {
         user.profile = {};
     }
-    user.profile.username = '';
+    user.profile.username = 'Anonymous';
     user.profile.university = '';
     user.profile.gradDate = '';
     user.profile.major = '';
-    user.profile.majorBool = false;
-    user.profile.usernameBool = false;
-    user.profile.gradDateBool = false;
+    user.profile.majorBool = 1;
+    user.profile.usernameBool = 1;
+    user.profile.gradDateBool = 1;
     return user;
 });
