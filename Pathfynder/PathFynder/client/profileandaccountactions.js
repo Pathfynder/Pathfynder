@@ -66,11 +66,12 @@ Template.editprofile.events ({
         var changeUsernameform = $(e.currentTarget),
             newUsername = changeUsernameform.find('#changeUsernameOption').val(),
             usernameBool = document.getElementById('usernameBoolean').checked,
+            majorBool = document.getElementById('majorBoolean').checked,
+            gradBool = document.getElementById('gradBoolean').checked,
             newUniversity = changeUsernameform.find('#changeUniversityOption').val(),
             newMajor = changeUsernameform.find('#changeMajorOption').val(),
             newGradDate = changeUsernameform.find('#changeGradDateOption').val();
 
-        console.log(usernameBool);
 
         if(Meteor.user()) {
             //console.log("Entered");
@@ -82,6 +83,19 @@ Template.editprofile.events ({
             }
             if (usernameBool === false){
                 Meteor.users.update({_id: Meteor.userId()}, {$set: {"profile.usernameBool": 1}});
+            }
+
+            if (majorBool === true){
+                Meteor.users.update({_id: Meteor.userId()}, {$set: {"profile.majorBool": 0}});
+            }
+            if (majorBool === false){
+                Meteor.users.update({_id: Meteor.userId()}, {$set: {"profile.majorBool": 1}});
+            }
+            if (gradBool === true){
+                Meteor.users.update({_id: Meteor.userId()}, {$set: {"profile.gradDateBool": 0}});
+            }
+            if (gradBool === false){
+                Meteor.users.update({_id: Meteor.userId()}, {$set: {"profile.gradDateBool": 1}});
             }
             if(newUniversity !== "" && newUniversity !== undefined && newUsername !== null) {
                 Meteor.users.update({_id: Meteor.userId()}, {$set: {"profile.university": newUniversity}});

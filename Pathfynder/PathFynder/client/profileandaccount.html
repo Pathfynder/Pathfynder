@@ -149,8 +149,10 @@
                 console.log(Meteor.user().profile.major);
                 console.log(major);
                 var major = Meteor.user().profile.major;
-                if(major === '') {
-                    document.getElementById("currentMajorOption").innerHTML = 'Current Major: No major on record';
+                var majorBool = Meteor.user().profile.majorBool;
+
+                if(majorBool === 0) {
+                    document.getElementById("currentMajorOption").innerHTML = 'Current Major: Anonymous';
                 } else {
                     document.getElementById("currentMajorOption").innerHTML = 'Current Major: ' + major;
                 }
@@ -160,11 +162,13 @@
             <script>
                 //console.log("Entered here");
                 var user = Meteor.user();
-                console.log(Meteor.user().profile.gradDate);
+               // console.log(Meteor.user().profile.gradDateBool + "HERE");
                 console.log(gradDate);
                 var gradDate = Meteor.user().profile.gradDate;
-                if(gradDate === '') {
-                    document.getElementById("currentGradDateOption").innerHTML = 'Current Grad Date: No Grad Date on record';
+                var gradBool = Meteor.user().profile.gradDateBool;
+
+                if(gradBool === 0) {
+                    document.getElementById("currentGradDateOption").innerHTML = 'Current Grad Date: Anonymous';
                 } else {
                     document.getElementById("currentGradDateOption").innerHTML = 'Current Grad Date: ' + gradDate;
                 }
@@ -272,6 +276,7 @@
                         }
                     </script>
                 </p>
+
                 <input id ="changeUniversityOption" class="changeOptionText" type="text" name="university"  placeholder="Enter new University">
             </div>
             <div class="editProfileOption">
@@ -297,6 +302,7 @@
                         }
                     </script>
                 </p>
+                <input id = "majorBoolean" type="checkbox" name="majorBoolean" > Make Private <br>
                 <input id ="changeMajorOption" class="changeOptionText" type="text" name="major"  placeholder="Enter new Major">
             </div>
             <div class="editProfileOption">
@@ -324,6 +330,8 @@
                         }
                     </script>
                 </p>
+                <input id = "gradBoolean" type="checkbox" name="gradBoolean2" > Make Private <br>
+
                 <input id ="changeGradDateOption" class="changeOptionText" type="text" name="GradDate"  placeholder="Enter new Graduation Date">
             </div>
             <input class="submitButtons" type="submit" value="Update">
