@@ -473,8 +473,9 @@ Template.dorm.events({
 
     'submit form' :function(event, template) {
         event.preventDefault();
+        console.log("made it here");
         var reviewText = event.target.makeReview.value;
-        var location = event.target.location.value;
+        //var location = event.target.location.value;
         var starRating = event.target.star.value;
         var currentUser = Meteor.userId();
         var currentDate = new Date();
@@ -589,6 +590,21 @@ Template.departmentCourses.helpers({
     'printCourse': function() {
         return this[0] + ' ' + this[1];
     },
+
+    printUsername: function() {
+        var userId = this.userId;
+        var preUsername = Meteor.users.findOne(userId);
+        var userName = preUsername.profile.username;
+        if (preUsername.profile.usernameBool === 1) {
+            if (userName === "") {
+                return "anonymous";
+            }
+            return userName;
+        }
+        else {
+            return "anonymous";
+        }
+    }
 });
 
 Template.schoolClubs.helpers({
@@ -615,6 +631,21 @@ Template.internship.helpers({
     printInternship: function() {
        return this.toString();
     },
+
+    printUsername: function() {
+        var userId = this.userId;
+        var preUsername = Meteor.users.findOne(userId);
+        var userName = preUsername.profile.username;
+        if (preUsername.profile.usernameBool === 1) {
+            if (userName === "") {
+                return "anonymous";
+            }
+            return userName;
+        }
+        else {
+            return "anonymous";
+        }
+    }
 });
 
 Template.club.helpers({
@@ -626,6 +657,21 @@ Template.club.helpers({
 
     printClub: function() {
         return this.toString();
+    },
+
+    printUsername: function() {
+        var userId = this.userId;
+        var preUsername = Meteor.users.findOne(userId);
+        var userName = preUsername.profile.username;
+        if (preUsername.profile.usernameBool === 1) {
+            if (userName === "") {
+                return "anonymous";
+            }
+            return userName;
+        }
+        else {
+            return "anonymous";
+        }
     }
 });
 
@@ -638,6 +684,21 @@ Template.dorm.helpers({
 
     printDorm: function() {
         return this.toString();
+    },
+
+    printUsername: function() {
+        var userId = this.userId;
+        var preUsername = Meteor.users.findOne(userId);
+        var userName = preUsername.profile.username;
+        if (preUsername.profile.usernameBool === 1) {
+            if (userName === "") {
+                return "anonymous";
+            }
+            return userName;
+        }
+        else {
+            return "anonymous";
+        }
     }
 });
 
@@ -650,5 +711,20 @@ Template.diningCourt.helpers({
 
     printDining: function() {
         return this.toString();
+    },
+
+    printUsername: function() {
+        var userId = this.userId;
+        var preUsername = Meteor.users.findOne(userId);
+        var userName = preUsername.profile.username;
+        if (preUsername.profile.usernameBool === 1) {
+            if (userName === "") {
+                return "anonymous";
+            }
+            return userName;
+        }
+        else {
+            return "anonymous";
+        }
     }
 });
