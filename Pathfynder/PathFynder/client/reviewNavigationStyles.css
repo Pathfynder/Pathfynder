@@ -62,6 +62,9 @@
     left: 50%;
     margin-left: -50px;
     border: 1px solid #888;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    border-radius: 7px;
 }
 
 #coursesBody h2 {
@@ -332,4 +335,26 @@
     margin-left: -50px;
     border: 1px solid #888;
     margin-top: 175px;
+}
+
+.addReview {
+    position: absolute;
+    background-color: white;
+    color: #CB2B68;
+    font-size: 14px;
+    height: 25px;
+    width: 100px;
+    left: 50%;
+    margin-left: -50px;
+    border: 1px solid #888;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    border-radius: 7px;
+    font-family: 'Raleway', sans-serif;
+}
+
+.reviewPageTitle {
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    color: #117F99;
 }
