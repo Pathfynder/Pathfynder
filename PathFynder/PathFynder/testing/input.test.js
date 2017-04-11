@@ -1,6 +1,16 @@
-console.log("Hello node");
-//import { Meteor } from 'meteor/meteor';
+console.log("Hello nodeAPPTEST");
+import { meteor } from 'meteor/meteor';
 CourseReview = new Mongo.Collection("testCourseReview");
+
+CourseReview.schema = new SimpleSchema({
+    course: {type: Meteor.Collection.ObjectID},
+    userId: {type: Meteor.Collection.ObjectID},
+    date: {type: Date},
+    review: {type: String},
+    difficultyRating: {type: Number},
+    workloadRating: {type: Number},
+    utilityRating: {type: Number}
+});
 
 describe("Course Reviews", function(){
   it("Successful addition of reviews to Courses", function() {
@@ -9,6 +19,7 @@ describe("Course Reviews", function(){
           course: i,
           userId: 1,
           date: new Date(),
+          //date: "teststuff",
           review: "This is test review number " + i,
           difficultyRating: 5,
           workloadRating: 5,
@@ -17,6 +28,7 @@ describe("Course Reviews", function(){
     };
     for(i = 0; i < 20; i++){
       var ret = CourseReview.findOne({"course": i});
+      console.log(ret);
       if (ret == undefined){
         throw 'CourseNotFoundError';
       };
@@ -24,7 +36,7 @@ describe("Course Reviews", function(){
     };
   });
 
-  it("Successful Removal of prebious reviews to Courses", function() {
+  it("Successful Removal of previous reviews to Courses", function() {
     //var ret = CourseReview.findOne({"course": i});
     for(i = 0; i < 20; i++){
       var ret = CourseReview.findOne({"course": i});
@@ -44,8 +56,23 @@ describe("Course Reviews", function(){
     };
   });
 
-
-
+  it("Garbage Entry Testing", function(){
+    CourseReview.insert({
+        course: 1,
+        userId: 1,
+        date: "test stuff",
+        review: i,
+        difficultyRating: 5,
+        workloadRating: 5,
+        utilityRating: "hello",
+        sample: "woooo"
+    });
+    var ret = CourseReview.findOne({"course": 1});
+    if (ret.utilityRating == "hello") throw 'failGarbageEntry';
+    console.log("newthing");
+    //console.log(ret);
+  })
+ 
 /*
   it("User Creation Verification", function(){
     console.log("Creating single user with proper entry syntax...");
@@ -54,7 +81,13 @@ describe("Course Reviews", function(){
     console.log("checking previously registered email error");
     var check1 = addUser("person@purdue.edu", "password");
     var user = meteor.users.findOne({"email": "person@purdue.edu"});
-    Meteor.user.remove(user._id);
+    Meteor.call('remove', user._id, function(error){
+        if(error) {
+            console.log("Something went wrong removing user", error);
+        } else {
+            console.log("Success");
+        }
+    });
     console.log("checking non '*purdue.edu' email error");
     var check2 = addUser("person@indana.edu", "password");
 
