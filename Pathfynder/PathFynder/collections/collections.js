@@ -12,7 +12,6 @@ ClubReview = new Mongo.Collection('clubReview');
 Departments = new Meteor.Collection('departments');
 Courses = new Meteor.Collection('courses');
 
-console.log("this is working");
 
 
 
@@ -34,7 +33,8 @@ CourseReview.schema = new SimpleSchema({
     review: {type: String},
     difficultyRating: {type: Number},
     workloadRating: {type: Number},
-    utilityRating: {type: Number}
+    utilityRating: {type: Number},
+    upvotes: {type: Number}
 });
 
 Internship.schema = new SimpleSchema({
