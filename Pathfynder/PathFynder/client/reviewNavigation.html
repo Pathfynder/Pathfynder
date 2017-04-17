@@ -454,6 +454,11 @@
         {{#each getReviews}}
             <div class = "reviewObject">
                 <p>{{this.date}}</p>
+                {{#if getUpvote}}
+                    {{> voted}}
+                {{else}}
+                    {{> unvoted}}
+                {{/if}}
                 <div class = "reviewDetails">
                     <p>{{printUsername}}</p>
                     <p>Difficulty: {{this.difficultyRating}}</p>
@@ -1153,4 +1158,12 @@
             </div>
         {{/each}}
     </div>
+</template>
+
+<template name="voted">
+    <img src="/clickedArrow.jpg" class="arrows">
+</template>
+
+<template name="unvoted">
+    <img src="/upArrow.jpg" class="arrows">
 </template>

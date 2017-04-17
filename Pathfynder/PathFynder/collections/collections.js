@@ -111,7 +111,6 @@ DiningReview.schema = new SimpleSchema({
 
 CourseVotes.schema = new SimpleSchema({
     userId: {type: Meteor.Collection.ObjectID},
-    courseId: {type: Meteor.Collection.ObjectID},
     reviewId: {type: Meteor.Collection.ObjectID}
 });
 

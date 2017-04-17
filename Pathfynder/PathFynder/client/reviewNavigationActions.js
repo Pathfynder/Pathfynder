@@ -549,6 +549,24 @@ Template.diningCourt.events({
     }
 });
 
+Template.voted.events({
+    'click .arrows': function(event) {
+        event.preventDefault();
+        var currentVote = CourseVotes.findOne({"userId": this.userId, "reviewId": this._id});
+        CourseVotes.remove(currentVote._id);
+    }
+});
+
+Template.unvoted.events({
+    'click .arrows': function(event) {
+        event.preventDefault();
+        CourseVotes.insert({
+            userId: this.userId,
+            reviewId: this._id
+        });
+    }
+});
+
 
 Template.internships.helpers({
     'queryAbbreviation': function() {
@@ -604,6 +622,16 @@ Template.departmentCourses.helpers({
         else {
             return "anonymous";
         }
+    },
+
+    getUpvote: function() {
+        var userId = this.userId;
+        var reviewId = this._id;
+        var upvoteStatus = CourseVotes.findOne({"userId": userId, "reviewId":reviewId});
+        if (upvoteStatus == undefined) {
+            return false;
+        }
+        return true;
     }
 });
 
