@@ -12,7 +12,11 @@ ClubReview = new Mongo.Collection('clubReview');
 Departments = new Meteor.Collection('departments');
 Courses = new Meteor.Collection('courses');
 
-
+CourseVotes = new Meteor.Collection('courseVotes');
+DiningVotes = new Meteor.Collection('diningVotes');
+InternshipVotes= new Meteor.Collection('IntershipVotes');
+ClubVotes = new Meteor.Collection('clubVotes');
+ResVotes = new Meteor.Collection('resVotes');
 
 
 //Schemas
@@ -103,4 +107,31 @@ DiningReview.schema = new SimpleSchema({
     healthRating: {type: Number},
     starRating: {type: Number},
     upvotes: {type: Number}
+});
+
+CourseVotes.schema = new SimpleSchema({
+    userId: {type: Meteor.Collection.ObjectID},
+    courseId: {type: Meteor.Collection.ObjectID},
+    reviewId: {type: Meteor.Collection.ObjectID}
+});
+
+DiningVotes.schema = new SimpleSchema({
+    userId: {type: Meteor.Collection.ObjectID},
+    courseId: {type: Meteor.Collection.ObjectID},
+    reviewId: {type: Meteor.Collection.ObjectID}
+});
+InternshipVotes.schema = new SimpleSchema({
+    userId: {type: Meteor.Collection.ObjectID},
+    courseId: {type: Meteor.Collection.ObjectID},
+    reviewId: {type: Meteor.Collection.ObjectID}
+});
+ClubVotes.schema = new SimpleSchema({
+    userId: {type: Meteor.Collection.ObjectID},
+    courseId: {type: Meteor.Collection.ObjectID},
+    reviewId: {type: Meteor.Collection.ObjectID}
+});
+ResVotes.schema = new SimpleSchema({
+    userId: {type: Meteor.Collection.ObjectID},
+    courseId: {type: Meteor.Collection.ObjectID},
+    reviewId: {type: Meteor.Collection.ObjectID}
 });
