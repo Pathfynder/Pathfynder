@@ -51,7 +51,8 @@ InternReview.schema = new SimpleSchema({
     review: {type: String},
     interviewRating: {type: Number},
     workloadRating: {type: Number},
-    utilityRating: {type: Number}
+    utilityRating: {type: Number},
+    upvotes: {type: Number}
 });
 
 ResHall.schema = new SimpleSchema({
@@ -65,7 +66,8 @@ ResReview.schema = new SimpleSchema({
     userId: {type: Meteor.Collection.ObjectID},
     date: {type: Date},
     review: {type: String},
-    starRating: {type: Number}
+    starRating: {type: Number},
+    upvotes: {type: Number}
 });
 
 Club.schema = new SimpleSchema({
@@ -80,7 +82,8 @@ ClubReview.schema = new SimpleSchema({
     date: {type: Date},
     review: {type: String},
     timeRating: {type: Number},
-    utilityRating: {type: Number}
+    utilityRating: {type: Number},
+    upvotes: {type: Number}
 });
 
 Dining.schema = new SimpleSchema({
@@ -98,5 +101,6 @@ DiningReview.schema = new SimpleSchema({
     review: {type: String},
     foodQualityRating: {type: Number},
     healthRating: {type: Number},
-    starRating: {type: Number}
+    starRating: {type: Number},
+    upvotes: {type: Number}
 });
