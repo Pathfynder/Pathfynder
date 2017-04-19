@@ -388,3 +388,8 @@
 .upvoteCounts {
     margin-top: -15px;
 }
+
+.deleteReviewButton {
+    background-color: red;
+    border-radius: 7px;
+}

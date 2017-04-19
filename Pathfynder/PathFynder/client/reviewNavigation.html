@@ -474,7 +474,7 @@
                     {{this.review}}
                 </div>
                 {{#if getAdmin}}
-                    {{> adminTemplate}} <!-- go to new template !-->
+                    {{> courseAdmin}}
                 {{/if}}
             </div>
         {{/each}}
@@ -1248,6 +1248,22 @@
     <img src="/upArrow.jpg" class="arrows">
 </template>
 
-<template name="adminTemplate">
-    <p>admin</p>
+<template name="courseAdmin">
+    <div class ="deleteReviewButton">delete</div>
+</template>
+
+<template name="internAdmin">
+    <div class ="deleteReviewButton">delete</div>
+</template>
+
+<template name="dormAdmin">
+    <div class ="deleteReviewButton">delete</div>
+</template>
+
+<template name="clubAdmin">
+    <div class ="deleteReviewButton">delete</div>
+</template>
+
+<template name="diningAdmin">
+    <div class ="deleteReviewButton">delete</div>
 </template>

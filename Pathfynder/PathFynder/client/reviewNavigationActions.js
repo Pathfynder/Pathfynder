@@ -639,6 +639,19 @@ Template.dormUnvoted.events({
     }
 });
 
+Template.courseAdmin.events({
+    'click .deleteReviewButton': function(event) {
+        console.log("pressed delete");
+        console.log(this);
+        event.preventDefault();
+        var userId = this.userId;
+        var dateId = this.date;
+        var removedReview = CourseReview.findOne({"userId": userId, "date":dateId});
+        console.log(removedReview);
+        CourseReview.remove(removedReview._id);
+    }
+});
+
 
 Template.internships.helpers({
     'queryAbbreviation': function() {
