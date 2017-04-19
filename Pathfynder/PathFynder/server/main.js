@@ -91,5 +91,6 @@ Accounts.onCreateUser(function(options, user) {
     user.profile.majorBool = 1;
     user.profile.usernameBool = 1;
     user.profile.gradDateBool = 1;
+    user.profile.administrator = 0;
     return user;
 });
