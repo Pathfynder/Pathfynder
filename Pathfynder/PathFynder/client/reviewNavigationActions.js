@@ -632,6 +632,15 @@ Template.departmentCourses.helpers({
             return false;
         }
         return true;
+    },
+
+    getAdmin: function() {
+        var userId = this.userId;
+        var user = Meteor.users.findOne(userId);
+        if (user.profile.administrator === 1) {
+            return true;
+        }
+        return false;
     }
 });
 

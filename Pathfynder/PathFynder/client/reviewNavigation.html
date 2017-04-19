@@ -468,6 +468,9 @@
                 <div class = "reviewText">
                     {{this.review}}
                 </div>
+                {{#if getAdmin}}
+                    {{> adminTemplate}} <!-- go to new template !-->
+                {{/if}}
             </div>
         {{/each}}
     </div>
@@ -1166,4 +1169,8 @@
 
 <template name="unvoted">
     <img src="/upArrow.jpg" class="arrows">
+</template>
+
+<template name="adminTemplate">
+    <p>admin</p>
 </template>
