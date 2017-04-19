@@ -707,12 +707,12 @@ Template.departmentCourses.helpers({
         return true;
     },
 
-<<<<<<< HEAD
     getUpvoteCount: function() {
         var reviewId = this._id;
         var reviewLength = CourseVotes.find({"reviewId": reviewId}).count();
         return reviewLength;
-=======
+
+    },
     getAdmin: function() {
         var userId = Meteor.userId;
         var user = Meteor.users.findOne(userId);
@@ -722,7 +722,6 @@ Template.departmentCourses.helpers({
             return false;
         }
         return true;
->>>>>>> 88c79354131229c9ca287dfb4d70fd45d4293f6a
     }
 });
 
