@@ -627,6 +627,7 @@ Template.departmentCourses.helpers({
     getUpvote: function() {
         var userId = this.userId;
         var reviewId = this._id;
+        console.log("HERE");
         var upvoteStatus = CourseVotes.findOne({"userId": userId, "reviewId":reviewId});
         if (upvoteStatus == undefined) {
             return false;
@@ -637,10 +638,11 @@ Template.departmentCourses.helpers({
     getAdmin: function() {
         var userId = Meteor.userId;
         var user = Meteor.users.findOne(userId);
-        if (user.profile.administrator === 1) {
-            return true;
+        console.log(user.emails[0].address);
+       if (AdminAccounts.findOne({"email": user.emails[0].address}) === undefined) {
+            return false;
         }
-        return false;
+        return true;
     }
 });
 
