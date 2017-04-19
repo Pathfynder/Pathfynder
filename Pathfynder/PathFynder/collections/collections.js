@@ -17,6 +17,7 @@ DiningVotes = new Meteor.Collection('diningVotes');
 InternshipVotes= new Meteor.Collection('IntershipVotes');
 ClubVotes = new Meteor.Collection('clubVotes');
 ResVotes = new Meteor.Collection('resVotes');
+AdminAccounts = new Meteor.Collection('adminAccount');
 
 
 //Schemas

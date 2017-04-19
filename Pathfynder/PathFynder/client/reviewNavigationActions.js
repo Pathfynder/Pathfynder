@@ -699,6 +699,7 @@ Template.departmentCourses.helpers({
     getUpvote: function() {
         var userId = this.userId;
         var reviewId = this._id;
+        console.log("HERE");
         var upvoteStatus = CourseVotes.findOne({"userId": userId, "reviewId":reviewId});
         if (upvoteStatus == undefined) {
             return false;
@@ -706,10 +707,22 @@ Template.departmentCourses.helpers({
         return true;
     },
 
+<<<<<<< HEAD
     getUpvoteCount: function() {
         var reviewId = this._id;
         var reviewLength = CourseVotes.find({"reviewId": reviewId}).count();
         return reviewLength;
+=======
+    getAdmin: function() {
+        var userId = Meteor.userId;
+        var user = Meteor.users.findOne(userId);
+        console.log(user.emails[0].address);
+      // if (AdminAccounts.findOne({"email": user.emails[0].address}) === undefined) {
+        if (user.profile.administrator == 0){
+            return false;
+        }
+        return true;
+>>>>>>> 88c79354131229c9ca287dfb4d70fd45d4293f6a
     }
 });
 
