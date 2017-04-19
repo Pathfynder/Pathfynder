@@ -635,7 +635,7 @@ Template.departmentCourses.helpers({
     },
 
     getAdmin: function() {
-        var userId = this.userId;
+        var userId = Meteor.userId;
         var user = Meteor.users.findOne(userId);
         if (user.profile.administrator === 1) {
             return true;
