@@ -552,7 +552,7 @@ Template.diningCourt.events({
 Template.courseVoted.events({
     'click .arrows': function(event) {
         event.preventDefault();
-        var courseVote = CourseVotes.findOne({"userId": Meteor.userId, "reviewId": this._id});
+        var courseVote = CourseVotes.findOne({"userId": Meteor.userId(), "reviewId": this._id});
         CourseVotes.remove(courseVote._id);
     }
 });
@@ -561,7 +561,7 @@ Template.courseUnvoted.events({
     'click .arrows': function(event) {
         event.preventDefault();
         CourseVotes.insert({
-            userId: Meteor.userId,
+            userId: Meteor.userId(),
             reviewId: this._id
         });
     }
@@ -570,7 +570,7 @@ Template.courseUnvoted.events({
 Template.internVoted.events({
     'click .arrows': function(event) {
         event.preventDefault();
-        var internVote = InternshipVotes.findOne({"userId": Meteor.userId, "reviewId": this._id});
+        var internVote = InternshipVotes.findOne({"userId": Meteor.userId(), "reviewId": this._id});
         InternshipVotes.remove(internVote._id);
     }
 });
@@ -579,7 +579,7 @@ Template.internUnvoted.events({
     'click .arrows': function(event) {
         event.preventDefault();
         InternshipVotes.insert({
-            userId: Meteor.userId,
+            userId: Meteor.userId(),
             reviewId: this._id
         });
     }
@@ -588,7 +588,7 @@ Template.internUnvoted.events({
 Template.clubVoted.events({
     'click .arrows': function(event) {
         event.preventDefault();
-        var clubVote = ClubVotes.findOne({"userId": Meteor.userId, "reviewId": this._id});
+        var clubVote = ClubVotes.findOne({"userId": Meteor.userId(), "reviewId": this._id});
         ClubVotes.remove(clubVote._id);
     }
 });
@@ -597,7 +597,7 @@ Template.clubUnvoted.events({
     'click .arrows': function(event) {
         event.preventDefault();
         ClubVotes.insert({
-            userId: Meteor.userId,
+            userId: Meteor.userId(),
             reviewId: this._id
         });
     }
@@ -606,7 +606,7 @@ Template.clubUnvoted.events({
 Template.diningVoted.events({
     'click .arrows': function(event) {
         event.preventDefault();
-        var diningVote = DiningVotes.findOne({"userId": Meteor.userId, "reviewId": this._id});
+        var diningVote = DiningVotes.findOne({"userId": Meteor.userId(), "reviewId": this._id});
         DiningVotes.remove(diningVote._id);
     }
 });
@@ -615,7 +615,7 @@ Template.diningUnvoted.events({
     'click .arrows': function(event) {
         event.preventDefault();
         DiningVotes.insert({
-            userId: Meteor.userId,
+            userId: Meteor.userId(),
             reviewId: this._id
         });
     }
@@ -624,7 +624,7 @@ Template.diningUnvoted.events({
 Template.dormVoted.events({
     'click .arrows': function(event) {
         event.preventDefault();
-        var dormVote = ResVotes.findOne({"userId": Meteor.userId, "reviewId": this._id});
+        var dormVote = ResVotes.findOne({"userId": Meteor.userId(), "reviewId": this._id});
         ResVotes.remove(dormVote._id);
     }
 });
@@ -633,7 +633,7 @@ Template.dormUnvoted.events({
     'click .arrows': function(event) {
         event.preventDefault();
         ResVotes.insert({
-            userId: Meteor.userId,
+            userId: Meteor.userId(),
             reviewId: this._id
         });
     }
@@ -696,10 +696,9 @@ Template.departmentCourses.helpers({
         }
     },
 
-    getUpvote: function() {
-        var userId = this.userId;
+    getCourseUpvote: function() {
+        var userId = Meteor.userId();
         var reviewId = this._id;
-        console.log("HERE");
         var upvoteStatus = CourseVotes.findOne({"userId": userId, "reviewId":reviewId});
         if (upvoteStatus == undefined) {
             return false;
@@ -714,9 +713,9 @@ Template.departmentCourses.helpers({
 
     },
     getAdmin: function() {
-        var userId = Meteor.userId;
+        var userId = Meteor.userId; //try Meteor.userId()
         var user = Meteor.users.findOne(userId);
-        console.log(user.emails[0].address);
+       // console.log(user.emails[0].address);
       // if (AdminAccounts.findOne({"email": user.emails[0].address}) === undefined) {
         if (user.profile.administrator == 0){
             return false;
@@ -766,7 +765,7 @@ Template.internship.helpers({
     },
 
     getUpvote: function() {
-        var userId = this.userId;
+        var userId = Meteor.userId();
         var reviewId = this._id;
         var upvoteStatus = InternshipVotes.findOne({"userId": userId, "reviewId":reviewId});
         if (upvoteStatus == undefined) {
@@ -811,7 +810,7 @@ Template.club.helpers({
     },
 
     getUpvote: function() {
-        var userId = this.userId;
+        var userId = Meteor.userId();
         var reviewId = this._id;
         var upvoteStatus = ClubVotes.findOne({"userId": userId, "reviewId":reviewId});
         if (upvoteStatus == undefined) {
@@ -854,7 +853,7 @@ Template.dorm.helpers({
     },
 
     getUpvote: function() {
-        var userId = this.userId;
+        var userId = Meteor.userId();
         var reviewId = this._id;
         var upvoteStatus = ResVotes.findOne({"userId": userId, "reviewId":reviewId});
         if (upvoteStatus == undefined) {
@@ -897,7 +896,7 @@ Template.diningCourt.helpers({
     },
 
     getUpvote: function() {
-        var userId = this.userId;
+        var userId = Meteor.userId();
         var reviewId = this._id;
         var upvoteStatus = DiningVotes.findOne({"userId": userId, "reviewId":reviewId});
         if (upvoteStatus == undefined) {
