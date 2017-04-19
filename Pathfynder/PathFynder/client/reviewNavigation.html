@@ -454,12 +454,16 @@
         {{#each getReviews}}
             <div class = "reviewObject">
                 <p>{{this.date}}</p>
-                {{#if getCourseUpvote}}
-                    {{> courseVoted}}
-                {{else}}
-                    {{> courseUnvoted}}
-                {{/if}}
-                {{getUpvoteCount}}
+                <div class="upvotes">
+                    {{#if getCourseUpvote}}
+                        {{> courseVoted}}
+                    {{else}}
+                        {{> courseUnvoted}}
+                    {{/if}}
+                    <div class="upvoteCounts">
+                        {{getUpvoteCount}}
+                    </div>
+                </div>
                 <div class = "reviewDetails">
                     <p>{{printUsername}}</p>
                     <p>Difficulty: {{this.difficultyRating}}</p>
@@ -637,12 +641,16 @@
         {{#each getReviews}}
             <div class = "reviewObject">
                 <p>{{this.date}}</p>
-                {{#if getUpvote}}
-                    {{> diningVoted}}
-                {{else}}
-                    {{> diningUnvoted}}
-                {{/if}}
-                {{getUpvoteCount}}
+                <div class="upvotes">
+                    {{#if getUpvote}}
+                        {{> diningVoted}}
+                    {{else}}
+                        {{> diningUnvoted}}
+                    {{/if}}
+                    <div class="upvoteCounts">
+                        {{getUpvoteCount}}
+                    </div>
+                </div>
                 <div class = "reviewDetails">
                     <p>{{printUsername}}</p>
                     <p>Star Rating: {{this.starRating}}</p>
@@ -800,12 +808,16 @@
         {{#each getReviews}}
             <div class = "reviewObject">
                 <p>{{this.date}}</p>
-                {{#if getUpvote}}
-                    {{> dormVoted}}
-                {{else}}
-                    {{> dormUnvoted}}
-                {{/if}}
-                {{getUpvoteCount}}
+                <div class="upvotes">
+                    {{#if getUpvote}}
+                        {{> dormVoted}}
+                    {{else}}
+                        {{> dormUnvoted}}
+                    {{/if}}
+                    <div class="upvoteCounts">
+                        {{getUpvoteCount}}
+                    </div>
+                </div>
                 <div class = "reviewDetails">
                     <p>{{printUsername}}</p>
                     <p>Star Rating: {{this.starRating}}</p>
@@ -975,12 +987,16 @@
         {{#each getReviews}}
             <div class = "reviewObject">
                 <p>{{this.date}}</p>
-                {{#if getUpvote}}
-                    {{> clubVoted}}
-                {{else}}
-                    {{> clubUnvoted}}
-                {{/if}}
-                {{getUpvoteCount}}
+                <div class="upvotes">
+                    {{#if getUpvote}}
+                        {{> clubVoted}}
+                    {{else}}
+                        {{> clubUnvoted}}
+                    {{/if}}
+                    <div class="upvoteCounts">
+                        {{getUpvoteCount}}
+                    </div>
+                </div>
                 <div class = "reviewDetails">
                     <p>{{printUsername}}</p>
                     <p>Time Commitment: {{this.timeRating}}</p>
@@ -1168,12 +1184,16 @@
         {{#each getReviews}}
             <div class = "reviewObject">
                 <p>{{this.date}}</p>
-                {{#if getUpvote}}
-                    {{> internVoted}}
-                {{else}}
-                    {{> internUnvoted}}
-                {{/if}}
-                {{getUpvoteCount}}
+                <div class="upvotes">
+                    {{#if getUpvote}}
+                        {{> internVoted}}
+                    {{else}}
+                        {{> internUnvoted}}
+                    {{/if}}
+                    <div class="upvoteCounts">
+                        {{getUpvoteCount}}
+                    </div>
+                </div>
                 <div class = "reviewDetails">
                     <p>{{printUsername}}</p>
                     <p>Interview: {{this.interviewRating}}</p>
