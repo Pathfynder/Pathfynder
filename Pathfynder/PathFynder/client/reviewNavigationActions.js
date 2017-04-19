@@ -732,6 +732,14 @@ Template.departmentCourses.helpers({
             return false;
         }
         return true;
+    },
+    getCurrentUser: function() {
+        var userId = Meteor.userId();
+        var user = this.userId;
+        if (user === userId) {
+            return true;
+        }
+        return false;
     }
 });
 
