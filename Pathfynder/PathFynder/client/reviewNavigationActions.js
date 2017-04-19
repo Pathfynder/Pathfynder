@@ -639,7 +639,7 @@ Template.dormUnvoted.events({
     }
 });
 
-Template.courseAdmin.events({
+Template.coursesDelete.events({
     'click .deleteReviewButton': function(event) {
         console.log("pressed delete");
         console.log(this);
@@ -725,6 +725,7 @@ Template.departmentCourses.helpers({
         return reviewLength;
 
     },
+
     getAdmin: function() {
         var userId = Meteor.userId();
         var user = Meteor.users.findOne(userId);
@@ -733,6 +734,7 @@ Template.departmentCourses.helpers({
         }
         return true;
     },
+
     getCurrentUser: function() {
         var userId = Meteor.userId();
         var user = this.userId;
@@ -929,4 +931,8 @@ Template.diningCourt.helpers({
         var reviewLength = DiningVotes.find({"reviewId": reviewId}).count();
         return reviewLength;
     }
+});
+
+Template.registerHelper('or',(a,b)=>{
+    return a || b;
 });

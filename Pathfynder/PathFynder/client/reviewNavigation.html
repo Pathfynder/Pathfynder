@@ -474,7 +474,11 @@
                     {{this.review}}
                 </div>
                 {{#if getAdmin}}
-                    {{> courseAdmin}}
+                    {{> coursesDelete}}
+                {{else}}
+                    {{#if getCurrentUser}}
+                        {{>coursesDelete}}
+                    {{/if}}
                 {{/if}}
             </div>
         {{/each}}
@@ -1248,22 +1252,7 @@
     <img src="/upArrow.jpg" class="arrows">
 </template>
 
-<template name="courseAdmin">
+<template name="coursesDelete">
     <div class ="deleteReviewButton">delete</div>
 </template>
 
-<template name="internAdmin">
-    <div class ="deleteReviewButton">delete</div>
-</template>
-
-<template name="dormAdmin">
-    <div class ="deleteReviewButton">delete</div>
-</template>
-
-<template name="clubAdmin">
-    <div class ="deleteReviewButton">delete</div>
-</template>
-
-<template name="diningAdmin">
-    <div class ="deleteReviewButton">delete</div>
-</template>
