@@ -713,10 +713,8 @@ Template.departmentCourses.helpers({
 
     },
     getAdmin: function() {
-        var userId = Meteor.userId; //try Meteor.userId()
+        var userId = Meteor.userId();
         var user = Meteor.users.findOne(userId);
-       // console.log(user.emails[0].address);
-      // if (AdminAccounts.findOne({"email": user.emails[0].address}) === undefined) {
         if (user.profile.administrator == 0){
             return false;
         }
