@@ -455,10 +455,11 @@
             <div class = "reviewObject">
                 <p>{{this.date}}</p>
                 {{#if getUpvote}}
-                    {{> voted}}
+                    {{> courseVoted}}
                 {{else}}
-                    {{> unvoted}}
+                    {{> courseUnvoted}}
                 {{/if}}
+                {{getUpvoteCount}}
                 <div class = "reviewDetails">
                     <p>{{printUsername}}</p>
                     <p>Difficulty: {{this.difficultyRating}}</p>
@@ -633,6 +634,12 @@
         {{#each getReviews}}
             <div class = "reviewObject">
                 <p>{{this.date}}</p>
+                {{#if getUpvote}}
+                    {{> diningVoted}}
+                {{else}}
+                    {{> diningUnvoted}}
+                {{/if}}
+                {{getUpvoteCount}}
                 <div class = "reviewDetails">
                     <p>{{printUsername}}</p>
                     <p>Star Rating: {{this.starRating}}</p>
@@ -790,6 +797,12 @@
         {{#each getReviews}}
             <div class = "reviewObject">
                 <p>{{this.date}}</p>
+                {{#if getUpvote}}
+                    {{> dormVoted}}
+                {{else}}
+                    {{> dormUnvoted}}
+                {{/if}}
+                {{getUpvoteCount}}
                 <div class = "reviewDetails">
                     <p>{{printUsername}}</p>
                     <p>Star Rating: {{this.starRating}}</p>
@@ -959,6 +972,12 @@
         {{#each getReviews}}
             <div class = "reviewObject">
                 <p>{{this.date}}</p>
+                {{#if getUpvote}}
+                    {{> clubVoted}}
+                {{else}}
+                    {{> clubUnvoted}}
+                {{/if}}
+                {{getUpvoteCount}}
                 <div class = "reviewDetails">
                     <p>{{printUsername}}</p>
                     <p>Time Commitment: {{this.timeRating}}</p>
@@ -1146,6 +1165,12 @@
         {{#each getReviews}}
             <div class = "reviewObject">
                 <p>{{this.date}}</p>
+                {{#if getUpvote}}
+                    {{> internVoted}}
+                {{else}}
+                    {{> internUnvoted}}
+                {{/if}}
+                {{getUpvoteCount}}
                 <div class = "reviewDetails">
                     <p>{{printUsername}}</p>
                     <p>Interview: {{this.interviewRating}}</p>
@@ -1160,10 +1185,42 @@
     </div>
 </template>
 
-<template name="voted">
+<template name="courseVoted">
     <img src="/clickedArrow.jpg" class="arrows">
 </template>
 
-<template name="unvoted">
+<template name="courseUnvoted">
+    <img src="/upArrow.jpg" class="arrows">
+</template>
+
+<template name="internVoted">
+    <img src="/clickedArrow.jpg" class="arrows">
+</template>
+
+<template name="internUnvoted">
+    <img src="/upArrow.jpg" class="arrows">
+</template>
+
+<template name="dormVoted">
+    <img src="/clickedArrow.jpg" class="arrows">
+</template>
+
+<template name="dormUnvoted">
+    <img src="/upArrow.jpg" class="arrows">
+</template>
+
+<template name="clubVoted">
+    <img src="/clickedArrow.jpg" class="arrows">
+</template>
+
+<template name="clubUnvoted">
+    <img src="/upArrow.jpg" class="arrows">
+</template>
+
+<template name="diningVoted">
+    <img src="/clickedArrow.jpg" class="arrows">
+</template>
+
+<template name="diningUnvoted">
     <img src="/upArrow.jpg" class="arrows">
 </template>

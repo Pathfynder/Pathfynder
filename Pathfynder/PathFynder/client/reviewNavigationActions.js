@@ -549,18 +549,90 @@ Template.diningCourt.events({
     }
 });
 
-Template.voted.events({
+Template.courseVoted.events({
     'click .arrows': function(event) {
         event.preventDefault();
-        var currentVote = CourseVotes.findOne({"userId": this.userId, "reviewId": this._id});
-        CourseVotes.remove(currentVote._id);
+        var courseVote = CourseVotes.findOne({"userId": this.userId, "reviewId": this._id});
+        CourseVotes.remove(courseVote._id);
     }
 });
 
-Template.unvoted.events({
+Template.courseUnvoted.events({
     'click .arrows': function(event) {
         event.preventDefault();
         CourseVotes.insert({
+            userId: this.userId,
+            reviewId: this._id
+        });
+    }
+});
+
+Template.internVoted.events({
+    'click .arrows': function(event) {
+        event.preventDefault();
+        var internVote = InternshipVotes.findOne({"userId": this.userId, "reviewId": this._id});
+        InternshipVotes.remove(internVote._id);
+    }
+});
+
+Template.internUnvoted.events({
+    'click .arrows': function(event) {
+        event.preventDefault();
+        InternshipVotes.insert({
+            userId: this.userId,
+            reviewId: this._id
+        });
+    }
+});
+
+Template.clubVoted.events({
+    'click .arrows': function(event) {
+        event.preventDefault();
+        var clubVote = ClubVotes.findOne({"userId": this.userId, "reviewId": this._id});
+        ClubVotes.remove(clubVote._id);
+    }
+});
+
+Template.clubUnvoted.events({
+    'click .arrows': function(event) {
+        event.preventDefault();
+        ClubVotes.insert({
+            userId: this.userId,
+            reviewId: this._id
+        });
+    }
+});
+
+Template.diningVoted.events({
+    'click .arrows': function(event) {
+        event.preventDefault();
+        var diningVote = DiningVotes.findOne({"userId": this.userId, "reviewId": this._id});
+        DiningVotes.remove(diningVote._id);
+    }
+});
+
+Template.diningUnvoted.events({
+    'click .arrows': function(event) {
+        event.preventDefault();
+        DiningVotes.insert({
+            userId: this.userId,
+            reviewId: this._id
+        });
+    }
+});
+
+Template.dormVoted.events({
+    'click .arrows': function(event) {
+        event.preventDefault();
+        var dormVote = ResVotes.findOne({"userId": this.userId, "reviewId": this._id});
+        ResVotes.remove(dormVote._id);
+    }
+});
+
+Template.dormUnvoted.events({
+    'click .arrows': function(event) {
+        event.preventDefault();
+        ResVotes.insert({
             userId: this.userId,
             reviewId: this._id
         });
@@ -632,6 +704,12 @@ Template.departmentCourses.helpers({
             return false;
         }
         return true;
+    },
+
+    getUpvoteCount: function() {
+        var reviewId = this._id;
+        var reviewLength = CourseVotes.find({"reviewId": reviewId}).count();
+        return reviewLength;
     }
 });
 
@@ -673,6 +751,24 @@ Template.internship.helpers({
         else {
             return "anonymous";
         }
+    },
+
+    getUpvote: function() {
+        var userId = this.userId;
+        var reviewId = this._id;
+        var upvoteStatus = InternshipVotes.findOne({"userId": userId, "reviewId":reviewId});
+        if (upvoteStatus == undefined) {
+            console.log("false");
+            return false;
+        }
+        console.log("true");
+        return true;
+    },
+
+    getUpvoteCount: function() {
+        var reviewId = this._id;
+        var reviewLength = InternshipVotes.find({"reviewId": reviewId}).count();
+        return reviewLength;
     }
 });
 
@@ -700,6 +796,22 @@ Template.club.helpers({
         else {
             return "anonymous";
         }
+    },
+
+    getUpvote: function() {
+        var userId = this.userId;
+        var reviewId = this._id;
+        var upvoteStatus = ClubVotes.findOne({"userId": userId, "reviewId":reviewId});
+        if (upvoteStatus == undefined) {
+            return false;
+        }
+        return true;
+    },
+
+    getUpvoteCount: function() {
+        var reviewId = this._id;
+        var reviewLength = ClubVotes.find({"reviewId": reviewId}).count();
+        return reviewLength;
     }
 });
 
@@ -727,6 +839,22 @@ Template.dorm.helpers({
         else {
             return "anonymous";
         }
+    },
+
+    getUpvote: function() {
+        var userId = this.userId;
+        var reviewId = this._id;
+        var upvoteStatus = ResVotes.findOne({"userId": userId, "reviewId":reviewId});
+        if (upvoteStatus == undefined) {
+            return false;
+        }
+        return true;
+    },
+
+    getUpvoteCount: function() {
+        var reviewId = this._id;
+        var reviewLength = ResVotes.find({"reviewId": reviewId}).count();
+        return reviewLength;
     }
 });
 
@@ -754,5 +882,21 @@ Template.diningCourt.helpers({
         else {
             return "anonymous";
         }
+    },
+
+    getUpvote: function() {
+        var userId = this.userId;
+        var reviewId = this._id;
+        var upvoteStatus = DiningVotes.findOne({"userId": userId, "reviewId":reviewId});
+        if (upvoteStatus == undefined) {
+            return false;
+        }
+        return true;
+    },
+
+    getUpvoteCount: function() {
+        var reviewId = this._id;
+        var reviewLength = DiningVotes.find({"reviewId": reviewId}).count();
+        return reviewLength;
     }
 });
