@@ -239,8 +239,8 @@
     height: 80%;
     width: 80%;
     border-radius: 7px;
-    float: right;
     margin-top: 10px;
+    float: right;
 }
 
 .Modal {
@@ -392,11 +392,20 @@
 .deleteReviewButton {
     background-color: #CB2B68;
     border-radius: 7px;
+    width: 70px;
+    float: right;
+    text-align: center;
+    margin-top: -180px;
 }
 
 .editReviewButton {
     background-color: #23CBF2;
     border-radius: 7px;
+    width: 70px;
+    text-align: center;
+    float: right;
+    margin-top: -180px;
+    margin-right: 70px;
 }
 
 .editModal {
