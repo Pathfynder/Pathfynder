@@ -242,7 +242,7 @@ Template.departmentCourses.events({
         difficulty.value = reviewBeingEdited.difficultyRating;
         utility.value = reviewBeingEdited.utilityRating;
         modal.style.display = 'block';
-        thisStorage = this;
+        editCourseThisStorage = this;
         console.log(this);
         console.log(reviewBeingEdited);
     },
@@ -281,12 +281,12 @@ Template.departmentCourses.events({
 
     'submit .editReview': function(event, template) {
         event.preventDefault();
-        console.log(thisStorage);
+        console.log(editCourseThisStorage);
         var reviewText = event.target.editReview.value;
         var difficulty = event.target.difficulty.value;
         var workload = event.target.workload.value;
         var utility = event.target.utility.value;
-        CourseReview.update(thisStorage._id, {
+        CourseReview.update(editCourseThisStorage._id, {
             $set: {"review": reviewText, "difficultyRating": difficulty, "workloadRating": workload, "utilityRating": utility}
         });
 
@@ -409,7 +409,7 @@ Template.internship.events({
         workload.value = 1;
     },
 
-    'submit form': function(event, template) {
+    'submit .makeReview': function(event, template) {
         event.preventDefault();
         var reviewText = event.target.makeReview.value;
         var interview = event.target.interview.value;
@@ -433,6 +433,43 @@ Template.internship.events({
         event.target.interview.value = 1;
         event.target.utility.value = 1;
         event.target.workload.value = 1;
+    },
+
+    'click .editReviewButton': function(event, template) {
+        event.preventDefault();
+        // var reviewBeingEdited = CourseReview.findOne({"userId": this.userId, "date": this.date, "review": this.review, "difficultyRating": this.difficultyRating, "workloadRating": this.workloadRating, "utilityRating": this.utilityRating});
+        var modal = template.find('.editModal');
+        var textField = template.find('.editReviewText');
+        var workload = template.find('#editInternWorkload');
+        var interview = template.find('#editInternInterview');
+        var utility = template.find('#editInternUtility');
+        textField.value = this.review;
+        workload.value = this.workloadRating;
+        interview.value = this.interviewRating;
+        utility.value = this.utilityRating;
+        modal.style.display = 'block';
+        editInternshipThisStorage = this;
+        console.log(this);
+    },
+
+    'click .editclose': function(event, template) {
+        event.preventDefault();
+        var modal = template.find('.editModal');
+        modal.style.display = "none";
+    },
+
+    'submit .editReview': function(event, template) {
+        event.preventDefault();
+        var reviewText = event.target.editReview.value;
+        var interview = event.target.interview.value;
+        var workload = event.target.workload.value;
+        var utility = event.target.utility.value;
+        InternReview.update(editInternshipThisStorage._id, {
+            $set: {"review": reviewText, "interviewRating": interview, "workloadRating": workload, "utilityRating": utility}
+        });
+
+        var modal = template.find('.editModal');
+        modal.style.display = "none";
     }
 });
 
@@ -461,7 +498,7 @@ Template.club.events({
         utility.value = 1;
     },
 
-    'submit form' :function(event, template) {
+    'submit .makeReview' :function(event, template) {
         event.preventDefault();
         var reviewText = event.target.makeReview.value;
         var timeRating = event.target.time.value;
@@ -482,6 +519,40 @@ Template.club.events({
         event.target.makeReview.value = "";
         event.target.time.value = 1;
         event.target.utility.value = 1;
+    },
+
+    'click .editReviewButton': function(event, template) {
+        event.preventDefault();
+        // var reviewBeingEdited = CourseReview.findOne({"userId": this.userId, "date": this.date, "review": this.review, "difficultyRating": this.difficultyRating, "workloadRating": this.workloadRating, "utilityRating": this.utilityRating});
+        var modal = template.find('.editModal');
+        var textField = template.find('.editReviewText');
+        var time = template.find('#editClubTime');
+        var utility = template.find('#editClubUtility');
+        textField.value = this.review;
+        time.value = this.timeRating;
+        utility.value = this.utilityRating;
+        modal.style.display = 'block';
+        editClubThisStorage = this;
+        console.log(this);
+    },
+
+    'click .editclose': function(event, template) {
+        event.preventDefault();
+        var modal = template.find('.editModal');
+        modal.style.display = "none";
+    },
+
+    'submit .editReview': function(event, template) {
+        event.preventDefault();
+        var reviewText = event.target.editReview.value;
+        var time = event.target.time.value;
+        var utility = event.target.utility.value;
+        ClubReview.update(editClubThisStorage._id, {
+            $set: {"review": reviewText, "timeRating": time,"utilityRating": utility}
+        });
+
+        var modal = template.find('.editModal');
+        modal.style.display = "none";
     }
 });
 
@@ -510,7 +581,7 @@ Template.dorm.events({
         star.value = 1;
     },
 
-    'submit form' :function(event, template) {
+    'submit .makeReview' :function(event, template) {
         event.preventDefault();
         var reviewText = event.target.makeReview.value;
         //var location = event.target.location.value;
@@ -528,8 +599,38 @@ Template.dorm.events({
         var modal = template.find('.Modal');
         modal.style.display = "none";
         event.target.makeReview.value = "";
-        event.target.location.value = "";
         event.target.star.value = 1;
+    },
+
+    'click .editReviewButton': function(event, template) {
+        event.preventDefault();
+        // var reviewBeingEdited = CourseReview.findOne({"userId": this.userId, "date": this.date, "review": this.review, "difficultyRating": this.difficultyRating, "workloadRating": this.workloadRating, "utilityRating": this.utilityRating});
+        var modal = template.find('.editModal');
+        var textField = template.find('.editReviewText');
+        var star = template.find('#editDormStar');
+        textField.value = this.review;
+        star.value = this.starRating;
+        modal.style.display = 'block';
+        editDormThisStorage = this;
+        console.log(this);
+    },
+
+    'click .editclose': function(event, template) {
+        event.preventDefault();
+        var modal = template.find('.editModal');
+        modal.style.display = "none";
+    },
+
+    'submit .editReview': function(event, template) {
+        event.preventDefault();
+        var reviewText = event.target.editReview.value;
+        var star = event.target.star.value;
+        ResReview.update(editDormThisStorage._id, {
+            $set: {"review": reviewText, "starRating": star}
+        });
+
+        var modal = template.find('.editModal');
+        modal.style.display = "none";
     }
 });
 
@@ -560,7 +661,7 @@ Template.diningCourt.events({
         star.value = 1;
     },
 
-    'submit form' : function(event, template) {
+    'submit .makeReview' : function(event, template) {
       event.preventDefault();
         var reviewText = event.target.makeReview.value;
         var foodQuality = event.target.foodQuality.value;
@@ -584,6 +685,44 @@ Template.diningCourt.events({
         event.target.foodQuality.value = 1;
         event.target.health.value = 1;
         event.target.star.value = 1;
+    },
+
+    'click .editReviewButton': function(event, template) {
+        event.preventDefault();
+        console.log(this);
+        // var reviewBeingEdited = CourseReview.findOne({"userId": this.userId, "date": this.date, "review": this.review, "difficultyRating": this.difficultyRating, "workloadRating": this.workloadRating, "utilityRating": this.utilityRating});
+        var modal = template.find('.editModal');
+        var textField = template.find('.editReviewText');
+        var quality = template.find('#editDiningQuality');
+        var health = template.find('#editDiningHealth');
+        var star = template.find('#editDiningStar');
+        textField.value = this.review;
+        quality.value = this.foodQualityRating;
+        health.value = this.healthRating;
+        star.value = this.starRating;
+        modal.style.display = 'block';
+        editDiningThisStorage = this;
+
+    },
+
+    'click .editclose': function(event, template) {
+        event.preventDefault();
+        var modal = template.find('.editModal');
+        modal.style.display = "none";
+    },
+
+    'submit .editReview': function(event, template) {
+        event.preventDefault();
+        var reviewText = event.target.editReview.value;
+        var quality = event.target.foodQuality.value;
+        var health = event.target.health.value;
+        var star = event.target.star.value;
+        DiningReview.update(editDiningThisStorage._id, {
+            $set: {"review": reviewText, "foodQualityRating": quality, "healthRating": health, "starRating": star}
+        });
+
+        var modal = template.find('.editModal');
+        modal.style.display = "none";
     }
 });
 
@@ -687,26 +826,43 @@ Template.coursesDelete.events({
     }
 });
 
-Template.coursesEdit.events({
-   'click .editReviewButton': function(event, template) {
-       console.log("pressed edit");
-       event.preventDefault();
-       var modal = template.find('.editModal');
-       modal.style.display = 'block';
-   },
-
-    'click .close' : function(event, template) {
+Template.internshipsDelete.events({
+    'click .deleteReviewButton': function(event) {
         event.preventDefault();
-        var modal = template.find('.editModal');
-        modal.style.display = "none";
-        var textField = template.find('.inputReviewText');
-        var workload = template.find('#courseWorkload');
-        var difficulty = template.find('#courseDifficulty');
-        var utility = template.find('#courseUtility');
-        textField.value = "";
-        workload.value = 1;
-        difficulty.value = 1;
-        utility.value = 1;
+        var userId = this.userId;
+        var dateId = this.date;
+        var removedReview = InternReview.findOne({"userId": userId, "date":dateId});
+        InternReview.remove(removedReview._id);
+    }
+});
+
+Template.clubsDelete.events({
+    'click .deleteReviewButton': function(event) {
+        event.preventDefault();
+        var userId = this.userId;
+        var dateId = this.date;
+        var removedReview = ClubReview.findOne({"userId": userId, "date":dateId});
+        ClubReview.remove(removedReview._id);
+    }
+});
+
+Template.diningDelete.events({
+    'click .deleteReviewButton': function(event) {
+        event.preventDefault();
+        var userId = this.userId;
+        var dateId = this.date;
+        var removedReview = DiningReview.findOne({"userId": userId, "date":dateId});
+        DiningReview.remove(removedReview._id);
+    }
+});
+
+Template.dormsDelete.events({
+    'click .deleteReviewButton': function(event) {
+        event.preventDefault();
+        var userId = this.userId;
+        var dateId = this.date;
+        var removedReview = ResReview.findOne({"userId": userId, "date":dateId});
+        ResReview.remove(removedReview._id);
     }
 });
 
@@ -854,7 +1010,25 @@ Template.internship.helpers({
         var reviewId = this._id;
         var reviewLength = InternshipVotes.find({"reviewId": reviewId}).count();
         return reviewLength;
-    }
+    },
+
+    getAdmin: function() {
+        var userId = Meteor.userId();
+        var user = Meteor.users.findOne(userId);
+        if (user.profile.administrator == 0){
+            return false;
+        }
+        return true;
+    },
+
+    getCurrentUser: function() {
+        var userId = Meteor.userId();
+        var user = this.userId;
+        if (user === userId) {
+            return true;
+        }
+        return false;
+    },
 });
 
 Template.club.helpers({
@@ -897,7 +1071,25 @@ Template.club.helpers({
         var reviewId = this._id;
         var reviewLength = ClubVotes.find({"reviewId": reviewId}).count();
         return reviewLength;
-    }
+    },
+
+    getAdmin: function() {
+        var userId = Meteor.userId();
+        var user = Meteor.users.findOne(userId);
+        if (user.profile.administrator == 0){
+            return false;
+        }
+        return true;
+    },
+
+    getCurrentUser: function() {
+        var userId = Meteor.userId();
+        var user = this.userId;
+        if (user === userId) {
+            return true;
+        }
+        return false;
+    },
 });
 
 Template.dorm.helpers({
@@ -940,7 +1132,25 @@ Template.dorm.helpers({
         var reviewId = this._id;
         var reviewLength = ResVotes.find({"reviewId": reviewId}).count();
         return reviewLength;
-    }
+    },
+
+    getAdmin: function() {
+        var userId = Meteor.userId();
+        var user = Meteor.users.findOne(userId);
+        if (user.profile.administrator == 0){
+            return false;
+        }
+        return true;
+    },
+
+    getCurrentUser: function() {
+        var userId = Meteor.userId();
+        var user = this.userId;
+        if (user === userId) {
+            return true;
+        }
+        return false;
+    },
 });
 
 Template.diningCourt.helpers({
@@ -983,9 +1193,23 @@ Template.diningCourt.helpers({
         var reviewId = this._id;
         var reviewLength = DiningVotes.find({"reviewId": reviewId}).count();
         return reviewLength;
-    }
-});
+    },
 
-Template.registerHelper('or',(a,b)=>{
-    return a || b;
+    getAdmin: function() {
+        var userId = Meteor.userId();
+        var user = Meteor.users.findOne(userId);
+        if (user.profile.administrator == 0){
+            return false;
+        }
+        return true;
+    },
+
+    getCurrentUser: function() {
+        var userId = Meteor.userId();
+        var user = this.userId;
+        if (user === userId) {
+            return true;
+        }
+        return false;
+    },
 });
