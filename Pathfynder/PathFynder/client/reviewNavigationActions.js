@@ -229,7 +229,31 @@ Template.departmentCourses.events({
         utility.value = 1;
     },
 
-    'submit form': function(event, template) {
+    'click .editReviewButton': function(event, template) {
+        event.preventDefault();
+        var reviewBeingEdited = CourseReview.findOne({"userId": this.userId, "date": this.date, "review": this.review, "difficultyRating": this.difficultyRating, "workloadRating": this.workloadRating, "utilityRating": this.utilityRating});
+        var modal = template.find('.editModal');
+        var textField = template.find('.editReviewText');
+        var workload = template.find('#editCourseWorkload');
+        var difficulty = template.find('#editCourseDifficulty');
+        var utility = template.find('#editCourseUtility');
+        textField.value = reviewBeingEdited.review;
+        workload.value = reviewBeingEdited.workloadRating;
+        difficulty.value = reviewBeingEdited.difficultyRating;
+        utility.value = reviewBeingEdited.utilityRating;
+        modal.style.display = 'block';
+        thisStorage = this;
+        console.log(this);
+        console.log(reviewBeingEdited);
+    },
+
+    'click .editclose': function(event, template) {
+        event.preventDefault();
+        var modal = template.find('.editModal');
+        modal.style.display = "none";
+    },
+
+    'submit .makeReview': function(event, template) {
         event.preventDefault();
         var reviewText = event.target.makeReview.value;
         var difficulty = event.target.difficulty.value;
@@ -253,8 +277,24 @@ Template.departmentCourses.events({
         event.target.difficulty.value = 1;
         event.target.workload.value = 1;
         event.target.utility.value = 1;
+    },
+
+    'submit .editReview': function(event, template) {
+        event.preventDefault();
+        console.log(thisStorage);
+        var reviewText = event.target.editReview.value;
+        var difficulty = event.target.difficulty.value;
+        var workload = event.target.workload.value;
+        var utility = event.target.utility.value;
+        CourseReview.update(thisStorage._id, {
+            $set: {"review": reviewText, "difficultyRating": difficulty, "workloadRating": workload, "utilityRating": utility}
+        });
+
+        var modal = template.find('.editModal');
+        modal.style.display = "none";
     }
 });
+
 
 Template.diningCourts.events({
     'click .logout': function(event) {
@@ -378,7 +418,6 @@ Template.internship.events({
         var currentUser = Meteor.userId();
         var currentDate = new Date();
         var internshipId = Internship.findOne({"name": this.toString()})._id;
-        console.log(internshipId);
         InternReview.insert({
             internship: internshipId,
             userId: currentUser,
@@ -473,7 +512,6 @@ Template.dorm.events({
 
     'submit form' :function(event, template) {
         event.preventDefault();
-        console.log("made it here");
         var reviewText = event.target.makeReview.value;
         //var location = event.target.location.value;
         var starRating = event.target.star.value;
@@ -641,17 +679,36 @@ Template.dormUnvoted.events({
 
 Template.coursesDelete.events({
     'click .deleteReviewButton': function(event) {
-        console.log("pressed delete");
-        console.log(this);
         event.preventDefault();
         var userId = this.userId;
         var dateId = this.date;
         var removedReview = CourseReview.findOne({"userId": userId, "date":dateId});
-        console.log(removedReview);
         CourseReview.remove(removedReview._id);
     }
 });
 
+Template.coursesEdit.events({
+   'click .editReviewButton': function(event, template) {
+       console.log("pressed edit");
+       event.preventDefault();
+       var modal = template.find('.editModal');
+       modal.style.display = 'block';
+   },
+
+    'click .close' : function(event, template) {
+        event.preventDefault();
+        var modal = template.find('.editModal');
+        modal.style.display = "none";
+        var textField = template.find('.inputReviewText');
+        var workload = template.find('#courseWorkload');
+        var difficulty = template.find('#courseDifficulty');
+        var utility = template.find('#courseUtility');
+        textField.value = "";
+        workload.value = 1;
+        difficulty.value = 1;
+        utility.value = 1;
+    }
+});
 
 Template.internships.helpers({
     'queryAbbreviation': function() {
@@ -742,7 +799,7 @@ Template.departmentCourses.helpers({
             return true;
         }
         return false;
-    }
+    },
 });
 
 Template.schoolClubs.helpers({
@@ -760,9 +817,7 @@ Template.internshipList.helpers({
 Template.internship.helpers({
    getReviews: function() {
      var internshipID = Internship.findOne({"name": this.toString()})._id;
-     console.log(internshipID);
      var reviews = InternReview.find({"internship": internshipID});
-     console.log(reviews);
      return reviews;
    },
 
@@ -790,10 +845,8 @@ Template.internship.helpers({
         var reviewId = this._id;
         var upvoteStatus = InternshipVotes.findOne({"userId": userId, "reviewId":reviewId});
         if (upvoteStatus == undefined) {
-            console.log("false");
             return false;
         }
-        console.log("true");
         return true;
     },
 
