@@ -229,7 +229,31 @@ Template.departmentCourses.events({
         utility.value = 1;
     },
 
-    'submit form': function(event, template) {
+    'click .editReviewButton': function(event, template) {
+        event.preventDefault();
+        var reviewBeingEdited = CourseReview.findOne({"userId": this.userId, "date": this.date, "review": this.review, "difficultyRating": this.difficultyRating, "workloadRating": this.workloadRating, "utilityRating": this.utilityRating});
+        var modal = template.find('.editModal');
+        var textField = template.find('.editReviewText');
+        var workload = template.find('#editCourseWorkload');
+        var difficulty = template.find('#editCourseDifficulty');
+        var utility = template.find('#editCourseUtility');
+        textField.value = reviewBeingEdited.review;
+        workload.value = reviewBeingEdited.workloadRating;
+        difficulty.value = reviewBeingEdited.difficultyRating;
+        utility.value = reviewBeingEdited.utilityRating;
+        modal.style.display = 'block';
+        thisStorage = this;
+        console.log(this);
+        console.log(reviewBeingEdited);
+    },
+
+    'click .editclose': function(event, template) {
+        event.preventDefault();
+        var modal = template.find('.editModal');
+        modal.style.display = "none";
+    },
+
+    'submit .makeReview': function(event, template) {
         event.preventDefault();
         var reviewText = event.target.makeReview.value;
         var difficulty = event.target.difficulty.value;
@@ -253,8 +277,24 @@ Template.departmentCourses.events({
         event.target.difficulty.value = 1;
         event.target.workload.value = 1;
         event.target.utility.value = 1;
+    },
+
+    'submit .editReview': function(event, template) {
+        event.preventDefault();
+        console.log(thisStorage);
+        var reviewText = event.target.editReview.value;
+        var difficulty = event.target.difficulty.value;
+        var workload = event.target.workload.value;
+        var utility = event.target.utility.value;
+        CourseReview.update(thisStorage._id, {
+            $set: {"review": reviewText, "difficultyRating": difficulty, "workloadRating": workload, "utilityRating": utility}
+        });
+
+        var modal = template.find('.editModal');
+        modal.style.display = "none";
     }
 });
+
 
 Template.diningCourts.events({
     'click .logout': function(event) {
@@ -378,7 +418,6 @@ Template.internship.events({
         var currentUser = Meteor.userId();
         var currentDate = new Date();
         var internshipId = Internship.findOne({"name": this.toString()})._id;
-        console.log(internshipId);
         InternReview.insert({
             internship: internshipId,
             userId: currentUser,
@@ -473,7 +512,6 @@ Template.dorm.events({
 
     'submit form' :function(event, template) {
         event.preventDefault();
-        console.log("made it here");
         var reviewText = event.target.makeReview.value;
         //var location = event.target.location.value;
         var starRating = event.target.star.value;
@@ -549,6 +587,128 @@ Template.diningCourt.events({
     }
 });
 
+Template.courseVoted.events({
+    'click .arrows': function(event) {
+        event.preventDefault();
+        var courseVote = CourseVotes.findOne({"userId": Meteor.userId(), "reviewId": this._id});
+        CourseVotes.remove(courseVote._id);
+    }
+});
+
+Template.courseUnvoted.events({
+    'click .arrows': function(event) {
+        event.preventDefault();
+        CourseVotes.insert({
+            userId: Meteor.userId(),
+            reviewId: this._id
+        });
+    }
+});
+
+Template.internVoted.events({
+    'click .arrows': function(event) {
+        event.preventDefault();
+        var internVote = InternshipVotes.findOne({"userId": Meteor.userId(), "reviewId": this._id});
+        InternshipVotes.remove(internVote._id);
+    }
+});
+
+Template.internUnvoted.events({
+    'click .arrows': function(event) {
+        event.preventDefault();
+        InternshipVotes.insert({
+            userId: Meteor.userId(),
+            reviewId: this._id
+        });
+    }
+});
+
+Template.clubVoted.events({
+    'click .arrows': function(event) {
+        event.preventDefault();
+        var clubVote = ClubVotes.findOne({"userId": Meteor.userId(), "reviewId": this._id});
+        ClubVotes.remove(clubVote._id);
+    }
+});
+
+Template.clubUnvoted.events({
+    'click .arrows': function(event) {
+        event.preventDefault();
+        ClubVotes.insert({
+            userId: Meteor.userId(),
+            reviewId: this._id
+        });
+    }
+});
+
+Template.diningVoted.events({
+    'click .arrows': function(event) {
+        event.preventDefault();
+        var diningVote = DiningVotes.findOne({"userId": Meteor.userId(), "reviewId": this._id});
+        DiningVotes.remove(diningVote._id);
+    }
+});
+
+Template.diningUnvoted.events({
+    'click .arrows': function(event) {
+        event.preventDefault();
+        DiningVotes.insert({
+            userId: Meteor.userId(),
+            reviewId: this._id
+        });
+    }
+});
+
+Template.dormVoted.events({
+    'click .arrows': function(event) {
+        event.preventDefault();
+        var dormVote = ResVotes.findOne({"userId": Meteor.userId(), "reviewId": this._id});
+        ResVotes.remove(dormVote._id);
+    }
+});
+
+Template.dormUnvoted.events({
+    'click .arrows': function(event) {
+        event.preventDefault();
+        ResVotes.insert({
+            userId: Meteor.userId(),
+            reviewId: this._id
+        });
+    }
+});
+
+Template.coursesDelete.events({
+    'click .deleteReviewButton': function(event) {
+        event.preventDefault();
+        var userId = this.userId;
+        var dateId = this.date;
+        var removedReview = CourseReview.findOne({"userId": userId, "date":dateId});
+        CourseReview.remove(removedReview._id);
+    }
+});
+
+Template.coursesEdit.events({
+   'click .editReviewButton': function(event, template) {
+       console.log("pressed edit");
+       event.preventDefault();
+       var modal = template.find('.editModal');
+       modal.style.display = 'block';
+   },
+
+    'click .close' : function(event, template) {
+        event.preventDefault();
+        var modal = template.find('.editModal');
+        modal.style.display = "none";
+        var textField = template.find('.inputReviewText');
+        var workload = template.find('#courseWorkload');
+        var difficulty = template.find('#courseDifficulty');
+        var utility = template.find('#courseUtility');
+        textField.value = "";
+        workload.value = 1;
+        difficulty.value = 1;
+        utility.value = 1;
+    }
+});
 
 Template.internships.helpers({
     'queryAbbreviation': function() {
@@ -604,7 +764,42 @@ Template.departmentCourses.helpers({
         else {
             return "anonymous";
         }
-    }
+    },
+
+    getCourseUpvote: function() {
+        var userId = Meteor.userId();
+        var reviewId = this._id;
+        var upvoteStatus = CourseVotes.findOne({"userId": userId, "reviewId":reviewId});
+        if (upvoteStatus == undefined) {
+            return false;
+        }
+        return true;
+    },
+
+    getUpvoteCount: function() {
+        var reviewId = this._id;
+        var reviewLength = CourseVotes.find({"reviewId": reviewId}).count();
+        return reviewLength;
+
+    },
+
+    getAdmin: function() {
+        var userId = Meteor.userId();
+        var user = Meteor.users.findOne(userId);
+        if (user.profile.administrator == 0){
+            return false;
+        }
+        return true;
+    },
+
+    getCurrentUser: function() {
+        var userId = Meteor.userId();
+        var user = this.userId;
+        if (user === userId) {
+            return true;
+        }
+        return false;
+    },
 });
 
 Template.schoolClubs.helpers({
@@ -622,9 +817,7 @@ Template.internshipList.helpers({
 Template.internship.helpers({
    getReviews: function() {
      var internshipID = Internship.findOne({"name": this.toString()})._id;
-     console.log(internshipID);
      var reviews = InternReview.find({"internship": internshipID});
-     console.log(reviews);
      return reviews;
    },
 
@@ -645,6 +838,22 @@ Template.internship.helpers({
         else {
             return "anonymous";
         }
+    },
+
+    getUpvote: function() {
+        var userId = Meteor.userId();
+        var reviewId = this._id;
+        var upvoteStatus = InternshipVotes.findOne({"userId": userId, "reviewId":reviewId});
+        if (upvoteStatus == undefined) {
+            return false;
+        }
+        return true;
+    },
+
+    getUpvoteCount: function() {
+        var reviewId = this._id;
+        var reviewLength = InternshipVotes.find({"reviewId": reviewId}).count();
+        return reviewLength;
     }
 });
 
@@ -672,6 +881,22 @@ Template.club.helpers({
         else {
             return "anonymous";
         }
+    },
+
+    getUpvote: function() {
+        var userId = Meteor.userId();
+        var reviewId = this._id;
+        var upvoteStatus = ClubVotes.findOne({"userId": userId, "reviewId":reviewId});
+        if (upvoteStatus == undefined) {
+            return false;
+        }
+        return true;
+    },
+
+    getUpvoteCount: function() {
+        var reviewId = this._id;
+        var reviewLength = ClubVotes.find({"reviewId": reviewId}).count();
+        return reviewLength;
     }
 });
 
@@ -699,6 +924,22 @@ Template.dorm.helpers({
         else {
             return "anonymous";
         }
+    },
+
+    getUpvote: function() {
+        var userId = Meteor.userId();
+        var reviewId = this._id;
+        var upvoteStatus = ResVotes.findOne({"userId": userId, "reviewId":reviewId});
+        if (upvoteStatus == undefined) {
+            return false;
+        }
+        return true;
+    },
+
+    getUpvoteCount: function() {
+        var reviewId = this._id;
+        var reviewLength = ResVotes.find({"reviewId": reviewId}).count();
+        return reviewLength;
     }
 });
 
@@ -726,5 +967,25 @@ Template.diningCourt.helpers({
         else {
             return "anonymous";
         }
+    },
+
+    getUpvote: function() {
+        var userId = Meteor.userId();
+        var reviewId = this._id;
+        var upvoteStatus = DiningVotes.findOne({"userId": userId, "reviewId":reviewId});
+        if (upvoteStatus == undefined) {
+            return false;
+        }
+        return true;
+    },
+
+    getUpvoteCount: function() {
+        var reviewId = this._id;
+        var reviewLength = DiningVotes.find({"reviewId": reviewId}).count();
+        return reviewLength;
     }
+});
+
+Template.registerHelper('or',(a,b)=>{
+    return a || b;
 });

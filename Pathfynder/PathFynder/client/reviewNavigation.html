@@ -400,7 +400,7 @@
             <div class="ModalContent">
                 <span class="close">&times;</span>
                 <h1>Write a Review</h1>
-                <form>
+                <form class="makeReview">
                     <textarea class="inputReviewText" name="makeReview" cols="120" rows="13" placeholder = "Share your experiences!"></textarea>
                     <div id="dropdown1">
                     <p>Course Difficulty:</p>
@@ -447,13 +447,78 @@
                         <option value="10">10</option>
                     </select>
                     </div>
-                    <input class="addReviewButton" type="submit" value="Submit">
+                    <input class="addReviewButton" type="submit" value="submit">
                 </form>
             </div>
         </div>
         {{#each getReviews}}
+            <div class="editModal">
+                <div class="editModalContent">
+                    <span class="editclose">&times;</span>
+                    <h1>Edit Review</h1>
+                    <form class="editReview">
+                        <textarea class="editReviewText" name="editReview" cols="120" rows="13" placeholder = ""></textarea>
+                        <div id="dropdown1">
+                            <p>Course Difficulty:</p>
+                            <select name="difficulty" id="editCourseDifficulty">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                        <div id="dropdown2">
+                            <p>Course Workload:</p>
+                            <select name="workload" id="editCourseWorkload">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                        <div id="dropdown3">
+                            <p>Course Utility</p>
+                            <select name="utility" id="editCourseUtility">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                        <input class="editReviewSubmit" type="submit" value="Submit">
+                    </form>
+                </div>
+            </div>
             <div class = "reviewObject">
                 <p>{{this.date}}</p>
+                <div class="upvotes">
+                    {{#if getCourseUpvote}}
+                        {{> courseVoted}}
+                    {{else}}
+                        {{> courseUnvoted}}
+                    {{/if}}
+                    <div class="upvoteCounts">
+                        {{getUpvoteCount}}
+                    </div>
+                </div>
                 <div class = "reviewDetails">
                     <p>{{printUsername}}</p>
                     <p>Difficulty: {{this.difficultyRating}}</p>
@@ -463,6 +528,17 @@
                 <div class = "reviewText">
                     {{this.review}}
                 </div>
+                {{#if getAdmin}}
+                    {{> coursesDelete}}
+                    {{#if getCurrentUser}}
+                        <div class = "editReviewButton">edit</div>
+                    {{/if}}
+                {{else}}
+                    {{#if getCurrentUser}}
+                        {{>coursesDelete}}
+                        <div class = "editReviewButton">edit</div>
+                    {{/if}}
+                {{/if}}
             </div>
         {{/each}}
     </div>
@@ -628,6 +704,16 @@
         {{#each getReviews}}
             <div class = "reviewObject">
                 <p>{{this.date}}</p>
+                <div class="upvotes">
+                    {{#if getUpvote}}
+                        {{> diningVoted}}
+                    {{else}}
+                        {{> diningUnvoted}}
+                    {{/if}}
+                    <div class="upvoteCounts">
+                        {{getUpvoteCount}}
+                    </div>
+                </div>
                 <div class = "reviewDetails">
                     <p>{{printUsername}}</p>
                     <p>Star Rating: {{this.starRating}}</p>
@@ -785,6 +871,16 @@
         {{#each getReviews}}
             <div class = "reviewObject">
                 <p>{{this.date}}</p>
+                <div class="upvotes">
+                    {{#if getUpvote}}
+                        {{> dormVoted}}
+                    {{else}}
+                        {{> dormUnvoted}}
+                    {{/if}}
+                    <div class="upvoteCounts">
+                        {{getUpvoteCount}}
+                    </div>
+                </div>
                 <div class = "reviewDetails">
                     <p>{{printUsername}}</p>
                     <p>Star Rating: {{this.starRating}}</p>
@@ -954,6 +1050,16 @@
         {{#each getReviews}}
             <div class = "reviewObject">
                 <p>{{this.date}}</p>
+                <div class="upvotes">
+                    {{#if getUpvote}}
+                        {{> clubVoted}}
+                    {{else}}
+                        {{> clubUnvoted}}
+                    {{/if}}
+                    <div class="upvoteCounts">
+                        {{getUpvoteCount}}
+                    </div>
+                </div>
                 <div class = "reviewDetails">
                     <p>{{printUsername}}</p>
                     <p>Time Commitment: {{this.timeRating}}</p>
@@ -1141,6 +1247,16 @@
         {{#each getReviews}}
             <div class = "reviewObject">
                 <p>{{this.date}}</p>
+                <div class="upvotes">
+                    {{#if getUpvote}}
+                        {{> internVoted}}
+                    {{else}}
+                        {{> internUnvoted}}
+                    {{/if}}
+                    <div class="upvoteCounts">
+                        {{getUpvoteCount}}
+                    </div>
+                </div>
                 <div class = "reviewDetails">
                     <p>{{printUsername}}</p>
                     <p>Interview: {{this.interviewRating}}</p>
@@ -1154,3 +1270,52 @@
         {{/each}}
     </div>
 </template>
+
+<template name="courseVoted">
+    <img src="/clickedArrow.jpg" class="arrows">
+</template>
+
+<template name="courseUnvoted">
+    <img src="/upArrow.jpg" class="arrows">
+</template>
+
+<template name="internVoted">
+    <img src="/clickedArrow.jpg" class="arrows">
+</template>
+
+<template name="internUnvoted">
+    <img src="/upArrow.jpg" class="arrows">
+</template>
+
+<template name="dormVoted">
+    <img src="/clickedArrow.jpg" class="arrows">
+</template>
+
+<template name="dormUnvoted">
+    <img src="/upArrow.jpg" class="arrows">
+</template>
+
+<template name="clubVoted">
+    <img src="/clickedArrow.jpg" class="arrows">
+</template>
+
+<template name="clubUnvoted">
+    <img src="/upArrow.jpg" class="arrows">
+</template>
+
+<template name="diningVoted">
+    <img src="/clickedArrow.jpg" class="arrows">
+</template>
+
+<template name="diningUnvoted">
+    <img src="/upArrow.jpg" class="arrows">
+</template>
+
+<template name="coursesDelete">
+    <div class ="deleteReviewButton">delete</div>
+</template>
+
+<template name ="coursesEdit">
+    <div class = "editReviewButton">edit</div>
+</template>
+

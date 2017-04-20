@@ -43,8 +43,19 @@ Template.accountsettings.events ({
         });
         alert("Password changed!");
         Router.go('accountsettings');
+    },
+
+    'submit #AdminEmail': function(e, t) {
+        console.log("HERE");
+        var AdminEmail = $(e.currentTarget),
+         newAdminEmail = AdminEmail.find('#addAdmin').val();
+        console.log(newAdminEmail);
+        if (Meteor.users.findOne({"emails[0].address": newAdminEmail}) != undefined) {
+            Meteor.users.findOne({"emails[0].address": newAdminEmail}).profile.administrator = 1;
+        }
+        console.log(Meteor.users.findOne({"emails[0].address": newAdminEmail}))
     }
-});
+    });
 
 Template.profile.events ({
     'click .logout': function(event) {
