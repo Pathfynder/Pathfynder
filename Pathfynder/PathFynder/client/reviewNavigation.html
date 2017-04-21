@@ -530,7 +530,7 @@
                     </div>
                 </div>
                 <div class = "reviewDetails">
-                    <p>{{printUsername}}</p>
+                    <p class="usernameProfileLink">{{printUsername}}</p>
                     <p>Difficulty: {{this.difficultyRating}}</p>
                     <p>Workload: {{this.workloadRating}}</p>
                     <p>Utility: {{this.utilityRating}}</p>
@@ -790,7 +790,7 @@
                     </div>
                 </div>
                 <div class = "reviewDetails">
-                    <p>{{printUsername}}</p>
+                    <p class="usernameProfileLink">{{printUsername}}</p>
                     <p>Star Rating: {{this.starRating}}</p>
                     <p>Food Quality Rating: {{this.foodQualityRating}}</p>
                     <p>Healthy Rating: {{this.healthRating}}</p>
@@ -1003,7 +1003,7 @@
                     </div>
                 </div>
                 <div class = "reviewDetails">
-                    <p>{{printUsername}}</p>
+                    <p class="usernameProfileLink">{{printUsername}}</p>
                     <p>Star Rating: {{this.starRating}}</p>
                 </div>
                 <div class = "reviewText">
@@ -1243,7 +1243,7 @@
                     </div>
                 </div>
                 <div class = "reviewDetails">
-                    <p>{{printUsername}}</p>
+                    <p class="usernameProfileLink">{{printUsername}}</p>
                     <p>Time Commitment: {{this.timeRating}}</p>
                     <p>Utility: {{this.utilityRating}}</p>
                 </div>
@@ -1516,7 +1516,7 @@
                     </div>
                 </div>
                 <div class = "reviewDetails">
-                    <p>{{printUsername}}</p>
+                    <p class="usernameProfileLink">{{printUsername}}</p>
                     <p>Interview: {{this.interviewRating}}</p>
                     <p>Workload: {{this.workloadRating}}</p>
                     <p>Utility: {{this.utilityRating}}</p>
@@ -1598,6 +1598,57 @@
 
 <template name="diningDelete">
     <div class ="deleteReviewButton">delete</div>
+</template>
+
+<template name="publicProfile">
+    <div class="logo"><a href="{{pathFor route='home'}}">PathFynder</a></div>
+    <div class="header">
+        <li><a href="#" class="logout">Logout</a></li>
+        <li><a href="{{pathFor route='faq'}}">FAQ</a></li>
+        <li><a href="{{pathFor route='profile'}}">Profile</a></li>
+        <li><a href="{{pathFor route='accountsettings'}}">Account Settings</a></li>
+    </div>
+    <div class="navBar">
+        <table>
+            <tr>
+                <td id="courses">
+                    <div>
+                        <a href="{{pathFor route='courses'}}">Courses</a>
+                    </div>
+                </td>
+                <td id="internships">
+                    <div>
+                        <a href="{{pathFor route='internships'}}">Internships</a>
+                    </div>
+                </td>
+                <td id="clubs">
+                    <div>
+                        <a href="{{pathFor route='clubs'}}">Clubs</a>
+                    </div>
+                </td>
+                <td id="residential">
+                    <div>
+                        <a href="{{pathFor route='residential'}}">Residential</a>
+                    </div>
+                </td>
+                <td id="dining">
+                    <div>
+                        <a href="{{pathFor route='dining'}}">Dining</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="pageTitle">{{getUsername}}</div>
+    <div class="profileBody">
+        <p>Current University: </p> {{getUniversity}}
+        {{#if getPublicMajor}}
+            <p>Current Major: </p> {{getMajor}}
+        {{/if}}
+        {{#if getPublicGradDate}}
+            <p>Graduation Date: </p> {{getGradDate}}
+        {{/if}}
+    </div>
 </template>
 
 

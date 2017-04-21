@@ -114,6 +114,17 @@ Router.route('/clubs/:_school/:_internship', {
     }
 });
 
+Router.route('/profiles/:_username/', {
+    name: 'publicProfile',
+    template: 'publicProfile',
+    data: function() {
+        var username = this.params._username;
+        console.log(username);
+        var user = Meteor.users.findOne({"profile.username": username});
+        return user;
+    }
+});
+
 Template.courses.events ({
     'click .logout': function(event) {
         event.preventDefault();
@@ -213,6 +224,18 @@ Template.departmentCourses.events({
         event.preventDefault();
         var sortType = template.find('#coursesSortReviews').value;
         Session.set('sortType', sortType);
+    },
+
+    'click .usernameProfileLink' : function(event) {
+        event.preventDefault();
+        var userId = this.userId;
+        var preUsername = Meteor.users.findOne(userId);
+        var userName = preUsername.profile.username;
+        if (preUsername.profile.usernameBool === 1) {
+            if (userName != "" && userName != "Anonymous" && userName != "anonymous") {
+                Router.go("/profiles/" + userName);
+            }
+        }
     },
 
     'click .addReview': function(event, template) {
@@ -402,6 +425,18 @@ Template.internship.events({
         Session.set('sortType', sortType);
     },
 
+    'click .usernameProfileLink' : function(event) {
+        event.preventDefault();
+        var userId = this.userId;
+        var preUsername = Meteor.users.findOne(userId);
+        var userName = preUsername.profile.username;
+        if (preUsername.profile.usernameBool === 1) {
+            if (userName != "" && userName != "Anonymous" && userName != "anonymous") {
+                Router.go("/profiles/" + userName);
+            }
+        }
+    },
+
     'click .addReview': function(event, template) {
         event.preventDefault();
         var modal = template.find('.Modal');
@@ -500,6 +535,18 @@ Template.club.events({
         Session.set('sortType', sortType);
     },
 
+    'click .usernameProfileLink' : function(event) {
+        event.preventDefault();
+        var userId = this.userId;
+        var preUsername = Meteor.users.findOne(userId);
+        var userName = preUsername.profile.username;
+        if (preUsername.profile.usernameBool === 1) {
+            if (userName != "" && userName != "Anonymous" && userName != "anonymous") {
+                Router.go("/profiles/" + userName);
+            }
+        }
+    },
+
     'click .addReview': function(event, template) {
         event.preventDefault();
         var modal = template.find('.Modal');
@@ -590,6 +637,18 @@ Template.dorm.events({
         Session.set('sortType', sortType);
     },
 
+    'click .usernameProfileLink' : function(event) {
+        event.preventDefault();
+        var userId = this.userId;
+        var preUsername = Meteor.users.findOne(userId);
+        var userName = preUsername.profile.username;
+        if (preUsername.profile.usernameBool === 1) {
+            if (userName != "" && userName != "Anonymous" && userName != "anonymous") {
+                Router.go("/profiles/" + userName);
+            }
+        }
+    },
+
     'click .addReview': function(event, template) {
         event.preventDefault();
         var modal = template.find('.Modal');
@@ -673,6 +732,18 @@ Template.diningCourt.events({
         event.preventDefault();
         var sortType = template.find('#diningSortReviews').value;
         Session.set('sortType', sortType);
+    },
+
+    'click .usernameProfileLink' : function(event) {
+        event.preventDefault();
+        var userId = this.userId;
+        var preUsername = Meteor.users.findOne(userId);
+        var userName = preUsername.profile.username;
+        if (preUsername.profile.usernameBool === 1) {
+            if (userName != "" && userName != "Anonymous" && userName != "anonymous") {
+                Router.go("/profiles/" + userName);
+            }
+        }
     },
 
     'click .addReview': function(event, template) {
@@ -971,6 +1042,14 @@ Template.dormsDelete.events({
         var removedReview = ResReview.findOne({"userId": userId, "date":dateId});
         ResReview.remove(removedReview._id);
     }
+});
+
+Template.publicProfile.events({
+    'click .logout': function(event) {
+        event.preventDefault();
+        Meteor.logout();
+        Router.go('login');
+    },
 });
 
 Template.internships.helpers({
@@ -1371,4 +1450,38 @@ Template.diningCourt.helpers({
         }
         return false;
     },
+});
+
+Template.publicProfile.helpers({
+    getUsername: function() {
+        return this.profile.username;
+    },
+
+    getUniversity: function() {
+        return this.profile.university;
+    },
+
+    getPublicMajor: function() {
+        var public = this.profile.majorBool;
+        if (public == 1) {
+            return true;
+        }
+        return false;
+    },
+
+    getMajor: function() {
+        return this.profile.major;
+    },
+
+    getPublicGradDate: function() {
+        var public = this.profile.gradDateBool;
+        if (public == 1) {
+            return true;
+        }
+        return false;
+    },
+
+    getGradDate: function() {
+        return this.profile.gradDate;
+    }
 });
