@@ -209,6 +209,12 @@ Template.departmentCourses.events({
         Router.go('login');
     },
 
+    'submit .sortReviews': function(event, template) {
+        event.preventDefault();
+        var sortType = template.find('#coursesSortReviews').value;
+        Session.set('sortType', sortType);
+    },
+
     'click .addReview': function(event, template) {
         event.preventDefault();
         var modal = template.find('.Modal');
@@ -269,7 +275,8 @@ Template.departmentCourses.events({
             review: reviewText,
             difficultyRating: difficulty,
             workloadRating: workload,
-            utilityRating: utility
+            utilityRating: utility,
+            upvotes: 0
         });
         var modal = template.find('.Modal');
         modal.style.display = "none";
@@ -389,6 +396,12 @@ Template.internship.events({
         Router.go('login');
     },
 
+    'submit .sortReviews': function(event, template) {
+        event.preventDefault();
+        var sortType = template.find('#internSortReviews').value;
+        Session.set('sortType', sortType);
+    },
+
     'click .addReview': function(event, template) {
         event.preventDefault();
         var modal = template.find('.Modal');
@@ -426,6 +439,7 @@ Template.internship.events({
             interviewRating: interview,
             workloadRating: workload,
             utilityRating: utility,
+            upvotes: 0
         });
         var modal = template.find('.Modal');
         modal.style.display = "none";
@@ -480,6 +494,12 @@ Template.club.events({
         Router.go('login');
     },
 
+    'submit .sortReviews': function(event, template) {
+        event.preventDefault();
+        var sortType = template.find('#clubSortReviews').value;
+        Session.set('sortType', sortType);
+    },
+
     'click .addReview': function(event, template) {
         event.preventDefault();
         var modal = template.find('.Modal');
@@ -512,7 +532,8 @@ Template.club.events({
             date: currentDate,
             review: reviewText,
             timeRating: timeRating,
-            utilityRating: utilityRating
+            utilityRating: utilityRating,
+            upvotes: 0
         });
         var modal = template.find('.Modal');
         modal.style.display = "none";
@@ -563,6 +584,12 @@ Template.dorm.events({
         Router.go('login');
     },
 
+    'submit .sortReviews': function(event, template) {
+        event.preventDefault();
+        var sortType = template.find('#dormSortReviews').value;
+        Session.set('sortType', sortType);
+    },
+
     'click .addReview': function(event, template) {
         event.preventDefault();
         var modal = template.find('.Modal');
@@ -594,7 +621,8 @@ Template.dorm.events({
             userId: currentUser,
             date: currentDate,
             review: reviewText,
-            starRating: starRating
+            starRating: starRating,
+            upvotes: 0
         });
         var modal = template.find('.Modal');
         modal.style.display = "none";
@@ -641,6 +669,12 @@ Template.diningCourt.events({
         Router.go('login');
     },
 
+    'submit .sortReviews': function(event, template) {
+        event.preventDefault();
+        var sortType = template.find('#diningSortReviews').value;
+        Session.set('sortType', sortType);
+    },
+
     'click .addReview': function(event, template) {
         event.preventDefault();
         var modal = template.find('.Modal');
@@ -677,7 +711,8 @@ Template.diningCourt.events({
             review: reviewText,
             foodQualityRating: foodQuality,
             healthRating: health,
-            starRating: starRating
+            starRating: starRating,
+            upvotes: 0
         });
         var modal = template.find('.Modal');
         modal.style.display = "none";
@@ -729,17 +764,33 @@ Template.diningCourt.events({
 Template.courseVoted.events({
     'click .arrows': function(event) {
         event.preventDefault();
+        console.log("downvote");
         var courseVote = CourseVotes.findOne({"userId": Meteor.userId(), "reviewId": this._id});
         CourseVotes.remove(courseVote._id);
+        var currentReview = CourseReview.findOne({"userId": this.userId, "review": this.review, "date": this.date});
+        var currentUpvotes = currentReview.upvotes;
+        //console.log(currentUpvotes);
+        var newUpvotes = currentUpvotes-1;
+        CourseReview.update(currentReview._id, {
+            $set: {"upvotes": newUpvotes}
+        });
     }
 });
 
 Template.courseUnvoted.events({
     'click .arrows': function(event) {
         event.preventDefault();
+        console.log("upvote");
         CourseVotes.insert({
             userId: Meteor.userId(),
             reviewId: this._id
+        });
+        var currentReview = CourseReview.findOne({"userId": this.userId, "review": this.review, "date": this.date});
+        var currentUpvotes = currentReview.upvotes;
+        //console.log(currentUpvotes);
+        var newUpvotes = currentUpvotes+1;
+        CourseReview.update(currentReview._id, {
+            $set: {"upvotes": newUpvotes}
         });
     }
 });
@@ -749,6 +800,13 @@ Template.internVoted.events({
         event.preventDefault();
         var internVote = InternshipVotes.findOne({"userId": Meteor.userId(), "reviewId": this._id});
         InternshipVotes.remove(internVote._id);
+        var currentReview = InternReview.findOne({"userId": this.userId, "review": this.review, "date": this.date});
+        var currentUpvotes = currentReview.upvotes;
+        //console.log(currentUpvotes);
+        var newUpvotes = currentUpvotes-1;
+        InternReview.update(currentReview._id, {
+            $set: {"upvotes": newUpvotes}
+        });
     }
 });
 
@@ -759,6 +817,13 @@ Template.internUnvoted.events({
             userId: Meteor.userId(),
             reviewId: this._id
         });
+        var currentReview = InternReview.findOne({"userId": this.userId, "review": this.review, "date": this.date});
+        var currentUpvotes = currentReview.upvotes;
+        //console.log(currentUpvotes);
+        var newUpvotes = currentUpvotes+1;
+        InternReview.update(currentReview._id, {
+            $set: {"upvotes": newUpvotes}
+        });
     }
 });
 
@@ -767,6 +832,13 @@ Template.clubVoted.events({
         event.preventDefault();
         var clubVote = ClubVotes.findOne({"userId": Meteor.userId(), "reviewId": this._id});
         ClubVotes.remove(clubVote._id);
+        var currentReview = ClubReview.findOne({"userId": this.userId, "review": this.review, "date": this.date});
+        var currentUpvotes = currentReview.upvotes;
+        //console.log(currentUpvotes);
+        var newUpvotes = currentUpvotes-1;
+        ClubReview.update(currentReview._id, {
+            $set: {"upvotes": newUpvotes}
+        });
     }
 });
 
@@ -777,6 +849,13 @@ Template.clubUnvoted.events({
             userId: Meteor.userId(),
             reviewId: this._id
         });
+        var currentReview = ClubReview.findOne({"userId": this.userId, "review": this.review, "date": this.date});
+        var currentUpvotes = currentReview.upvotes;
+        //console.log(currentUpvotes);
+        var newUpvotes = currentUpvotes+1;
+        ClubReview.update(currentReview._id, {
+            $set: {"upvotes": newUpvotes}
+        });
     }
 });
 
@@ -785,6 +864,13 @@ Template.diningVoted.events({
         event.preventDefault();
         var diningVote = DiningVotes.findOne({"userId": Meteor.userId(), "reviewId": this._id});
         DiningVotes.remove(diningVote._id);
+        var currentReview = DiningReview.findOne({"userId": this.userId, "review": this.review, "date": this.date});
+        var currentUpvotes = currentReview.upvotes;
+        //console.log(currentUpvotes);
+        var newUpvotes = currentUpvotes-1;
+        DiningReview.update(currentReview._id, {
+            $set: {"upvotes": newUpvotes}
+        });
     }
 });
 
@@ -795,6 +881,13 @@ Template.diningUnvoted.events({
             userId: Meteor.userId(),
             reviewId: this._id
         });
+        var currentReview = DiningReview.findOne({"userId": this.userId, "review": this.review, "date": this.date});
+        var currentUpvotes = currentReview.upvotes;
+        //console.log(currentUpvotes);
+        var newUpvotes = currentUpvotes+1;
+        DiningReview.update(currentReview._id, {
+            $set: {"upvotes": newUpvotes}
+        });
     }
 });
 
@@ -803,6 +896,13 @@ Template.dormVoted.events({
         event.preventDefault();
         var dormVote = ResVotes.findOne({"userId": Meteor.userId(), "reviewId": this._id});
         ResVotes.remove(dormVote._id);
+        var currentReview = ResReview.findOne({"userId": this.userId, "review": this.review, "date": this.date});
+        var currentUpvotes = currentReview.upvotes;
+        //console.log(currentUpvotes);
+        var newUpvotes = currentUpvotes-1;
+        ResReview.update(currentReview._id, {
+            $set: {"upvotes": newUpvotes}
+        });
     }
 });
 
@@ -812,6 +912,13 @@ Template.dormUnvoted.events({
         ResVotes.insert({
             userId: Meteor.userId(),
             reviewId: this._id
+        });
+        var currentReview = ResReview.findOne({"userId": this.userId, "review": this.review, "date": this.date});
+        var currentUpvotes = currentReview.upvotes;
+        //console.log(currentUpvotes);
+        var newUpvotes = currentUpvotes+1;
+        ResReview.update(currentReview._id, {
+            $set: {"upvotes": newUpvotes}
         });
     }
 });
@@ -898,8 +1005,18 @@ Template.departments.helpers({
 
 Template.departmentCourses.helpers({
     'getReviews': function() {
+        console.log(Session.get('sortType'));
         var courseId = Course.findOne({"Abbreviation": this[0], "Number": Number(this[1])})._id;
-        var reviews = CourseReview.find({"course": courseId});
+        var reviews;
+        if (Session.get('sortType') == "newest") {
+            reviews = CourseReview.find({"course": courseId}, {sort: {"date": -1}});
+        }
+        else if (Session.get('sortType') =="oldest") {
+            reviews = CourseReview.find({"course": courseId});
+        }
+        else if (Session.get('sortType') =="top") {
+            reviews = CourseReview.find({"course": courseId}, {sort: {"upvotes": -1}});
+        }
         return reviews;
     },
 
@@ -972,9 +1089,21 @@ Template.internshipList.helpers({
 
 Template.internship.helpers({
    getReviews: function() {
-     var internshipID = Internship.findOne({"name": this.toString()})._id;
-     var reviews = InternReview.find({"internship": internshipID});
-     return reviews;
+       console.log(Session.get('sortType'));
+       console.log(this);
+       var internId = Internship.findOne({"name": this.toString()})._id;
+       console.log(internId);
+       var reviews;
+       if (Session.get('sortType') == "newest") {
+           reviews = InternReview.find({"internship": internId}, {sort: {"date": -1}});
+       }
+       else if (Session.get('sortType') =="oldest") {
+           reviews = InternReview.find({"internship": internId});
+       }
+       else if (Session.get('sortType') =="top") {
+           reviews = InternReview.find({"internship": internId}, {sort: {"upvotes": -1}});
+       }
+       return reviews;
    },
 
     printInternship: function() {
@@ -1033,9 +1162,19 @@ Template.internship.helpers({
 
 Template.club.helpers({
     getReviews: function() {
-      var clubId = Club.findOne({"name": this.toString()})._id;
-      var reviews = ClubReview.find({"club": clubId});
-      return reviews;
+        console.log(Session.get('sortType'));
+        var clubId = Club.findOne({"name": this.toString()})._id;
+        var reviews;
+        if (Session.get('sortType') == "newest") {
+            reviews = ClubReview.find({"club": clubId}, {sort: {"date": -1}});
+        }
+        else if (Session.get('sortType') =="oldest") {
+            reviews = ClubReview.find({"club": clubId});
+        }
+        else if (Session.get('sortType') =="top") {
+            reviews = ClubReview.find({"club": clubId}, {sort: {"upvotes": -1}});
+        }
+        return reviews;
     },
 
     printClub: function() {
@@ -1094,9 +1233,19 @@ Template.club.helpers({
 
 Template.dorm.helpers({
     getReviews: function() {
-      var dormId = ResHall.findOne({"name": this.toString()})._id;
-      var reviews = ResReview.find({"resHall": dormId});
-      return reviews;
+        console.log(Session.get('sortType'));
+        var dormId = ResHall.findOne({"name": this.toString()})._id;
+        var reviews;
+        if (Session.get('sortType') == "newest") {
+            reviews = ResReview.find({"resHall": dormId}, {sort: {"date": -1}});
+        }
+        else if (Session.get('sortType') =="oldest") {
+            reviews = ResReview.find({"resHall": dormId});
+        }
+        else if (Session.get('sortType') =="top") {
+            reviews = ResReview.find({"resHall": dormId}, {sort: {"upvotes": -1}});
+        }
+        return reviews;
     },
 
     printDorm: function() {
@@ -1155,8 +1304,18 @@ Template.dorm.helpers({
 
 Template.diningCourt.helpers({
     getReviews: function() {
+        console.log(Session.get('sortType'));
         var diningId = Dining.findOne({"name": this.toString()})._id;
-        var reviews = DiningReview.find({"diningId": diningId});
+        var reviews;
+        if (Session.get('sortType') == "newest") {
+            reviews = DiningReview.find({"diningId": diningId}, {sort: {"date": -1}});
+        }
+        else if (Session.get('sortType') =="oldest") {
+            reviews = DiningReview.find({"diningId": diningId});
+        }
+        else if (Session.get('sortType') =="top") {
+            reviews = DiningReview.find({"diningId": diningId}, {sort: {"upvotes": -1}});
+        }
         return reviews;
     },
 
