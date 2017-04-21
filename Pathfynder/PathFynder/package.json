@@ -7,5 +7,11 @@
   "dependencies": {
     "meteor-node-stubs": "~0.2.0",
     "babel-runtime": "6.18.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "grunt": "latest",
+    "grunt-mocha": "^1.0.4",
+    "mocha": "^3.2.0"
   }
 }
