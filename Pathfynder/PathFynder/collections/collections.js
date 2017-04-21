@@ -135,3 +135,6 @@ ResVotes.schema = new SimpleSchema({
     courseId: {type: Meteor.Collection.ObjectID},
     reviewId: {type: Meteor.Collection.ObjectID}
 });
+AdminAccounts.schema = new SimpleSchema({
+    email: {type: String}
+});
