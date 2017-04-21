@@ -24,9 +24,7 @@ Template.accountsettings.events ({
     'submit #deleteAccountForm': function(e,t) {
         Meteor.call('remove', Meteor.userId(), function(error){
             if(error) {
-                console.log("Something went wrong removing user", error);
             } else {
-                console.log("Success");
             }
         });
         Router.go('login');
@@ -36,9 +34,8 @@ Template.accountsettings.events ({
             newPassword = changePasswordForm.find('#changePasswordField').val();
         Meteor.call('setPassword', Meteor.userId(), newPassword, function(error) {
             if(error) {
-                console.log("Something went wrong changing password", error);
+
             } else {
-                console.log("Success");
             }
         });
         alert("Password changed!");
@@ -46,16 +43,11 @@ Template.accountsettings.events ({
     },
 
     'submit #AdminEmail': function(e, t) {
-        console.log("HERE");
         var AdminEmail = $(e.currentTarget),
          newAdminEmail = AdminEmail.find('#addAdmin').val();
-        console.log(newAdminEmail);
-       // var id = Meteor.users.findOne({"emails[0].address": newAdminEmail});
-      //  console.log(id);
        AdminAccounts.insert( {
             email: newAdminEmail
         });
-        //console.log(Meteor.users.findOne({"emails[0].address": newAdminEmail}))
     }
     });
 
@@ -74,7 +66,6 @@ Template.editprofile.events ({
         Router.go('login');
     },
     'submit #changeUsernameForm': function(e,t) {
-        //console.log("Gets here");
         e.preventDefault();
         var changeUsernameform = $(e.currentTarget),
             newUsername = changeUsernameform.find('#changeUsernameOption').val(),
@@ -87,7 +78,6 @@ Template.editprofile.events ({
 
 
         if(Meteor.user()) {
-            //console.log("Entered");
             if(newUsername !== "" && newUsername !== undefined && newUsername !== null) {
                 Meteor.users.update({_id: Meteor.userId()}, {$set: {"profile.username": newUsername}});
             }
@@ -121,7 +111,6 @@ Template.editprofile.events ({
             }
             Router.go('profile');
         } else {
-            //console.log("Didn't enter");
         }
     }
 });
@@ -129,12 +118,8 @@ Template.editprofile.events ({
 Template.accountsettings.helpers({
 
     getAdmin: function() {
-        //var userId = Meteor.userId();
-        var email = Meteor.user().emails[0].address
-        // var user = Meteor.users.findOne(userId);
+        var email = Meteor.user().emails[0].address;
         var user = AdminAccounts.findOne({"email": email});
-        console.log(email + "HERE");
-        console.log(user);
         if (undefined === user){
             return false;
         }

@@ -39,7 +39,9 @@ CourseReview.schema = new SimpleSchema({
     difficultyRating: {type: Number},
     workloadRating: {type: Number},
     utilityRating: {type: Number},
-    upvotes: {type: Number}
+    upvotes: {type: Number},
+    month: {type: String},
+    year: {type: String}
 });
 
 Internship.schema = new SimpleSchema({
@@ -57,7 +59,9 @@ InternReview.schema = new SimpleSchema({
     interviewRating: {type: Number},
     workloadRating: {type: Number},
     utilityRating: {type: Number},
-    upvotes: {type: Number}
+    upvotes: {type: Number},
+    month: {type: String},
+    year: {type: String}
 });
 
 ResHall.schema = new SimpleSchema({
@@ -72,7 +76,9 @@ ResReview.schema = new SimpleSchema({
     date: {type: Date},
     review: {type: String},
     starRating: {type: Number},
-    upvotes: {type: Number}
+    upvotes: {type: Number},
+    month: {type: String},
+    year: {type: String}
 });
 
 Club.schema = new SimpleSchema({
@@ -88,7 +94,9 @@ ClubReview.schema = new SimpleSchema({
     review: {type: String},
     timeRating: {type: Number},
     utilityRating: {type: Number},
-    upvotes: {type: Number}
+    upvotes: {type: Number},
+    month: {type: String},
+    year: {type: String}
 });
 
 Dining.schema = new SimpleSchema({
@@ -107,7 +115,9 @@ DiningReview.schema = new SimpleSchema({
     foodQualityRating: {type: Number},
     healthRating: {type: Number},
     starRating: {type: Number},
-    upvotes: {type: Number}
+    upvotes: {type: Number},
+    month: {type: String},
+    year: {type: String}
 });
 
 CourseVotes.schema = new SimpleSchema({
