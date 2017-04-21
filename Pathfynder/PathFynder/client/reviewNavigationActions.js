@@ -1136,9 +1136,13 @@ Template.departmentCourses.helpers({
     },
 
     getAdmin: function() {
-        var userId = Meteor.userId();
-        var user = Meteor.users.findOne(userId);
-        if (user.profile.administrator == 0){
+        //var userId = Meteor.userId();
+        var email = Meteor.user().emails[0].address
+        // var user = Meteor.users.findOne(userId);
+        var user = AdminAccounts.findOne({"email": email});
+        console.log(email + "HERE");
+        console.log(user);
+        if (undefined === user){
             return false;
         }
         return true;
@@ -1221,9 +1225,13 @@ Template.internship.helpers({
     },
 
     getAdmin: function() {
-        var userId = Meteor.userId();
-        var user = Meteor.users.findOne(userId);
-        if (user.profile.administrator == 0){
+        //var userId = Meteor.userId();
+        var email = Meteor.user().emails[0].address
+        // var user = Meteor.users.findOne(userId);
+        var user = AdminAccounts.findOne({"email": email});
+        console.log(email + "HERE");
+        console.log(user);
+        if (undefined === user){
             return false;
         }
         return true;
@@ -1292,9 +1300,13 @@ Template.club.helpers({
     },
 
     getAdmin: function() {
-        var userId = Meteor.userId();
-        var user = Meteor.users.findOne(userId);
-        if (user.profile.administrator == 0){
+        //var userId = Meteor.userId();
+        var email = Meteor.user().emails[0].address
+        // var user = Meteor.users.findOne(userId);
+        var user = AdminAccounts.findOne({"email": email});
+        console.log(email + "HERE");
+        console.log(user);
+        if (undefined === user){
             return false;
         }
         return true;
@@ -1363,9 +1375,13 @@ Template.dorm.helpers({
     },
 
     getAdmin: function() {
-        var userId = Meteor.userId();
-        var user = Meteor.users.findOne(userId);
-        if (user.profile.administrator == 0){
+        //var userId = Meteor.userId();
+        var email = Meteor.user().emails[0].address
+        // var user = Meteor.users.findOne(userId);
+        var user = AdminAccounts.findOne({"email": email});
+        console.log(email + "HERE");
+        console.log(user);
+        if (undefined === user){
             return false;
         }
         return true;
@@ -1434,9 +1450,13 @@ Template.diningCourt.helpers({
     },
 
     getAdmin: function() {
-        var userId = Meteor.userId();
-        var user = Meteor.users.findOne(userId);
-        if (user.profile.administrator == 0){
+        //var userId = Meteor.userId();
+        var email = Meteor.user().emails[0].address
+        // var user = Meteor.users.findOne(userId);
+        var user = AdminAccounts.findOne({"email": email});
+        console.log(email + "HERE");
+        console.log(user);
+        if (undefined === user){
             return false;
         }
         return true;

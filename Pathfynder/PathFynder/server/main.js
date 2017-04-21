@@ -4,7 +4,6 @@ Meteor.startup(() => {
     // code to run on server at startup
     //var date = Date();
     CourseReview.remove( { date : {"$lt" : new Date(2012, 4, 16) } });
-    AdminAccounts.insert({"email": "agharibi@purdue.edu"});
     process.env.MAIL_URL="smtp://postmaster@mail.pathfynder.ltd:040290bafa1f8586df07331ae666ea42@smtp.mailgun.org:587";
     console.log(process.env);
     Accounts.urls.verifyEmail = function (token) {

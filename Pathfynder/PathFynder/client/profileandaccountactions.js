@@ -50,10 +50,12 @@ Template.accountsettings.events ({
         var AdminEmail = $(e.currentTarget),
          newAdminEmail = AdminEmail.find('#addAdmin').val();
         console.log(newAdminEmail);
-        if (Meteor.users.findOne({"emails[0].address": newAdminEmail}) != undefined) {
-            Meteor.users.findOne({"emails[0].address": newAdminEmail}).profile.administrator = 1;
-        }
-        console.log(Meteor.users.findOne({"emails[0].address": newAdminEmail}))
+       // var id = Meteor.users.findOne({"emails[0].address": newAdminEmail});
+      //  console.log(id);
+       AdminAccounts.insert( {
+            email: newAdminEmail
+        });
+        //console.log(Meteor.users.findOne({"emails[0].address": newAdminEmail}))
     }
     });
 
@@ -121,5 +123,21 @@ Template.editprofile.events ({
         } else {
             //console.log("Didn't enter");
         }
+    }
+});
+
+Template.accountsettings.helpers({
+
+    getAdmin: function() {
+        //var userId = Meteor.userId();
+        var email = Meteor.user().emails[0].address
+        // var user = Meteor.users.findOne(userId);
+        var user = AdminAccounts.findOne({"email": email});
+        console.log(email + "HERE");
+        console.log(user);
+        if (undefined === user){
+            return false;
+        }
+        return true;
     }
 });
