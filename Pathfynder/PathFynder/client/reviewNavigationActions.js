@@ -222,7 +222,9 @@ Template.departmentCourses.events({
     'submit .sortReviews': function(event, template) {
         event.preventDefault();
         var sortType = template.find('#coursesSortReviews').value;
+        var semester = template.find('#selectCourseSemester').value;
         Session.set('sortType', sortType);
+        Session.set('semester', semester);
     },
 
     'click .usernameProfileLink' : function(event) {
@@ -291,6 +293,9 @@ Template.departmentCourses.events({
         var month = split[0];
         var year = split[2];
         var courseId = Course.findOne({"Abbreviation": this[0], "Number": Number(this[1])})._id;
+        var smeseter = template.find('#courseSemester');
+
+
         CourseReview.insert({
             course: courseId,
             userId: currentUser,
@@ -301,7 +306,8 @@ Template.departmentCourses.events({
             utilityRating: utility,
             upvotes: 0,
             month: month,
-            year: year
+            year: year,
+            semester: semester
         });
         var modal = template.find('.Modal');
         modal.style.display = "none";
@@ -1083,6 +1089,45 @@ Template.departments.helpers({
 });
 
 Template.departmentCourses.helpers({
+    getSemesters: function() {
+
+        //create the semester of current date
+        var currentDate = new Date();
+        var split = currentDate.toLocaleDateString().split("/");
+        var month = parseInt(split[0]) - 1;
+        var year = parseInt(split[2]);
+
+        var semester;
+        if (month <= 4) {
+            semester = "Spring ";
+        }
+        else if (month <= 7){
+            semester = "Summer ";
+        }
+        else {
+            semester = "Fall ";
+        }
+        semester += year;
+
+        //add to collection if not already there
+        var alreadyExists = Semesters.findOne({"semester": semester});
+        if (alreadyExists == undefined && Semesters.find().count() > 0) {
+            Semesters.insert({
+                semester: semester,
+                date: currentDate
+            });
+        }
+
+        //fetch semesters of the last four years
+        var fourYearsAgo = new Date(year - 4, month, parseInt(split[1]));
+        var endDate = new Date(year, month, parseInt(split[1]) + 1);
+        return Semesters.find({date: {$gte: fourYearsAgo, $lt: endDate}});
+    },
+
+    getValue: function() {
+        return this.semester;
+    },
+
     'getReviews': function() {
         var currentDate = new Date();
         var split = currentDate.toLocaleDateString().split("/");
@@ -1101,6 +1146,9 @@ Template.departmentCourses.helpers({
         }
         else if (Session.get('sortType') == "month") {
             reviews = CourseReview.find({"course": courseId, "month": month, "year": year}, {sort: {"date": -1}});
+        }
+        else if (Session.get('sortType') == "semester" && Session.get('semester') != "none") {
+            reviews = CourseReview.find({"course": courseId, "semester": Session.get('semester')})
         }
         else {
             reviews = CourseReview.find({"course": courseId}, {sort: {"date": -1}});

@@ -433,7 +433,7 @@
                     </select>
                     </div>
                     <div id="dropdown3">
-                    <p>Course Utility</p>
+                    <p>Course Utility:</p>
                     <select name="utility" id="courseUtility">
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -447,7 +447,15 @@
                         <option value="10">10</option>
                     </select>
                     </div>
-                    <input class="addReviewButton" type="submit" value="submit">
+                    <div id="semesterDrop">
+                        <p>Semester Taken:</p>
+                        <select name="course" id="courseSemester">
+                            {{#each getSemesters}}
+                                <option value="{{this.semester}}">{{this.semester}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <input class="coursesAddReviewButton" type="submit" value="Submit">
                 </form>
             </div>
         </div>
@@ -457,7 +465,14 @@
                     <option value="newest">Newest-Oldest</option>
                     <option value="oldest">Oldest-Newest</option>
                     <option value="top">Top Voted</option>
-                    <option value="month">By Month</option>
+                    <option value="month">Last Month</option>
+                    <option value="semester">By Semester</option>
+                </select>
+                <select name="course" id="selectCourseSemester">
+                    <option value ="none">-Semester Sort Only-</option>
+                    {{#each getSemesters}}
+                        <option value="{{this.semester}}">{{this.semester}}</option>
+                    {{/each}}
                 </select>
                 <input class="submitSort" type="submit" value="Sort">
             </form>
@@ -718,7 +733,7 @@
                     <option value="newest">Newest-Oldest</option>
                     <option value="oldest">Oldest-Newest</option>
                     <option value="top">Top Voted</option>
-                    <option value="month">By Month</option>
+                    <option value="month">Last Month</option>
                 </select>
                 <input class="submitSort" type="submit" value="Sort">
             </form>
@@ -962,7 +977,7 @@
                     <option value="newest">Newest-Oldest</option>
                     <option value="oldest">Oldest-Newest</option>
                     <option value="top">Top Voted</option>
-                    <option value="month">By Month</option>
+                    <option value="month">Last Month</option>
                 </select>
                 <input class="submitSort" type="submit" value="Sort">
             </form>
@@ -1188,7 +1203,7 @@
                     <option value="newest">Newest-Oldest</option>
                     <option value="oldest">Oldest-Newest</option>
                     <option value="top">Top Voted</option>
-                    <option value="month">By Month</option>
+                    <option value="month">Last Month</option>
                 </select>
                 <input class="submitSort" type="submit" value="Sort">
             </form>
@@ -1447,7 +1462,7 @@
                     <option value="newest">Newest-Oldest</option>
                     <option value="oldest">Oldest-Newest</option>
                     <option value="top">Top Voted</option>
-                    <option value="month">By Month</option>
+                    <option value="month">Last Month</option>
                 </select>
                 <input class="submitSort" type="submit" value="Sort">
             </form>

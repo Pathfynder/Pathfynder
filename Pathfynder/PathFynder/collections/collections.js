@@ -18,6 +18,7 @@ InternshipVotes= new Meteor.Collection('IntershipVotes');
 ClubVotes = new Meteor.Collection('clubVotes');
 ResVotes = new Meteor.Collection('resVotes');
 AdminAccounts = new Meteor.Collection('adminAccount');
+Semesters = new Meteor.Collection('semesters');
 
 
 //Schemas
@@ -41,7 +42,8 @@ CourseReview.schema = new SimpleSchema({
     utilityRating: {type: Number},
     upvotes: {type: Number},
     month: {type: String},
-    year: {type: String}
+    year: {type: String},
+    semester: {type: String}
 });
 
 Internship.schema = new SimpleSchema({
@@ -147,4 +149,9 @@ ResVotes.schema = new SimpleSchema({
 });
 AdminAccounts.schema = new SimpleSchema({
     email: {type: String}
+});
+
+Semesters.schema = new SimpleSchema({
+   semester: {type: String},
+   date: {type: Date}
 });

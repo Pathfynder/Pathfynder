@@ -303,6 +303,10 @@
     margin-left: 1000px;
 }
 
+#semesterDrop {
+    margin-left: 1000px;
+}
+
 .dropdowns {
     margin-top: -33px;
     margin-left: 150px;
@@ -319,6 +323,19 @@
     margin-left: -50px;
     border: 1px solid #888;
     margin-top: 40px;
+}
+
+.coursesAddReviewButton {
+    position: absolute;
+    background-color: white;
+    color: #CB2B68;
+    font-size: 18px;
+    height: 25px;
+    width: 100px;
+    left: 50%;
+    margin-left: -50px;
+    border: 1px solid #888;
+    margin-top: -20px;
 }
 
 .addClubReviewButton {
