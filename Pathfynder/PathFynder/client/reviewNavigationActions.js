@@ -1108,6 +1108,24 @@ Template.departmentCourses.helpers({
         return reviews;
     },
 
+    getCurrentSort: function() {
+        if (Session.get('sortType') == "newest") {
+            return "Newest-Oldest";
+        }
+        else if (Session.get('sortType') =="oldest") {
+            return "Oldest-Newest";
+        }
+        else if (Session.get('sortType') =="top") {
+            return "Top Rated";
+        }
+        else if (Session.get('sortType') == "month") {
+            return "By Month";
+        }
+        else {
+            return "Newest-Oldest";
+        }
+    },
+
     'printCourse': function() {
         return this[0] + ' ' + this[1];
     },
@@ -1201,6 +1219,24 @@ Template.internship.helpers({
        return reviews;
    },
 
+    getCurrentSort: function() {
+        if (Session.get('sortType') == "newest") {
+            return "Newest-Oldest";
+        }
+        else if (Session.get('sortType') =="oldest") {
+            return "Oldest-Newest";
+        }
+        else if (Session.get('sortType') =="top") {
+            return "Top Rated";
+        }
+        else if (Session.get('sortType') == "month") {
+            return "By Month";
+        }
+        else {
+            return "Newest-Oldest";
+        }
+    },
+
     printInternship: function() {
        return this.toString();
     },
@@ -1279,6 +1315,24 @@ Template.club.helpers({
             reviews = ClubReview.find({"club": clubId}, {sort: {"date": -1}});
         }
         return reviews;
+    },
+
+    getCurrentSort: function() {
+        if (Session.get('sortType') == "newest") {
+            return "Newest-Oldest";
+        }
+        else if (Session.get('sortType') =="oldest") {
+            return "Oldest-Newest";
+        }
+        else if (Session.get('sortType') =="top") {
+            return "Top Rated";
+        }
+        else if (Session.get('sortType') == "month") {
+            return "By Month";
+        }
+        else {
+            return "Newest-Oldest";
+        }
     },
 
     printClub: function() {
@@ -1361,6 +1415,24 @@ Template.dorm.helpers({
         return reviews;
     },
 
+    getCurrentSort: function() {
+        if (Session.get('sortType') == "newest") {
+            return "Newest-Oldest";
+        }
+        else if (Session.get('sortType') =="oldest") {
+            return "Oldest-Newest";
+        }
+        else if (Session.get('sortType') =="top") {
+            return "Top Rated";
+        }
+        else if (Session.get('sortType') == "month") {
+            return "By Month";
+        }
+        else {
+            return "Newest-Oldest";
+        }
+    },
+
     printDorm: function() {
         return this.toString();
     },
@@ -1440,6 +1512,24 @@ Template.diningCourt.helpers({
         }
 
         return reviews;
+    },
+
+    getCurrentSort: function() {
+        if (Session.get('sortType') == "newest") {
+            return "Newest-Oldest";
+        }
+        else if (Session.get('sortType') =="oldest") {
+            return "Oldest-Newest";
+        }
+        else if (Session.get('sortType') =="top") {
+            return "Top Rated";
+        }
+        else if (Session.get('sortType') == "month") {
+            return "By Month";
+        }
+        else {
+            return "Newest-Oldest";
+        }
     },
 
     printDining: function() {

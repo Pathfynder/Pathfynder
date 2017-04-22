@@ -518,3 +518,11 @@
     border: 1px solid #888;
     margin-top: 175px;
 }
+
+.submitSort {
+    background-color: white;
+    color: #CB2B68;
+    height: 20px;
+    width: 40px;
+    border: 1px solid #888;
+}

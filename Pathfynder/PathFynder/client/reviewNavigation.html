@@ -459,7 +459,7 @@
                     <option value="top">Top Voted</option>
                     <option value="month">By Month</option>
                 </select>
-                <input class="submitSort" type="submit" value="submit">
+                <input class="submitSort" type="submit" value="Sort">
             </form>
         </div>
         {{#each getReviews}}
@@ -720,7 +720,7 @@
                     <option value="top">Top Voted</option>
                     <option value="month">By Month</option>
                 </select>
-                <input class="submitSort" type="submit" value="submit">
+                <input class="submitSort" type="submit" value="Sort">
             </form>
         </div>
         {{#each getReviews}}
@@ -964,7 +964,7 @@
                     <option value="top">Top Voted</option>
                     <option value="month">By Month</option>
                 </select>
-                <input class="submitSort" type="submit" value="submit">
+                <input class="submitSort" type="submit" value="Sort">
             </form>
         </div>
         {{#each getReviews}}
@@ -1190,7 +1190,7 @@
                     <option value="top">Top Voted</option>
                     <option value="month">By Month</option>
                 </select>
-                <input class="submitSort" type="submit" value="submit">
+                <input class="submitSort" type="submit" value="Sort">
             </form>
         </div>
         {{#each getReviews}}
@@ -1449,7 +1449,7 @@
                     <option value="top">Top Voted</option>
                     <option value="month">By Month</option>
                 </select>
-                <input class="submitSort" type="submit" value="submit">
+                <input class="submitSort" type="submit" value="Sort">
             </form>
         </div>
         {{#each getReviews}}
@@ -1646,12 +1646,14 @@
     </div>
     <div class="pageTitle">{{getUsername}}</div>
     <div class="profileBody">
-        <p>Current University: </p> {{getUniversity}}
+        <p id="currentUniversityOption">Current University: {{getUniversity}}</p>
         {{#if getPublicMajor}}
-            <p>Current Major: </p> {{getMajor}}
+            <br>
+            <p id="currentMajorOption">Current Major: {{getMajor}}</p>
         {{/if}}
         {{#if getPublicGradDate}}
-            <p>Graduation Date: </p> {{getGradDate}}
+            <br>
+            <p id="currentGradDateOption">Graduation Date: {{getGradDate}}</p>
         {{/if}}
         <p></p>
         <p></p>
