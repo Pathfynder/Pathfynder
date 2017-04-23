@@ -67,13 +67,15 @@
                 <input id="changePasswordButton" type="submit" value="Update">
             </form>
         </div>
-        <div class = "accountSettingOption">
-            <p>Create New Admin</p>
-            <form class = "email" id="AdminEmail">
-                <input id ="addAdmin" type="text" name="adminEmail"  placeholder="Enter new Admin's email here">
-                <input id="addAdminButton" type="submit" value="Update">
-            </form>
-        </div>
+        {{#if getAdmin}}
+            <div class = "accountSettingOption">
+                <p>Create New Admin</p>
+                <form class = "email" id="AdminEmail">
+                    <input id ="addAdmin" type="text" name="adminEmail"  placeholder="Enter new Admin's email here">
+                    <input id="addAdminButton" type="submit" value="Update">
+                </form>
+            </div>
+        {{/if}}
     </div>
 </template>
 
@@ -135,6 +137,7 @@
                         }
                     </script>
               </p>
+            <br>
         <p id="currentUniversityOption">
             <script>
                 //console.log("Entered here");
@@ -149,6 +152,7 @@
                 }
             </script>
         </p>
+        <br>
         <p id="currentMajorOption">
             <script>
                 //console.log("Entered here");
@@ -165,6 +169,7 @@
                 }
             </script>
         </p>
+        <br>
         <p id="currentGradDateOption">
             <script>
                 //console.log("Entered here");

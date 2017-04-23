@@ -433,7 +433,7 @@
                     </select>
                     </div>
                     <div id="dropdown3">
-                    <p>Course Utility</p>
+                    <p>Course Utility:</p>
                     <select name="utility" id="courseUtility">
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -447,7 +447,25 @@
                         <option value="10">10</option>
                     </select>
                     </div>
-                    <input class="addReviewButton" type="submit" value="submit">
+                    <div id="semesterDrop">
+                        <p>Semester Taken:</p>
+                        <select name="course" id="courseSemester">
+                            <option value="Spring 2013">Spring 2013</option>
+                            <option value="Summer 2013">Summer 2013</option>
+                            <option value="Fall 2013">Fall 2013</option>
+                            <option value="Spring 2014">Spring 2014</option>
+                            <option value="Summer 2014">Summer 2014</option>
+                            <option value="Fall 2014">Fall 2014</option>
+                            <option value="Spring 2015">Spring 2015</option>
+                            <option value="Summer 2015">Summer 2015</option>
+                            <option value="Fall 2015">Fall 2015</option>
+                            <option value="Spring 2016">Spring 2016</option>
+                            <option value="Summer 2016">Summer 2016</option>
+                            <option value="Fall 2016">Fall 2016</option>
+                            <option value="Spring 2017">Spring 2017</option>
+                        </select>
+                    </div>
+                    <input class="coursesAddReviewButton" type="submit" value="Submit">
                 </form>
             </div>
         </div>
@@ -457,8 +475,26 @@
                     <option value="newest">Newest-Oldest</option>
                     <option value="oldest">Oldest-Newest</option>
                     <option value="top">Top Voted</option>
+                    <option value="month">Last Month</option>
+                    <option value="semester">By Semester</option>
                 </select>
-                <input class="submitSort" type="submit" value="submit">
+                <select name="course" id="selectCourseSemester">
+                    <option value ="none">-Semester Sort Only-</option>
+                        <option value="Spring 2013">Spring 2013</option>
+                        <option value="Summer 2013">Summer 2013</option>
+                        <option value="Fall 2013">Fall 2013</option>
+                        <option value="Spring 2014">Spring 2014</option>
+                        <option value="Summer 2014">Summer 2014</option>
+                        <option value="Fall 2014">Fall 2014</option>
+                        <option value="Spring 2015">Spring 2015</option>
+                        <option value="Summer 2015">Summer 2015</option>
+                        <option value="Fall 2015">Fall 2015</option>
+                        <option value="Spring 2016">Spring 2016</option>
+                        <option value="Summer 2016">Summer 2016</option>
+                        <option value="Fall 2016">Fall 2016</option>
+                        <option value="Spring 2017">Spring 2017</option>
+                </select>
+                <input class="submitSort" type="submit" value="Sort">
             </form>
         </div>
         {{#each getReviews}}
@@ -518,7 +554,7 @@
                 </div>
             </div>
             <div class = "reviewObject">
-                <p>{{this.date}}</p>
+                <p>{{printDate}}</p>
                 <div class="upvotes">
                     {{#if getCourseUpvote}}
                         {{> courseVoted}}
@@ -530,7 +566,7 @@
                     </div>
                 </div>
                 <div class = "reviewDetails">
-                    <p>{{printUsername}}</p>
+                    <p class="usernameProfileLink">{{printUsername}}</p>
                     <p>Difficulty: {{this.difficultyRating}}</p>
                     <p>Workload: {{this.workloadRating}}</p>
                     <p>Utility: {{this.utilityRating}}</p>
@@ -717,8 +753,9 @@
                     <option value="newest">Newest-Oldest</option>
                     <option value="oldest">Oldest-Newest</option>
                     <option value="top">Top Voted</option>
+                    <option value="month">Last Month</option>
                 </select>
-                <input class="submitSort" type="submit" value="submit">
+                <input class="submitSort" type="submit" value="Sort">
             </form>
         </div>
         {{#each getReviews}}
@@ -778,7 +815,7 @@
                 </div>
             </div>
             <div class = "reviewObject">
-                <p>{{this.date}}</p>
+                <p>{{printDate}}</p>
                 <div class="upvotes">
                     {{#if getUpvote}}
                         {{> diningVoted}}
@@ -790,7 +827,7 @@
                     </div>
                 </div>
                 <div class = "reviewDetails">
-                    <p>{{printUsername}}</p>
+                    <p class="usernameProfileLink">{{printUsername}}</p>
                     <p>Star Rating: {{this.starRating}}</p>
                     <p>Food Quality Rating: {{this.foodQualityRating}}</p>
                     <p>Healthy Rating: {{this.healthRating}}</p>
@@ -960,8 +997,9 @@
                     <option value="newest">Newest-Oldest</option>
                     <option value="oldest">Oldest-Newest</option>
                     <option value="top">Top Voted</option>
+                    <option value="month">Last Month</option>
                 </select>
-                <input class="submitSort" type="submit" value="submit">
+                <input class="submitSort" type="submit" value="Sort">
             </form>
         </div>
         {{#each getReviews}}
@@ -991,7 +1029,7 @@
                 </div>
             </div>
             <div class = "reviewObject">
-                <p>{{this.date}}</p>
+                <p>{{printDate}}</p>
                 <div class="upvotes">
                     {{#if getUpvote}}
                         {{> dormVoted}}
@@ -1003,7 +1041,7 @@
                     </div>
                 </div>
                 <div class = "reviewDetails">
-                    <p>{{printUsername}}</p>
+                    <p class="usernameProfileLink">{{printUsername}}</p>
                     <p>Star Rating: {{this.starRating}}</p>
                 </div>
                 <div class = "reviewText">
@@ -1185,8 +1223,9 @@
                     <option value="newest">Newest-Oldest</option>
                     <option value="oldest">Oldest-Newest</option>
                     <option value="top">Top Voted</option>
+                    <option value="month">Last Month</option>
                 </select>
-                <input class="submitSort" type="submit" value="submit">
+                <input class="submitSort" type="submit" value="Sort">
             </form>
         </div>
         {{#each getReviews}}
@@ -1231,7 +1270,7 @@
                 </div>
             </div>
             <div class = "reviewObject">
-                <p>{{this.date}}</p>
+                <p>{{printDate}}</p>
                 <div class="upvotes">
                     {{#if getUpvote}}
                         {{> clubVoted}}
@@ -1243,7 +1282,7 @@
                     </div>
                 </div>
                 <div class = "reviewDetails">
-                    <p>{{printUsername}}</p>
+                    <p class="usernameProfileLink">{{printUsername}}</p>
                     <p>Time Commitment: {{this.timeRating}}</p>
                     <p>Utility: {{this.utilityRating}}</p>
                 </div>
@@ -1443,8 +1482,9 @@
                     <option value="newest">Newest-Oldest</option>
                     <option value="oldest">Oldest-Newest</option>
                     <option value="top">Top Voted</option>
+                    <option value="month">Last Month</option>
                 </select>
-                <input class="submitSort" type="submit" value="submit">
+                <input class="submitSort" type="submit" value="Sort">
             </form>
         </div>
         {{#each getReviews}}
@@ -1504,7 +1544,7 @@
                 </div>
             </div>
             <div class = "reviewObject">
-                <p>{{this.date}}</p>
+                <p>{{printDate}}</p>
                 <div class="upvotes">
                     {{#if getUpvote}}
                         {{> internVoted}}
@@ -1516,7 +1556,7 @@
                     </div>
                 </div>
                 <div class = "reviewDetails">
-                    <p>{{printUsername}}</p>
+                    <p class="usernameProfileLink">{{printUsername}}</p>
                     <p>Interview: {{this.interviewRating}}</p>
                     <p>Workload: {{this.workloadRating}}</p>
                     <p>Utility: {{this.utilityRating}}</p>
@@ -1598,6 +1638,61 @@
 
 <template name="diningDelete">
     <div class ="deleteReviewButton">delete</div>
+</template>
+
+<template name="publicProfile">
+    <div class="logo"><a href="{{pathFor route='home'}}">PathFynder</a></div>
+    <div class="header">
+        <li><a href="#" class="logout">Logout</a></li>
+        <li><a href="{{pathFor route='faq'}}">FAQ</a></li>
+        <li><a href="{{pathFor route='profile'}}">Profile</a></li>
+        <li><a href="{{pathFor route='accountsettings'}}">Account Settings</a></li>
+    </div>
+    <div class="navBar">
+        <table>
+            <tr>
+                <td id="courses">
+                    <div>
+                        <a href="{{pathFor route='courses'}}">Courses</a>
+                    </div>
+                </td>
+                <td id="internships">
+                    <div>
+                        <a href="{{pathFor route='internships'}}">Internships</a>
+                    </div>
+                </td>
+                <td id="clubs">
+                    <div>
+                        <a href="{{pathFor route='clubs'}}">Clubs</a>
+                    </div>
+                </td>
+                <td id="residential">
+                    <div>
+                        <a href="{{pathFor route='residential'}}">Residential</a>
+                    </div>
+                </td>
+                <td id="dining">
+                    <div>
+                        <a href="{{pathFor route='dining'}}">Dining</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="pageTitle">{{getUsername}}</div>
+    <div class="profileBody">
+        <p id="currentUniversityOption">Current University: {{getUniversity}}</p>
+        {{#if getPublicMajor}}
+            <br>
+            <p id="currentMajorOption">Current Major: {{getMajor}}</p>
+        {{/if}}
+        {{#if getPublicGradDate}}
+            <br>
+            <p id="currentGradDateOption">Graduation Date: {{getGradDate}}</p>
+        {{/if}}
+        <p></p>
+        <p></p>
+    </div>
 </template>
 
 

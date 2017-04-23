@@ -39,7 +39,7 @@ Router.route('/courses/:_school/:_department/:_course', {
     data: function(){
         var currentList = this.params._department;
         var args = [];
-        args[0] = this.params._department;//Departments.findOne({ department: currentList });
+        args[0] = this.params._department;
         args[1] = this.params._course;
         return args;
     }
@@ -111,6 +111,16 @@ Router.route('/clubs/:_school/:_internship', {
     template: 'internship',
     data: function() {
         return this.params._club;
+    }
+});
+
+Router.route('/profiles/:_username/', {
+    name: 'publicProfile',
+    template: 'publicProfile',
+    data: function() {
+        var username = this.params._username;
+        var user = Meteor.users.findOne({"profile.username": username});
+        return user;
     }
 });
 
@@ -212,7 +222,21 @@ Template.departmentCourses.events({
     'submit .sortReviews': function(event, template) {
         event.preventDefault();
         var sortType = template.find('#coursesSortReviews').value;
+        var semester = template.find('#selectCourseSemester').value;
         Session.set('sortType', sortType);
+        Session.set('semester', semester);
+    },
+
+    'click .usernameProfileLink' : function(event) {
+        event.preventDefault();
+        var userId = this.userId;
+        var preUsername = Meteor.users.findOne(userId);
+        var userName = preUsername.profile.username;
+        if (preUsername.profile.usernameBool === 1) {
+            if (userName != "" && userName != "Anonymous" && userName != "anonymous") {
+                Router.go("/profiles/" + userName);
+            }
+        }
     },
 
     'click .addReview': function(event, template) {
@@ -249,8 +273,6 @@ Template.departmentCourses.events({
         utility.value = reviewBeingEdited.utilityRating;
         modal.style.display = 'block';
         editCourseThisStorage = this;
-        console.log(this);
-        console.log(reviewBeingEdited);
     },
 
     'click .editclose': function(event, template) {
@@ -267,7 +289,13 @@ Template.departmentCourses.events({
         var utility = event.target.utility.value;
         var currentUser = Meteor.userId();
         var currentDate = new Date();
+        var split = currentDate.toLocaleDateString().split("/");
+        var month = split[0];
+        var year = split[2];
         var courseId = Course.findOne({"Abbreviation": this[0], "Number": Number(this[1])})._id;
+        var semester = template.find('#courseSemester');
+
+
         CourseReview.insert({
             course: courseId,
             userId: currentUser,
@@ -276,7 +304,10 @@ Template.departmentCourses.events({
             difficultyRating: difficulty,
             workloadRating: workload,
             utilityRating: utility,
-            upvotes: 0
+            upvotes: 0,
+            month: month,
+            year: year,
+            semester: semester
         });
         var modal = template.find('.Modal');
         modal.style.display = "none";
@@ -288,7 +319,6 @@ Template.departmentCourses.events({
 
     'submit .editReview': function(event, template) {
         event.preventDefault();
-        console.log(editCourseThisStorage);
         var reviewText = event.target.editReview.value;
         var difficulty = event.target.difficulty.value;
         var workload = event.target.workload.value;
@@ -402,6 +432,18 @@ Template.internship.events({
         Session.set('sortType', sortType);
     },
 
+    'click .usernameProfileLink' : function(event) {
+        event.preventDefault();
+        var userId = this.userId;
+        var preUsername = Meteor.users.findOne(userId);
+        var userName = preUsername.profile.username;
+        if (preUsername.profile.usernameBool === 1) {
+            if (userName != "" && userName != "Anonymous" && userName != "anonymous") {
+                Router.go("/profiles/" + userName);
+            }
+        }
+    },
+
     'click .addReview': function(event, template) {
         event.preventDefault();
         var modal = template.find('.Modal');
@@ -430,6 +472,9 @@ Template.internship.events({
         var utility = event.target.utility.value;
         var currentUser = Meteor.userId();
         var currentDate = new Date();
+        var split = currentDate.toLocaleDateString().split("/");
+        var month = split[0];
+        var year = split[2];
         var internshipId = Internship.findOne({"name": this.toString()})._id;
         InternReview.insert({
             internship: internshipId,
@@ -439,7 +484,9 @@ Template.internship.events({
             interviewRating: interview,
             workloadRating: workload,
             utilityRating: utility,
-            upvotes: 0
+            upvotes: 0,
+            month: month,
+            year: year
         });
         var modal = template.find('.Modal');
         modal.style.display = "none";
@@ -451,7 +498,6 @@ Template.internship.events({
 
     'click .editReviewButton': function(event, template) {
         event.preventDefault();
-        // var reviewBeingEdited = CourseReview.findOne({"userId": this.userId, "date": this.date, "review": this.review, "difficultyRating": this.difficultyRating, "workloadRating": this.workloadRating, "utilityRating": this.utilityRating});
         var modal = template.find('.editModal');
         var textField = template.find('.editReviewText');
         var workload = template.find('#editInternWorkload');
@@ -463,7 +509,6 @@ Template.internship.events({
         utility.value = this.utilityRating;
         modal.style.display = 'block';
         editInternshipThisStorage = this;
-        console.log(this);
     },
 
     'click .editclose': function(event, template) {
@@ -500,6 +545,18 @@ Template.club.events({
         Session.set('sortType', sortType);
     },
 
+    'click .usernameProfileLink' : function(event) {
+        event.preventDefault();
+        var userId = this.userId;
+        var preUsername = Meteor.users.findOne(userId);
+        var userName = preUsername.profile.username;
+        if (preUsername.profile.usernameBool === 1) {
+            if (userName != "" && userName != "Anonymous" && userName != "anonymous") {
+                Router.go("/profiles/" + userName);
+            }
+        }
+    },
+
     'click .addReview': function(event, template) {
         event.preventDefault();
         var modal = template.find('.Modal');
@@ -525,6 +582,9 @@ Template.club.events({
         var utilityRating = event.target.utility.value;
         var currentUser = Meteor.userId();
         var currentDate = new Date();
+        var split = currentDate.toLocaleDateString().split("/");
+        var month = split[0];
+        var year = split[2];
         var clubId = Club.findOne({"name": this.toString()})._id;
         ClubReview.insert({
             club: clubId,
@@ -533,7 +593,9 @@ Template.club.events({
             review: reviewText,
             timeRating: timeRating,
             utilityRating: utilityRating,
-            upvotes: 0
+            upvotes: 0,
+            month: month,
+            year: year
         });
         var modal = template.find('.Modal');
         modal.style.display = "none";
@@ -544,7 +606,6 @@ Template.club.events({
 
     'click .editReviewButton': function(event, template) {
         event.preventDefault();
-        // var reviewBeingEdited = CourseReview.findOne({"userId": this.userId, "date": this.date, "review": this.review, "difficultyRating": this.difficultyRating, "workloadRating": this.workloadRating, "utilityRating": this.utilityRating});
         var modal = template.find('.editModal');
         var textField = template.find('.editReviewText');
         var time = template.find('#editClubTime');
@@ -554,7 +615,6 @@ Template.club.events({
         utility.value = this.utilityRating;
         modal.style.display = 'block';
         editClubThisStorage = this;
-        console.log(this);
     },
 
     'click .editclose': function(event, template) {
@@ -590,6 +650,18 @@ Template.dorm.events({
         Session.set('sortType', sortType);
     },
 
+    'click .usernameProfileLink' : function(event) {
+        event.preventDefault();
+        var userId = this.userId;
+        var preUsername = Meteor.users.findOne(userId);
+        var userName = preUsername.profile.username;
+        if (preUsername.profile.usernameBool === 1) {
+            if (userName != "" && userName != "Anonymous" && userName != "anonymous") {
+                Router.go("/profiles/" + userName);
+            }
+        }
+    },
+
     'click .addReview': function(event, template) {
         event.preventDefault();
         var modal = template.find('.Modal');
@@ -611,10 +683,12 @@ Template.dorm.events({
     'submit .makeReview' :function(event, template) {
         event.preventDefault();
         var reviewText = event.target.makeReview.value;
-        //var location = event.target.location.value;
         var starRating = event.target.star.value;
         var currentUser = Meteor.userId();
         var currentDate = new Date();
+        var split = currentDate.toLocaleDateString().split("/");
+        var month = split[0];
+        var year = split[2];
         var dormId = ResHall.findOne({"name": this.toString()})._id;
         ResReview.insert({
             resHall: dormId,
@@ -622,7 +696,9 @@ Template.dorm.events({
             date: currentDate,
             review: reviewText,
             starRating: starRating,
-            upvotes: 0
+            upvotes: 0,
+            month: month,
+            year: year
         });
         var modal = template.find('.Modal');
         modal.style.display = "none";
@@ -632,7 +708,6 @@ Template.dorm.events({
 
     'click .editReviewButton': function(event, template) {
         event.preventDefault();
-        // var reviewBeingEdited = CourseReview.findOne({"userId": this.userId, "date": this.date, "review": this.review, "difficultyRating": this.difficultyRating, "workloadRating": this.workloadRating, "utilityRating": this.utilityRating});
         var modal = template.find('.editModal');
         var textField = template.find('.editReviewText');
         var star = template.find('#editDormStar');
@@ -640,7 +715,6 @@ Template.dorm.events({
         star.value = this.starRating;
         modal.style.display = 'block';
         editDormThisStorage = this;
-        console.log(this);
     },
 
     'click .editclose': function(event, template) {
@@ -675,6 +749,18 @@ Template.diningCourt.events({
         Session.set('sortType', sortType);
     },
 
+    'click .usernameProfileLink' : function(event) {
+        event.preventDefault();
+        var userId = this.userId;
+        var preUsername = Meteor.users.findOne(userId);
+        var userName = preUsername.profile.username;
+        if (preUsername.profile.usernameBool === 1) {
+            if (userName != "" && userName != "Anonymous" && userName != "anonymous") {
+                Router.go("/profiles/" + userName);
+            }
+        }
+    },
+
     'click .addReview': function(event, template) {
         event.preventDefault();
         var modal = template.find('.Modal');
@@ -703,6 +789,9 @@ Template.diningCourt.events({
         var starRating = event.target.star.value;
         var currentUser = Meteor.userId();
         var currentDate = new Date();
+        var split = currentDate.toLocaleDateString().split("/");
+        var month = split[0];
+        var year = split[2];
         var diningId = Dining.findOne({"name": this.toString()})._id;
         DiningReview.insert({
             diningId: diningId,
@@ -712,7 +801,9 @@ Template.diningCourt.events({
             foodQualityRating: foodQuality,
             healthRating: health,
             starRating: starRating,
-            upvotes: 0
+            upvotes: 0,
+            month: month,
+            year: year
         });
         var modal = template.find('.Modal');
         modal.style.display = "none";
@@ -724,8 +815,6 @@ Template.diningCourt.events({
 
     'click .editReviewButton': function(event, template) {
         event.preventDefault();
-        console.log(this);
-        // var reviewBeingEdited = CourseReview.findOne({"userId": this.userId, "date": this.date, "review": this.review, "difficultyRating": this.difficultyRating, "workloadRating": this.workloadRating, "utilityRating": this.utilityRating});
         var modal = template.find('.editModal');
         var textField = template.find('.editReviewText');
         var quality = template.find('#editDiningQuality');
@@ -764,12 +853,10 @@ Template.diningCourt.events({
 Template.courseVoted.events({
     'click .arrows': function(event) {
         event.preventDefault();
-        console.log("downvote");
         var courseVote = CourseVotes.findOne({"userId": Meteor.userId(), "reviewId": this._id});
         CourseVotes.remove(courseVote._id);
         var currentReview = CourseReview.findOne({"userId": this.userId, "review": this.review, "date": this.date});
         var currentUpvotes = currentReview.upvotes;
-        //console.log(currentUpvotes);
         var newUpvotes = currentUpvotes-1;
         CourseReview.update(currentReview._id, {
             $set: {"upvotes": newUpvotes}
@@ -780,14 +867,12 @@ Template.courseVoted.events({
 Template.courseUnvoted.events({
     'click .arrows': function(event) {
         event.preventDefault();
-        console.log("upvote");
         CourseVotes.insert({
             userId: Meteor.userId(),
             reviewId: this._id
         });
         var currentReview = CourseReview.findOne({"userId": this.userId, "review": this.review, "date": this.date});
         var currentUpvotes = currentReview.upvotes;
-        //console.log(currentUpvotes);
         var newUpvotes = currentUpvotes+1;
         CourseReview.update(currentReview._id, {
             $set: {"upvotes": newUpvotes}
@@ -802,7 +887,6 @@ Template.internVoted.events({
         InternshipVotes.remove(internVote._id);
         var currentReview = InternReview.findOne({"userId": this.userId, "review": this.review, "date": this.date});
         var currentUpvotes = currentReview.upvotes;
-        //console.log(currentUpvotes);
         var newUpvotes = currentUpvotes-1;
         InternReview.update(currentReview._id, {
             $set: {"upvotes": newUpvotes}
@@ -819,7 +903,6 @@ Template.internUnvoted.events({
         });
         var currentReview = InternReview.findOne({"userId": this.userId, "review": this.review, "date": this.date});
         var currentUpvotes = currentReview.upvotes;
-        //console.log(currentUpvotes);
         var newUpvotes = currentUpvotes+1;
         InternReview.update(currentReview._id, {
             $set: {"upvotes": newUpvotes}
@@ -834,7 +917,6 @@ Template.clubVoted.events({
         ClubVotes.remove(clubVote._id);
         var currentReview = ClubReview.findOne({"userId": this.userId, "review": this.review, "date": this.date});
         var currentUpvotes = currentReview.upvotes;
-        //console.log(currentUpvotes);
         var newUpvotes = currentUpvotes-1;
         ClubReview.update(currentReview._id, {
             $set: {"upvotes": newUpvotes}
@@ -851,7 +933,6 @@ Template.clubUnvoted.events({
         });
         var currentReview = ClubReview.findOne({"userId": this.userId, "review": this.review, "date": this.date});
         var currentUpvotes = currentReview.upvotes;
-        //console.log(currentUpvotes);
         var newUpvotes = currentUpvotes+1;
         ClubReview.update(currentReview._id, {
             $set: {"upvotes": newUpvotes}
@@ -866,7 +947,6 @@ Template.diningVoted.events({
         DiningVotes.remove(diningVote._id);
         var currentReview = DiningReview.findOne({"userId": this.userId, "review": this.review, "date": this.date});
         var currentUpvotes = currentReview.upvotes;
-        //console.log(currentUpvotes);
         var newUpvotes = currentUpvotes-1;
         DiningReview.update(currentReview._id, {
             $set: {"upvotes": newUpvotes}
@@ -883,7 +963,6 @@ Template.diningUnvoted.events({
         });
         var currentReview = DiningReview.findOne({"userId": this.userId, "review": this.review, "date": this.date});
         var currentUpvotes = currentReview.upvotes;
-        //console.log(currentUpvotes);
         var newUpvotes = currentUpvotes+1;
         DiningReview.update(currentReview._id, {
             $set: {"upvotes": newUpvotes}
@@ -898,7 +977,6 @@ Template.dormVoted.events({
         ResVotes.remove(dormVote._id);
         var currentReview = ResReview.findOne({"userId": this.userId, "review": this.review, "date": this.date});
         var currentUpvotes = currentReview.upvotes;
-        //console.log(currentUpvotes);
         var newUpvotes = currentUpvotes-1;
         ResReview.update(currentReview._id, {
             $set: {"upvotes": newUpvotes}
@@ -915,7 +993,6 @@ Template.dormUnvoted.events({
         });
         var currentReview = ResReview.findOne({"userId": this.userId, "review": this.review, "date": this.date});
         var currentUpvotes = currentReview.upvotes;
-        //console.log(currentUpvotes);
         var newUpvotes = currentUpvotes+1;
         ResReview.update(currentReview._id, {
             $set: {"upvotes": newUpvotes}
@@ -973,6 +1050,14 @@ Template.dormsDelete.events({
     }
 });
 
+Template.publicProfile.events({
+    'click .logout': function(event) {
+        event.preventDefault();
+        Meteor.logout();
+        Router.go('login');
+    },
+});
+
 Template.internships.helpers({
     'queryAbbreviation': function() {
         var abbreviations = _.uniq(Course.find({}, {
@@ -1004,8 +1089,12 @@ Template.departments.helpers({
 });
 
 Template.departmentCourses.helpers({
+
     'getReviews': function() {
-        console.log(Session.get('sortType'));
+        var currentDate = new Date();
+        var split = currentDate.toLocaleDateString().split("/");
+        var month = split[0];
+        var year = split[2];
         var courseId = Course.findOne({"Abbreviation": this[0], "Number": Number(this[1])})._id;
         var reviews;
         if (Session.get('sortType') == "newest") {
@@ -1017,11 +1106,26 @@ Template.departmentCourses.helpers({
         else if (Session.get('sortType') =="top") {
             reviews = CourseReview.find({"course": courseId}, {sort: {"upvotes": -1}});
         }
+        else if (Session.get('sortType') == "month") {
+            reviews = CourseReview.find({"course": courseId, "month": month, "year": year}, {sort: {"date": -1}});
+        }
+        else if (Session.get('sortType') == "semester" && Session.get('semester') != "none") {
+            reviews = CourseReview.find({"course": courseId, "semester": Session.get('semester')})
+        }
+        else {
+            reviews = CourseReview.find({"course": courseId}, {sort: {"date": -1}});
+        }
         return reviews;
     },
 
     'printCourse': function() {
         return this[0] + ' ' + this[1];
+    },
+
+    printDate: function() {
+        var date = this.date;
+        var format = moment(date).format('l LT');
+        return format;
     },
 
     printUsername: function() {
@@ -1057,9 +1161,9 @@ Template.departmentCourses.helpers({
     },
 
     getAdmin: function() {
-        var userId = Meteor.userId();
-        var user = Meteor.users.findOne(userId);
-        if (user.profile.administrator == 0){
+        var email = Meteor.user().emails[0].address;
+        var user = AdminAccounts.findOne({"email": email});
+        if (user == undefined){
             return false;
         }
         return true;
@@ -1089,10 +1193,11 @@ Template.internshipList.helpers({
 
 Template.internship.helpers({
    getReviews: function() {
-       console.log(Session.get('sortType'));
-       console.log(this);
+       var currentDate = new Date();
+       var split = currentDate.toLocaleDateString().split("/");
+       var month = split[0];
+       var year = split[2];
        var internId = Internship.findOne({"name": this.toString()})._id;
-       console.log(internId);
        var reviews;
        if (Session.get('sortType') == "newest") {
            reviews = InternReview.find({"internship": internId}, {sort: {"date": -1}});
@@ -1103,8 +1208,20 @@ Template.internship.helpers({
        else if (Session.get('sortType') =="top") {
            reviews = InternReview.find({"internship": internId}, {sort: {"upvotes": -1}});
        }
+       else if (Session.get('sortType') == "month") {
+           reviews = InternReview.find({"internship": internId, "month": month, "year": year}, {sort: {"date": -1}});
+       }
+       else {
+           reviews = InternReview.find({"internship": internId}, {sort: {"date": -1}});
+       }
        return reviews;
    },
+
+    printDate: function() {
+        var date = this.date;
+        var format = moment(date).format('l LT');
+        return format;
+    },
 
     printInternship: function() {
        return this.toString();
@@ -1142,9 +1259,9 @@ Template.internship.helpers({
     },
 
     getAdmin: function() {
-        var userId = Meteor.userId();
-        var user = Meteor.users.findOne(userId);
-        if (user.profile.administrator == 0){
+        var email = Meteor.user().emails[0].address;
+        var user = AdminAccounts.findOne({"email": email});
+        if (user == undefined){
             return false;
         }
         return true;
@@ -1162,7 +1279,10 @@ Template.internship.helpers({
 
 Template.club.helpers({
     getReviews: function() {
-        console.log(Session.get('sortType'));
+        var currentDate = new Date();
+        var split = currentDate.toLocaleDateString().split("/");
+        var month = split[0];
+        var year = split[2];
         var clubId = Club.findOne({"name": this.toString()})._id;
         var reviews;
         if (Session.get('sortType') == "newest") {
@@ -1174,7 +1294,19 @@ Template.club.helpers({
         else if (Session.get('sortType') =="top") {
             reviews = ClubReview.find({"club": clubId}, {sort: {"upvotes": -1}});
         }
+        else if (Session.get('sortType') == "month") {
+            reviews = ClubReview.find({"club": clubId, "month": month, "year": year}, {sort: {"date": -1}});
+        }
+        else {
+            reviews = ClubReview.find({"club": clubId}, {sort: {"date": -1}});
+        }
         return reviews;
+    },
+
+    printDate: function() {
+        var date = this.date;
+        var format = moment(date).format('l LT');
+        return format;
     },
 
     printClub: function() {
@@ -1213,9 +1345,9 @@ Template.club.helpers({
     },
 
     getAdmin: function() {
-        var userId = Meteor.userId();
-        var user = Meteor.users.findOne(userId);
-        if (user.profile.administrator == 0){
+        var email = Meteor.user().emails[0].address;
+        var user = AdminAccounts.findOne({"email": email});
+        if (user == undefined){
             return false;
         }
         return true;
@@ -1233,7 +1365,10 @@ Template.club.helpers({
 
 Template.dorm.helpers({
     getReviews: function() {
-        console.log(Session.get('sortType'));
+        var currentDate = new Date();
+        var split = currentDate.toLocaleDateString().split("/");
+        var month = split[0];
+        var year = split[2];
         var dormId = ResHall.findOne({"name": this.toString()})._id;
         var reviews;
         if (Session.get('sortType') == "newest") {
@@ -1245,7 +1380,19 @@ Template.dorm.helpers({
         else if (Session.get('sortType') =="top") {
             reviews = ResReview.find({"resHall": dormId}, {sort: {"upvotes": -1}});
         }
+        else if (Session.get('sortType') == "month") {
+            reviews = ResReview.find({"resHall": dormId, "month": month, "year": year}, {sort: {"date": -1}});
+        }
+        else {
+            reviews = ResReview.find({"resHall": dormId}, {sort: {"date": -1}});
+        }
         return reviews;
+    },
+
+    printDate: function() {
+        var date = this.date;
+        var format = moment(date).format('l LT');
+        return format;
     },
 
     printDorm: function() {
@@ -1284,9 +1431,9 @@ Template.dorm.helpers({
     },
 
     getAdmin: function() {
-        var userId = Meteor.userId();
-        var user = Meteor.users.findOne(userId);
-        if (user.profile.administrator == 0){
+        var email = Meteor.user().emails[0].address;
+        var user = AdminAccounts.findOne({"email": email});
+        if (user == undefined){
             return false;
         }
         return true;
@@ -1304,7 +1451,10 @@ Template.dorm.helpers({
 
 Template.diningCourt.helpers({
     getReviews: function() {
-        console.log(Session.get('sortType'));
+        var currentDate = new Date();
+        var split = currentDate.toLocaleDateString().split("/");
+        var month = split[0];
+        var year = split[2];
         var diningId = Dining.findOne({"name": this.toString()})._id;
         var reviews;
         if (Session.get('sortType') == "newest") {
@@ -1316,7 +1466,20 @@ Template.diningCourt.helpers({
         else if (Session.get('sortType') =="top") {
             reviews = DiningReview.find({"diningId": diningId}, {sort: {"upvotes": -1}});
         }
+        else if (Session.get('sortType') == "month") {
+            reviews = DiningReview.find({"diningId": diningId, "month": month, "year": year}, {sort: {"date": -1}});
+        }
+        else {
+            reviews = DiningReview.find({"diningId": diningId}, {sort: {"date": -1}});
+        }
+
         return reviews;
+    },
+
+    printDate: function() {
+        var date = this.date;
+        var format = moment(date).format('l LT');
+        return format;
     },
 
     printDining: function() {
@@ -1355,9 +1518,9 @@ Template.diningCourt.helpers({
     },
 
     getAdmin: function() {
-        var userId = Meteor.userId();
-        var user = Meteor.users.findOne(userId);
-        if (user.profile.administrator == 0){
+        var email = Meteor.user().emails[0].address;
+        var user = AdminAccounts.findOne({"email": email});
+        if (user == undefined){
             return false;
         }
         return true;
@@ -1371,4 +1534,38 @@ Template.diningCourt.helpers({
         }
         return false;
     },
+});
+
+Template.publicProfile.helpers({
+    getUsername: function() {
+        return this.profile.username;
+    },
+
+    getUniversity: function() {
+        return this.profile.university;
+    },
+
+    getPublicMajor: function() {
+        var public = this.profile.majorBool;
+        if (public == 1) {
+            return true;
+        }
+        return false;
+    },
+
+    getMajor: function() {
+        return this.profile.major;
+    },
+
+    getPublicGradDate: function() {
+        var public = this.profile.gradDateBool;
+        if (public == 1) {
+            return true;
+        }
+        return false;
+    },
+
+    getGradDate: function() {
+        return this.profile.gradDate;
+    }
 });

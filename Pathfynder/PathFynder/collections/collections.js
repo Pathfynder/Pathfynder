@@ -18,6 +18,7 @@ InternshipVotes= new Meteor.Collection('IntershipVotes');
 ClubVotes = new Meteor.Collection('clubVotes');
 ResVotes = new Meteor.Collection('resVotes');
 AdminAccounts = new Meteor.Collection('adminAccount');
+Semesters = new Meteor.Collection('semesters');
 
 
 //Schemas
@@ -39,7 +40,10 @@ CourseReview.schema = new SimpleSchema({
     difficultyRating: {type: Number},
     workloadRating: {type: Number},
     utilityRating: {type: Number},
-    upvotes: {type: Number}
+    upvotes: {type: Number},
+    month: {type: String},
+    year: {type: String},
+    semester: {type: String}
 });
 
 Internship.schema = new SimpleSchema({
@@ -57,7 +61,9 @@ InternReview.schema = new SimpleSchema({
     interviewRating: {type: Number},
     workloadRating: {type: Number},
     utilityRating: {type: Number},
-    upvotes: {type: Number}
+    upvotes: {type: Number},
+    month: {type: String},
+    year: {type: String}
 });
 
 ResHall.schema = new SimpleSchema({
@@ -72,7 +78,9 @@ ResReview.schema = new SimpleSchema({
     date: {type: Date},
     review: {type: String},
     starRating: {type: Number},
-    upvotes: {type: Number}
+    upvotes: {type: Number},
+    month: {type: String},
+    year: {type: String}
 });
 
 Club.schema = new SimpleSchema({
@@ -88,7 +96,9 @@ ClubReview.schema = new SimpleSchema({
     review: {type: String},
     timeRating: {type: Number},
     utilityRating: {type: Number},
-    upvotes: {type: Number}
+    upvotes: {type: Number},
+    month: {type: String},
+    year: {type: String}
 });
 
 Dining.schema = new SimpleSchema({
@@ -107,7 +117,9 @@ DiningReview.schema = new SimpleSchema({
     foodQualityRating: {type: Number},
     healthRating: {type: Number},
     starRating: {type: Number},
-    upvotes: {type: Number}
+    upvotes: {type: Number},
+    month: {type: String},
+    year: {type: String}
 });
 
 CourseVotes.schema = new SimpleSchema({
@@ -134,4 +146,12 @@ ResVotes.schema = new SimpleSchema({
     userId: {type: Meteor.Collection.ObjectID},
     courseId: {type: Meteor.Collection.ObjectID},
     reviewId: {type: Meteor.Collection.ObjectID}
+});
+AdminAccounts.schema = new SimpleSchema({
+    email: {type: String}
+});
+
+Semesters.schema = new SimpleSchema({
+   semester: {type: String},
+   date: {type: Date}
 });

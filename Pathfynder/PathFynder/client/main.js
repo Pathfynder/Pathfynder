@@ -101,7 +101,6 @@ Template.ForgotPassword.events({
 
 Template.ResetPassword.helpers({
     resetPassword: function(){
-        console.log(Session.get('resetPasswordToken'));
         return Session.get('resetPasswordToken');
     }
 });
@@ -118,7 +117,6 @@ Template.ResetPassword.events({
             passwordConfirm = resetPasswordForm.find('#resetPasswordPasswordConfirm').val();
             Accounts.resetPassword(Session.get('resetPasswordToken'), password, function(err) {
                 if (err) {
-                    console.log('We are sorry but something went wrong.');
                 } else {
                     alert("Your password has been changed! Welcome Back! You will be redirected to the login page!");
                     Session.set('resetPasswordToken', null);
@@ -165,12 +163,10 @@ Template.register.events ({
                     alert("Purdue Edu email required!");
                     window.location.reload();
                 } else {
-                    console.log(err.reason);
                     alert("Something went wrong! Use a Purdue email.")
                     window.location.reload();
                 }
             } else {
-                console.log("Registration successfull");
                 // Success. Account has been created and the user
                 // has logged in successfully.
                 var userId = Meteor.userId();
@@ -196,8 +192,6 @@ Template.login.events({
         event.preventDefault();
         var email = $('[name=email]').val();
         var password = $('[name=password]').val();
-        console.log(email);
-        console.log(password);
         Meteor.call('checkEmailVerification', email, function(error, data) {
             if(data == "verified") {
                 Meteor.loginWithPassword(email, password, function(error){

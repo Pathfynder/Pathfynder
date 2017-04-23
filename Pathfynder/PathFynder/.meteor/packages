@@ -28,3 +28,4 @@ accounts-base
 aldeed:simple-schema
 arkham:comments-ui
 practicalmeteor:mocha
+momentjs:moment
