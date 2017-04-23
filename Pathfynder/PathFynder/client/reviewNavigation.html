@@ -450,9 +450,19 @@
                     <div id="semesterDrop">
                         <p>Semester Taken:</p>
                         <select name="course" id="courseSemester">
-                            {{#each getSemesters}}
-                                <option value="{{this.semester}}">{{this.semester}}</option>
-                            {{/each}}
+                            <option value="Spring 2013">Spring 2013</option>
+                            <option value="Summer 2013">Summer 2013</option>
+                            <option value="Fall 2013">Fall 2013</option>
+                            <option value="Spring 2014">Spring 2014</option>
+                            <option value="Summer 2014">Summer 2014</option>
+                            <option value="Fall 2014">Fall 2014</option>
+                            <option value="Spring 2015">Spring 2015</option>
+                            <option value="Summer 2015">Summer 2015</option>
+                            <option value="Fall 2015">Fall 2015</option>
+                            <option value="Spring 2016">Spring 2016</option>
+                            <option value="Summer 2016">Summer 2016</option>
+                            <option value="Fall 2016">Fall 2016</option>
+                            <option value="Spring 2017">Spring 2017</option>
                         </select>
                     </div>
                     <input class="coursesAddReviewButton" type="submit" value="Submit">
@@ -470,9 +480,19 @@
                 </select>
                 <select name="course" id="selectCourseSemester">
                     <option value ="none">-Semester Sort Only-</option>
-                    {{#each getSemesters}}
-                        <option value="{{this.semester}}">{{this.semester}}</option>
-                    {{/each}}
+                        <option value="Spring 2013">Spring 2013</option>
+                        <option value="Summer 2013">Summer 2013</option>
+                        <option value="Fall 2013">Fall 2013</option>
+                        <option value="Spring 2014">Spring 2014</option>
+                        <option value="Summer 2014">Summer 2014</option>
+                        <option value="Fall 2014">Fall 2014</option>
+                        <option value="Spring 2015">Spring 2015</option>
+                        <option value="Summer 2015">Summer 2015</option>
+                        <option value="Fall 2015">Fall 2015</option>
+                        <option value="Spring 2016">Spring 2016</option>
+                        <option value="Summer 2016">Summer 2016</option>
+                        <option value="Fall 2016">Fall 2016</option>
+                        <option value="Spring 2017">Spring 2017</option>
                 </select>
                 <input class="submitSort" type="submit" value="Sort">
             </form>

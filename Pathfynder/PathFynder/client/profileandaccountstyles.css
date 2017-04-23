@@ -144,3 +144,22 @@ span {
     margin-left: 900px;
 }
 
+#addAdmin {
+    position: absolute;
+    margin-top: -57px;
+    margin-left: 325px;
+    height: 20px;
+    width: 400px;
+}
+
+#addAdminButton {
+    position: absolute;
+    background-color: white;
+    color: #CB2B68;
+    font-size: 18px;
+    height: 25px;
+    width: 100px;
+    margin-top: -58px;
+    margin-left: 900px;
+}
+

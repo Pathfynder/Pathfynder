@@ -5,7 +5,6 @@ Meteor.startup(() => {
     //var date = Date();
     CourseReview.remove( { date : {"$lt" : new Date(2012, 4, 16) } });
     process.env.MAIL_URL="smtp://postmaster@mail.pathfynder.ltd:040290bafa1f8586df07331ae666ea42@smtp.mailgun.org:587";
-    console.log(process.env);
     Accounts.urls.verifyEmail = function (token) {
         return Meteor.absoluteUrl('verify-email/' + token);
     };
@@ -41,7 +40,6 @@ Meteor.startup(() => {
 //};
 Meteor.methods({
     serverVerifyEmail: function(email, userId, callback) {
-        console.log("Email to verify:" +email + " | userId: "+userId);
         // this needs to be done on the server.
         Accounts.sendVerificationEmail(userId, email);
         if (typeof callback !== 'undefined') {
@@ -61,19 +59,15 @@ Meteor.methods({
         }
     },
     remove: function(userId, error) {
-        console.log(userId);
         try {
             Meteor.users.remove(userId);
         } catch (e) {
-            console.log('Something went wrong trying to delete account');
         }
     },
     setPassword: function(userId, newPassword, error) {
-        console.log(newPassword);
         try {
             Accounts.setPassword(userId, newPassword);
         } catch (e) {
-            console.log('Something went wrong trying to change password.');
         }
     }
 });
