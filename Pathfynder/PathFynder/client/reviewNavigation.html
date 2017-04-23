@@ -451,6 +451,16 @@
                 </form>
             </div>
         </div>
+        <div class="reviewSorting">
+            <form class="sortReviews">
+                <select name="sortReviewsDrop" id="coursesSortReviews">
+                    <option value="newest">Newest-Oldest</option>
+                    <option value="oldest">Oldest-Newest</option>
+                    <option value="top">Top Voted</option>
+                </select>
+                <input class="submitSort" type="submit" value="submit">
+            </form>
+        </div>
         {{#each getReviews}}
             <div class="editModal">
                 <div class="editModalContent">
@@ -701,7 +711,72 @@
                 </form>
             </div>
         </div>
+        <div class="reviewSorting">
+            <form class="sortReviews">
+                <select name="sortReviewsDrop" id="diningSortReviews">
+                    <option value="newest">Newest-Oldest</option>
+                    <option value="oldest">Oldest-Newest</option>
+                    <option value="top">Top Voted</option>
+                </select>
+                <input class="submitSort" type="submit" value="submit">
+            </form>
+        </div>
         {{#each getReviews}}
+            <div class="editModal">
+                <div class="editModalContent">
+                    <span class="editclose">&times;</span>
+                    <h1>Edit Review</h1>
+                    <form class="editReview">
+                        <textarea class="editReviewText" name="editReview" cols="120" rows="13" placeholder = ""></textarea>
+                        <div id="dropdown1">
+                            <p>Dining Hall Food Quality:</p>
+                            <select name="foodQuality" id="editDiningQuality">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                        <div id="dropdown2">
+                            <p>Dining Hall Healthy Rating:</p>
+                            <select name="health" id="editDiningHealth">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                        <div id="dropdown3">
+                            <p>Dining Hall Star Rating:</p>
+                            <select name="star" id="editDiningStar">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                        <input class="editReviewSubmit" type="submit" value="Submit">
+                    </form>
+                </div>
+            </div>
             <div class = "reviewObject">
                 <p>{{this.date}}</p>
                 <div class="upvotes">
@@ -723,6 +798,17 @@
                 <div class = "reviewText">
                     {{this.review}}
                 </div>
+                {{#if getAdmin}}
+                    {{> diningDelete}}
+                    {{#if getCurrentUser}}
+                        <div class = "editReviewButton">edit</div>
+                    {{/if}}
+                {{else}}
+                    {{#if getCurrentUser}}
+                        {{> diningDelete}}
+                        <div class = "editReviewButton">edit</div>
+                    {{/if}}
+                {{/if}}
             </div>
         {{/each}}
     </div>
@@ -868,7 +954,42 @@
                 </form>
             </div>
         </div>
+        <div class="reviewSorting">
+            <form class="sortReviews">
+                <select name="sortReviewsDrop" id="dormSortReviews">
+                    <option value="newest">Newest-Oldest</option>
+                    <option value="oldest">Oldest-Newest</option>
+                    <option value="top">Top Voted</option>
+                </select>
+                <input class="submitSort" type="submit" value="submit">
+            </form>
+        </div>
         {{#each getReviews}}
+            <div class="editModal">
+                <div class="editModalContent">
+                    <span class="editclose">&times;</span>
+                    <h1>Edit Review</h1>
+                    <form class="editReview">
+                        <textarea class="editReviewText" name="editReview" cols="120" rows="13" placeholder = ""></textarea>
+                        <div id="dropdown1">
+                            <p>Residence Hall Star Rating:</p>
+                            <select name="star" id="editDormStar">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                        <input class="editDormReviewSubmit" type="submit" value="Submit">
+                    </form>
+                </div>
+            </div>
             <div class = "reviewObject">
                 <p>{{this.date}}</p>
                 <div class="upvotes">
@@ -888,6 +1009,17 @@
                 <div class = "reviewText">
                     {{this.review}}
                 </div>
+                {{#if getAdmin}}
+                    {{> dormsDelete}}
+                    {{#if getCurrentUser}}
+                        <div class = "editReviewButton">edit</div>
+                    {{/if}}
+                {{else}}
+                    {{#if getCurrentUser}}
+                        {{> dormsDelete}}
+                        <div class = "editReviewButton">edit</div>
+                    {{/if}}
+                {{/if}}
             </div>
         {{/each}}
     </div>
@@ -936,8 +1068,8 @@
     <div id="ClubsBody">
         <div id="clubsListDrop">
             <form action="">
-                <h2>Select a club</h2>
-                Club:
+                <h2>Select a School club</h2>
+                School Club:
                 <select name="club">
                     {{#each getClubs}}
                         <option value="{{this.name}}">{{this.name}}</option>
@@ -1047,7 +1179,57 @@
                 </form>
             </div>
         </div>
+        <div class="reviewSorting">
+            <form class="sortReviews">
+                <select name="sortReviewsDrop" id="clubSortReviews">
+                    <option value="newest">Newest-Oldest</option>
+                    <option value="oldest">Oldest-Newest</option>
+                    <option value="top">Top Voted</option>
+                </select>
+                <input class="submitSort" type="submit" value="submit">
+            </form>
+        </div>
         {{#each getReviews}}
+            <div class="editModal">
+                <div class="editModalContent">
+                    <span class="editclose">&times;</span>
+                    <h1>Edit Review</h1>
+                    <form class="editReview">
+                        <textarea class="editReviewText" name="editReview" cols="120" rows="13" placeholder = ""></textarea>
+                        <div id="dropdown1">
+                            <p>Club Time Commitment:</p>
+                            <select name="time" id="editClubTime">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                        <div id="dropdown2">
+                            <p>Club Utility:</p>
+                            <select name="utility" id="editClubUtility">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                        <input class="editClubReviewSubmit" type="submit" value="Submit">
+                    </form>
+                </div>
+            </div>
             <div class = "reviewObject">
                 <p>{{this.date}}</p>
                 <div class="upvotes">
@@ -1068,6 +1250,17 @@
                 <div class = "reviewText">
                     {{this.review}}
                 </div>
+                {{#if getAdmin}}
+                    {{> clubsDelete}}
+                    {{#if getCurrentUser}}
+                        <div class = "editReviewButton">edit</div>
+                    {{/if}}
+                {{else}}
+                    {{#if getCurrentUser}}
+                        {{>clubsDelete}}
+                        <div class = "editReviewButton">edit</div>
+                    {{/if}}
+                {{/if}}
             </div>
         {{/each}}
     </div>
@@ -1244,7 +1437,72 @@
                 </form>
             </div>
         </div>
+        <div class="reviewSorting">
+            <form class="sortReviews">
+                <select name="sortReviewsDrop" id="internSortReviews">
+                    <option value="newest">Newest-Oldest</option>
+                    <option value="oldest">Oldest-Newest</option>
+                    <option value="top">Top Voted</option>
+                </select>
+                <input class="submitSort" type="submit" value="submit">
+            </form>
+        </div>
         {{#each getReviews}}
+            <div class="editModal">
+                <div class="editModalContent">
+                    <span class="editclose">&times;</span>
+                    <h1>Edit Review</h1>
+                    <form class="editReview">
+                        <textarea class="editReviewText" name="editReview" cols="120" rows="13" placeholder = ""></textarea>
+                        <div id="dropdown1">
+                            <p>Internship Interview Difficulty:</p>
+                            <select name="interview" id="editInternInterview">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                        <div id="dropdown2">
+                            <p>Internship Workload:</p>
+                            <select name="workload" id="editInternWorkload">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                        <div id="dropdown3">
+                            <p>Internship Utility:</p>
+                            <select name="utility" id="editInternUtility">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                        <input class="editReviewSubmit" type="submit" value="Submit">
+                    </form>
+                </div>
+            </div>
             <div class = "reviewObject">
                 <p>{{this.date}}</p>
                 <div class="upvotes">
@@ -1266,6 +1524,17 @@
                 <div class = "reviewText">
                     {{this.review}}
                 </div>
+                {{#if getAdmin}}
+                    {{> internshipsDelete}}
+                    {{#if getCurrentUser}}
+                        <div class = "editReviewButton">edit</div>
+                    {{/if}}
+                {{else}}
+                    {{#if getCurrentUser}}
+                        {{>internshipsDelete}}
+                        <div class = "editReviewButton">edit</div>
+                    {{/if}}
+                {{/if}}
             </div>
         {{/each}}
     </div>
@@ -1315,7 +1584,20 @@
     <div class ="deleteReviewButton">delete</div>
 </template>
 
-<template name ="coursesEdit">
-    <div class = "editReviewButton">edit</div>
+<template name="internshipsDelete">
+    <div class ="deleteReviewButton">delete</div>
 </template>
+
+<template name="clubsDelete">
+    <div class ="deleteReviewButton">delete</div>
+</template>
+
+<template name="dormsDelete">
+    <div class ="deleteReviewButton">delete</div>
+</template>
+
+<template name="diningDelete">
+    <div class ="deleteReviewButton">delete</div>
+</template>
+
 
