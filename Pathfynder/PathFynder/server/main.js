@@ -87,8 +87,3 @@ Accounts.onCreateUser(function(options, user) {
     user.profile.administrator = 0;
     return user;
 });
-
-
-Packages.onTest(){
-  
-}
