@@ -293,7 +293,7 @@ Template.departmentCourses.events({
         var month = split[0];
         var year = split[2];
         var courseId = Course.findOne({"Abbreviation": this[0], "Number": Number(this[1])})._id;
-        var semester = template.find('#courseSemester');
+        var semester = template.find('#courseSemester').value;
 
 
         CourseReview.insert({
